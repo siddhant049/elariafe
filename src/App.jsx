@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Routes, Route, Link } from "react-router-dom";
 import {
   motion,
   useScroll,
@@ -42,6 +43,9 @@ import {
   CloseOutlined,
 } from "@ant-design/icons";
 import Navbar from "./components/Navbar";
+import TreatmentDetailPage from "./pages/treatments/TreatmentDetailPage";
+import ServiceDetailPage from "./pages/services/ServiceDetailPage";
+import AIAssessmentPage from "./pages/AIAssessmentPage";
 
 // ============================================================================
 // ANIMATION VARIANTS - Refined, sophisticated motion patterns
@@ -243,7 +247,7 @@ const HeroSection = ({ onBookAppointment }) => {
       >
         <div className="max-w-6xl mx-auto text-center space-y-8 lg:space-y-12">
           {/* Premium Badge - Enhanced */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: -30, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2, type: "spring" }}
@@ -278,7 +282,7 @@ const HeroSection = ({ onBookAppointment }) => {
                 </svg>
               </div>
             </div>
-          </motion.div>
+          </motion.div> */}
 
           {/* Headline - More Dynamic */}
           <motion.div
@@ -441,86 +445,6 @@ const HeroSection = ({ onBookAppointment }) => {
                 Explore Treatments
               </span>
             </motion.button>
-          </motion.div>
-
-          {/* Enhanced Trust Metrics */}
-          <motion.div
-            className="pt-14"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.9, delay: 1.6 }}
-          >
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-8 md:gap-12">
-              {/* Avatars with Enhanced Design */}
-              <div className="flex items-center gap-4 px-6 py-4 bg-white/50 backdrop-blur-xl rounded-2xl border border-white/60 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
-                <div className="flex -space-x-3">
-                  {[1, 2, 3, 4].map((i) => (
-                    <motion.div
-                      key={i}
-                      className="relative w-11 h-11 rounded-full border-3 border-white shadow-lg bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden"
-                      whileHover={{ scale: 1.15, zIndex: 10, rotate: 5 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      <img
-                        src={`https://i.pravatar.cc/100?u=${i}`}
-                        alt=""
-                        className="w-full h-full object-cover"
-                      />
-                    </motion.div>
-                  ))}
-                  <motion.div
-                    className="w-11 h-11 rounded-full border-3 border-white bg-gradient-to-br from-[#efae4c] to-[#d89b3e] flex items-center justify-center text-white text-xs font-bold shadow-lg"
-                    whileHover={{ scale: 1.15, rotate: -5 }}
-                  >
-                    2k+
-                  </motion.div>
-                </div>
-                <div className="flex flex-col items-start">
-                  <div className="flex gap-0.5 mb-1">
-                    {[...Array(5)].map((_, i) => (
-                      <motion.div
-                        key={i}
-                        initial={{ scale: 0, rotate: -180 }}
-                        animate={{ scale: 1, rotate: 0 }}
-                        transition={{ delay: 1.8 + i * 0.1, type: "spring" }}
-                      >
-                        <StarFilled className="text-[#FBBF24] text-sm drop-shadow" />
-                      </motion.div>
-                    ))}
-                  </div>
-                  <span className="text-xs text-gray-600 font-semibold">
-                    Trusted by thousands
-                  </span>
-                </div>
-              </div>
-
-              <div className="hidden sm:block w-px h-16 bg-gradient-to-b from-transparent via-gray-300 to-transparent" />
-
-              {/* Stats Grid */}
-              <div className="flex gap-8 px-6 py-4 bg-white/50 backdrop-blur-xl rounded-2xl border border-white/60 shadow-xl">
-                {[
-                  { value: "15+", label: "Years" },
-                  { value: "98%", label: "Satisfaction" },
-                  { value: "100%", label: "FDA Approved" },
-                ].map((stat, i) => (
-                  <motion.div
-                    key={i}
-                    className="text-center"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.8 + i * 0.1 }}
-                    whileHover={{ scale: 1.1, y: -3 }}
-                  >
-                    <div className="text-2xl font-light bg-gradient-to-r from-[#001b3d] to-[#efae4c] bg-clip-text text-transparent">
-                      {stat.value}
-                    </div>
-                    <div className="text-[10px] text-gray-600 font-medium uppercase tracking-widest mt-1">
-                      {stat.label}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
           </motion.div>
         </div>
       </motion.div>
@@ -914,23 +838,12 @@ const CategoryCard = ({ title, description, delay }) => {
         <div className="space-y-6">
           <p className="text-gray-600 text-lg">{description}</p>
 
-          <div className="grid grid-cols-2 gap-6">
-            <div>
-              <h4 className="font-semibold text-[#001b3d] mb-3 flex items-center gap-2">
-                <span className="text-[#efae4c]">💰</span> Pricing & Duration
-              </h4>
-              <div className="space-y-2 text-gray-600">
-                <p>
-                  <strong>Session Duration:</strong> {serviceDetails.duration}
-                </p>
-              </div>
-            </div>
-
+          <div className="">
             <div>
               <h4 className="font-semibold text-[#001b3d] mb-3 flex items-center gap-2">
                 <span className="text-[#efae4c]">✨</span> Key Benefits
               </h4>
-              <ul className="space-y-1 text-gray-600">
+              <ul className="space-y-1 text-gray-600 grid grid-cols-2">
                 {serviceDetails.benefits.map((benefit, idx) => (
                   <li key={idx} className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 bg-[#efae4c] rounded-full"></span>
@@ -1062,10 +975,16 @@ const TrustMetrics = () => {
     years: 0,
     clients: 0,
     satisfaction: 0,
+    fdaApprMach: 0,
   });
 
   useEffect(() => {
-    const targets = { years: 15, clients: 15000, satisfaction: 98 };
+    const targets = {
+      years: 15,
+      clients: 15000,
+      satisfaction: 98,
+      fdaApprMach: 100,
+    };
     const duration = 2000;
     const steps = 60;
     const interval = duration / steps;
@@ -1079,6 +998,7 @@ const TrustMetrics = () => {
         years: Math.floor(targets.years * progress),
         clients: Math.floor(targets.clients * progress),
         satisfaction: Math.floor(targets.satisfaction * progress),
+        fdaApprMach: Math.floor(targets.fdaApprMach * progress),
       });
 
       if (currentStep >= steps) clearInterval(timer);
@@ -1088,13 +1008,13 @@ const TrustMetrics = () => {
   }, []);
 
   const metrics = [
-    { label: "YEARS EXPERIENCE", value: counters.years + "+" },
+    { label: "CERTIFIED SPECIALISTS", value: counters.years + "+" },
     {
-      label: "SATISFIED CLIENTS",
+      label: "WELLNESS SESSIONS CONDUCTED",
       value: counters.clients.toLocaleString() + "+",
     },
     { label: "SATISFACTION RATE", value: counters.satisfaction + "%" },
-    { label: "FDA APPROVED", value: "100%" },
+    { label: "FDA APPROVED MACHINES", value: counters.fdaApprMach + "%" },
   ];
 
   return (
@@ -1627,21 +1547,29 @@ const TreatmentQuiz = () => {
       ],
     },
     {
-      question: "How would you describe your skin type?",
-      options: [
-        { text: "Oily", value: "oily", icon: "🛢️" },
-        { text: "Dry", value: "dry", icon: "🏜️" },
-        { text: "Combination", value: "combination", icon: "⚖️" },
-        { text: "Normal", value: "normal", icon: "✅" },
-        { text: "Sensitive", value: "sensitive", icon: "🌸" },
-      ],
-    },
-    {
       question: "What's your preferred treatment level?",
       options: [
-        { text: "Essential Care", value: "budget", icon: "💰" },
-        { text: "Premium Experience", value: "premium", icon: "💎" },
-        { text: "Luxury Treatments", value: "luxury", icon: "👑" },
+        {
+          text: "Essential Care",
+          value: "budget",
+          icon: "💰",
+          description:
+            "Basic, effective treatments focusing on essential skin/hair care. Includes fundamental procedures like basic facials, simple peels, and standard laser sessions. Perfect for maintenance and first-time clients seeking affordable solutions.",
+        },
+        {
+          text: "Premium Experience",
+          value: "premium",
+          icon: "💎",
+          description:
+            "Advanced treatments using premium products and techniques. Features medical-grade procedures, specialized therapies, and combination treatments. Ideal for clients wanting noticeable improvements with professional-grade results.",
+        },
+        {
+          text: "Luxury Treatments",
+          value: "luxury",
+          icon: "👑",
+          description:
+            "Comprehensive, high-end wellness experiences combining multiple advanced therapies. Includes VIP consultations, personalized treatment plans, premium recovery protocols, and exclusive aftercare. Designed for maximum transformation and ultimate pampering.",
+        },
       ],
     },
     {
@@ -1656,40 +1584,145 @@ const TreatmentQuiz = () => {
 
   const treatmentRecommendations = {
     aging: {
-      young: ["HydraFacial", "Chemical Peels"],
-      adult: ["Botox", "Dermal Fillers", "Laser Resurfacing"],
-      mature: ["Thread Lift", "PRP Therapy", "Stem Cell Treatment"],
+      young: [
+        "HydraFacial",
+        "Chemical Peels",
+        "Anti-aging Peels",
+        "Collagen Boosters",
+      ],
+      adult: [
+        "Botox",
+        "Dermal Fillers",
+        "Laser Resurfacing",
+        "Skin Tightening",
+      ],
+      mature: [
+        "Thread Lift",
+        "PRP Therapy",
+        "Stem Cell Treatment",
+        "Wrinkles Treatment",
+      ],
       senior: ["PRP Therapy", "Stem Cell Treatment", "Ayurvedic Rejuvenation"],
     },
     acne: {
-      young: ["Laser Acne Treatment", "Chemical Peels", "Microdermabrasion"],
-      adult: ["CO2 Laser", "PRP for Acne Scars", "Ayurvedic Detox"],
-      mature: ["PRP Therapy", "Laser Resurfacing", "Ayurvedic Treatments"],
-      senior: ["Gentle Laser", "Ayurvedic Healing", "PRP Therapy"],
+      young: [
+        "Acne Peels",
+        "Advanced Acne Treatments",
+        "Chemical Peels",
+        "Acne Cleanup Facial",
+      ],
+      adult: [
+        "Carbon Peels",
+        "Fractional Laser",
+        "Radiofrequency Microneedling",
+        "Laser for Freckles",
+      ],
+      mature: [
+        "PRP Therapy",
+        "Laser Resurfacing",
+        "Ayurvedic Treatments",
+        "Derma roller",
+      ],
+      senior: [
+        "Gentle Laser",
+        "Ayurvedic Healing",
+        "PRP Therapy",
+        "Microneedling Radiofrequency for stretch Marks",
+      ],
     },
     pigmentation: {
-      young: ["Chemical Peels", "Laser Toning", "Microdermabrasion"],
-      adult: ["Q-Switched Laser", "Chemical Peels", "PRP Therapy"],
-      mature: ["Laser Toning", "PRP Therapy", "Stem Cell Treatment"],
-      senior: ["Gentle Laser", "PRP Therapy", "Ayurvedic Brightening"],
+      young: [
+        "Freckles",
+        "Depigmentation Peels",
+        "Chemical Peels",
+        "Laser Toning",
+      ],
+      adult: [
+        "Cosmelan",
+        "Glow Peel",
+        "Dermapen 4 for Pigmentation",
+        "Q-Switched Laser",
+      ],
+      mature: [
+        "Vampire Facial",
+        "Laser Toning",
+        "PRP Therapy",
+        "Stem Cell Treatment",
+      ],
+      senior: [
+        "Hydrafacial Basic",
+        "HydraFacial Elite",
+        "Gentle Laser",
+        "Ayurvedic Brightening",
+      ],
     },
     dryness: {
-      young: ["HydraFacial", "Microdermabrasion", "Chemical Peels"],
-      adult: ["PRP Therapy", "Stem Cell Treatment", "Laser Resurfacing"],
-      mature: ["PRP Therapy", "Stem Cell Treatment", "Ayurvedic Oils"],
-      senior: ["PRP Therapy", "Ayurvedic Treatments", "Stem Cell"],
+      young: [
+        "HydraFacial",
+        "Microdermabrasion",
+        "Chemical Peels",
+        "Skin Boosters",
+      ],
+      adult: [
+        "PRP Therapy",
+        "Stem Cell Treatment",
+        "Laser Resurfacing",
+        "Diamond Polishing",
+      ],
+      mature: [
+        "PRP Therapy",
+        "Stem Cell Treatment",
+        "Ayurvedic Oils",
+        "OxyFacials",
+      ],
+      senior: ["PRP Therapy", "Ayurvedic Treatments", "Stem Cell", "Oxyglow"],
     },
     hair: {
-      young: ["PRP Hair Therapy", "Mesotherapy", "Low-Level Laser"],
-      adult: ["Hair Transplant", "PRP Therapy", "Stem Cell Treatment"],
-      mature: ["Hair Transplant", "PRP Therapy", "Stem Cell Treatment"],
-      senior: ["PRP Therapy", "Stem Cell Treatment", "Ayurvedic Hair Care"],
+      young: ["QR678", "Hair Growth Boosters", "GFC", "Scalp Peel"],
+      adult: [
+        "Hair Transplant",
+        "PRP Therapy",
+        "Stem Cell Treatment",
+        "Exames",
+      ],
+      mature: [
+        "Hair Transplant",
+        "PRP Therapy",
+        "Stem Cell Treatment",
+        "Scalp Peel",
+      ],
+      senior: [
+        "PRP Therapy",
+        "Stem Cell Treatment",
+        "Ayurvedic Hair Care",
+        "Hair Growth Boosters",
+      ],
     },
     body: {
-      young: ["CoolSculpting", "Body Contouring", "RF Treatment"],
-      adult: ["Body Contouring", "CoolSculpting", "Laser Lipolysis"],
-      mature: ["Body Contouring", "PRP for Skin Tightening", "Stem Cell"],
-      senior: ["Gentle Body Contouring", "PRP Therapy", "Ayurvedic Massage"],
+      young: [
+        "CoolSculpting",
+        "Body Contouring",
+        "Laser Lipolysis",
+        "Weight Loss Treatments",
+      ],
+      adult: [
+        "Body Contouring",
+        "CoolSculpting",
+        "Laser Lipolysis",
+        "Cellulite Treatment",
+      ],
+      mature: [
+        "Body Contouring",
+        "PRP for Skin Tightening",
+        "Stem Cell",
+        "Cryolipolysis",
+      ],
+      senior: [
+        "Gentle Body Contouring",
+        "PRP Therapy",
+        "Ayurvedic Massage",
+        "Body Shaping",
+      ],
     },
   };
 
@@ -1702,9 +1735,8 @@ const TreatmentQuiz = () => {
       // Generate recommendations
       const primaryConcern = answers[0]?.value;
       const ageRange = answers[1]?.value;
-      const skinType = answers[2]?.value;
-      const budget = answers[3]?.value;
-      const downtime = answers[4]?.value;
+      const budget = answers[2]?.value;
+      const downtime = answers[3]?.value;
 
       let recs = [];
       if (primaryConcern && ageRange) {
@@ -1719,14 +1751,30 @@ const TreatmentQuiz = () => {
             "Chemical Peels",
             "Microdermabrasion",
             "Ayurvedic Treatments",
+            "Acne Peels",
+            "Freckles",
+            "Depigmentation Peels",
+            "Scalp Peel",
+            "QR678",
+            "Hair Growth Boosters",
+            "GFC",
+            "Exames",
+            "Weight Loss Treatments",
           ].includes(treatment)
         );
       } else if (budget === "premium") {
         recs = recs.filter(
           (treatment) =>
-            !["Stem Cell Treatment", "Hair Transplant"].includes(treatment) ||
+            ![
+              "Stem Cell Treatment",
+              "Hair Transplant",
+              "CoolSculpting",
+              "Cryolipolysis",
+            ].includes(treatment) ||
             treatment.includes("PRP") ||
-            treatment.includes("Laser")
+            treatment.includes("Laser") ||
+            treatment.includes("Fractional") ||
+            treatment.includes("Radiofrequency")
         );
       }
 
@@ -1738,6 +1786,24 @@ const TreatmentQuiz = () => {
             "Dermal Fillers",
             "PRP Therapy",
             "Ayurvedic Treatments",
+            "Chemical Peels",
+            "Laser for Freckles",
+            "Scalp Peel",
+            "QR678",
+            "Hair Growth Boosters",
+            "GFC",
+            "Exames",
+            "Freckles",
+            "Depigmentation Peels",
+            "Acne Peels",
+            "Acne Cleanup Facial",
+            "Diamond Polishing",
+            "OxyFacials",
+            "Oxyglow",
+            "Skin Boosters",
+            "Under Eye Boosters",
+            "Dark Circles Removal",
+            "Under Eye Rejuvenation",
           ].includes(treatment)
         );
       }
@@ -1907,6 +1973,21 @@ const TreatmentQuiz = () => {
           <p className="text-lg text-gray-300 font-light tracking-wide">
             Answer a few questions and discover personalized recommendations
           </p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8 }}
+            className="mt-8"
+          >
+            <Link to="/ai-assessment">
+              <Button
+                type="primary"
+                className="bg-[#efae4c] hover:bg-[#d89b3e] border-none rounded-full px-8 py-3 text-[#001b3d] font-semibold"
+              >
+                Learn More <ArrowRightOutlined className="ml-2 text-sm" />
+              </Button>
+            </Link>
+          </motion.div>
         </motion.div>
 
         {/* Progress Bar */}
@@ -1959,6 +2040,11 @@ const TreatmentQuiz = () => {
                 <div className="text-white font-light tracking-wide group-hover:text-[#efae4c] transition-colors">
                   {option.text}
                 </div>
+                {option.description && (
+                  <div className="text-white/70 text-sm mt-3 leading-relaxed group-hover:text-white/90 transition-colors">
+                    {option.description}
+                  </div>
+                )}
               </motion.button>
             ))}
           </div>
@@ -2969,6 +3055,158 @@ const Footer = () => {
 };
 
 // ============================================================================
+// FAQs SECTION - Interactive flip cards
+// ============================================================================
+const FAQsSection = () => {
+  const faqs = [
+    {
+      question: "Are the treatments safe and FDA approved?",
+      answer:
+        "Yes, all our treatments are performed using FDA-approved equipment and techniques. Our medical professionals ensure the highest safety standards are maintained throughout your treatment journey.",
+    },
+    {
+      question: "How long do the results typically last?",
+      answer:
+        "Results vary depending on the treatment and individual factors. Most aesthetic treatments provide results lasting 6-18 months, while some surgical procedures offer permanent results. We'll discuss realistic expectations during your consultation.",
+    },
+    {
+      question: "What is the recovery time for treatments?",
+      answer:
+        "Recovery time depends on the specific treatment. Non-invasive procedures like Botox typically require minimal downtime (1-2 days), while more comprehensive treatments may need 1-2 weeks for full recovery. We'll provide detailed aftercare instructions.",
+    },
+    {
+      question: "Do you offer financing options?",
+      answer:
+        "Yes, we offer flexible financing options and payment plans to make treatments accessible. We accept major credit cards, and our team can help you explore financing solutions that fit your budget.",
+    },
+    {
+      question: "What should I expect during my first consultation?",
+      answer:
+        "Your first consultation includes a comprehensive assessment of your concerns, medical history review, and personalized treatment recommendations. We'll discuss your goals, answer questions, and create a customized treatment plan.",
+    },
+    {
+      question: "Are there any age restrictions for treatments?",
+      answer:
+        "Most treatments are suitable for adults 18 and older. Some procedures may have different age guidelines based on individual circumstances. We'll assess your eligibility during the consultation and recommend the most appropriate treatments.",
+    },
+  ];
+
+  return (
+    <section className="py-20 px-6 bg-gray-50">
+      <div className="max-w-7xl mx-auto">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+          className="text-center mb-16"
+        >
+          <motion.h2
+            variants={fadeUp}
+            className="text-4xl font-light text-[#001b3d] mb-4 tracking-wide"
+          >
+            Frequently Asked Questions
+          </motion.h2>
+          <motion.p
+            variants={fadeUp}
+            className="text-gray-600 text-lg max-w-2xl mx-auto"
+          >
+            Find answers to common questions about our treatments and services
+          </motion.p>
+        </motion.div>
+
+        <motion.div
+          variants={staggerContainer}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          {faqs.map((faq, index) => (
+            <motion.div
+              key={index}
+              variants={scaleIn}
+              className="group h-64 [perspective:1000px]"
+            >
+              <div className="relative h-full w-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                {/* Front of card */}
+                <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] bg-white rounded-xl shadow-lg border border-gray-200 p-6 flex flex-col justify-center items-center text-center hover:shadow-xl transition-shadow duration-300">
+                  <div className="w-12 h-12 bg-[#efae4c]/10 rounded-full flex items-center justify-center mb-4">
+                    <span className="text-[#efae4c] text-xl font-bold">?</span>
+                  </div>
+                  <h3 className="text-lg font-semibold text-[#001b3d] leading-tight">
+                    {faq.question}
+                  </h3>
+                  <div className="mt-4 text-[#efae4c] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    Hover to reveal answer →
+                  </div>
+                </div>
+
+                {/* Back of card */}
+                <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] bg-gradient-to-br from-[#001b3d] to-[#002952] rounded-xl shadow-lg p-6 flex flex-col justify-center items-center text-center text-white">
+                  <div className="w-12 h-12 bg-[#efae4c]/20 rounded-full flex items-center justify-center mb-4">
+                    <span className="text-[#efae4c] text-xl font-bold">✓</span>
+                  </div>
+                  <p className="text-sm leading-relaxed">{faq.answer}</p>
+                  <div className="mt-4 text-[#efae4c] text-sm font-medium">
+                    ← Back to question
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+// ============================================================================
+// HOME PAGE COMPONENT
+// ============================================================================
+const HomePage = ({ onBookAppointment }) => {
+  return (
+    <div className="min-h-screen bg-white">
+      <style>{`
+        .ant-input::placeholder {
+          color: rgba(156, 163, 175, 0.6);
+        }
+        .ant-carousel .slick-dots li button {
+          background: rgba(239, 174, 76, 0.3) !important;
+          height: 2px !important;
+          width: 40px !important;
+        }
+        .ant-carousel .slick-dots li.slick-active button {
+          background: #efae4c !important;
+        }
+        .booking-modal .ant-modal-content {
+          border-radius: 20px;
+          overflow: hidden;
+        }
+        .booking-modal .ant-modal-header {
+          border-bottom: none;
+          padding: 0;
+        }
+        .booking-modal .ant-modal-body {
+          padding: 0;
+        }
+        .booking-modal .ant-modal-footer {
+          border-top: none;
+          padding: 0;
+        }
+      `}</style>
+      <Navbar onBookAppointment={onBookAppointment} />
+      <HeroSection onBookAppointment={onBookAppointment} />
+      <CategorySection />
+      <TrustMetrics />
+      <TreatmentQuiz />
+      <CoreServices />
+      <TestimonialCarousel />
+      <ReviewSystem />
+      <FAQsSection />
+      <Footer />
+    </div>
+  );
+};
+
+// ============================================================================
 // MAIN APP COMPONENT
 // ============================================================================
 const App = () => {
@@ -2979,7 +3217,7 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <>
       <style>{`
         .ant-input::placeholder {
           color: rgba(156, 163, 175, 0.6);
@@ -3012,16 +3250,31 @@ const App = () => {
         isOpen={bookingModalOpen}
         onClose={() => setBookingModalOpen(false)}
       />
-      <Navbar onBookAppointment={handleBookAppointment} />
-      <HeroSection onBookAppointment={handleBookAppointment} />
-      <CategorySection />
-      <TrustMetrics />
-      <TreatmentQuiz />
-      <CoreServices />
-      <TestimonialCarousel />
-      <ReviewSystem />
-      <Footer />
-    </div>
+      <Routes>
+        <Route
+          path="/"
+          element={<HomePage onBookAppointment={handleBookAppointment} />}
+        />
+        <Route
+          path="/treatment/:treatmentId"
+          element={
+            <TreatmentDetailPage onBookAppointment={handleBookAppointment} />
+          }
+        />
+        <Route
+          path="/service/:serviceId"
+          element={
+            <ServiceDetailPage onBookAppointment={handleBookAppointment} />
+          }
+        />
+        <Route
+          path="/ai-assessment"
+          element={
+            <AIAssessmentPage onBookAppointment={handleBookAppointment} />
+          }
+        />
+      </Routes>
+    </>
   );
 };
 
