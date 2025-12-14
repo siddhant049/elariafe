@@ -10,7 +10,7 @@ const navVariants = {
 
 const navLinks = ["Home", "Treatments", "Specialists", "Stories", "Contact"];
 
-const Navbar = () => {
+const Navbar = ({ onBookAppointment }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
@@ -49,6 +49,7 @@ const Navbar = () => {
         <div className="hidden lg:flex">
           <Button
             type="primary"
+            onClick={onBookAppointment}
             className="bg-[#efae4c] hover:bg-[#d89b3e] border-none rounded-full px-6 h-10 font-semibold"
           >
             Book Consultation
@@ -84,6 +85,10 @@ const Navbar = () => {
           ))}
           <Button
             type="primary"
+            onClick={() => {
+              setIsMobileMenuOpen(false);
+              onBookAppointment();
+            }}
             className="bg-[#efae4c] w-full h-12 rounded-lg mt-4"
           >
             Book Consultation
