@@ -565,130 +565,178 @@ const CategoryCard = ({ title, description, delay }) => {
   // Enhanced service details based on category
   const getServiceDetails = (title) => {
     const details = {
-      "SKIN ": {
+      HAIR: {
         treatments: [
-          "HydraFacial",
-          "Chemical Peels",
-          "Laser Resurfacing",
-          "Microdermabrasion",
+          "QR678",
+          "Hair Growth Boosters",
+          "GFC",
+          "Exames",
+          "Scalp Peel",
         ],
-        startingPrice: "₹3,500",
-        duration: "30-90 mins",
+        duration: "30-60 mins",
         benefits: [
-          "Radiant complexion",
-          "Reduced fine lines",
-          "Improved texture",
-          "Even skin tone",
-        ],
-        icon: "✨",
-      },
-      "HAIR RESTORATION": {
-        treatments: [
-          "PRP Therapy",
-          "Mesotherapy",
-          "Low-Level Laser",
-          "Stem Cell Treatment",
-        ],
-        startingPrice: "₹8,000",
-        duration: "45-60 mins",
-        benefits: [
-          "Thicker hair",
-          "Reduced hair loss",
-          "Improved scalp health",
-          "Natural results",
+          "Stimulates hair growth",
+          "Strengthens follicles",
+          "Reduces hair loss",
+          "Improves scalp health",
         ],
         icon: "💇‍♀️",
       },
-      "HAIR TRANSPLANT": {
+      SKIN: {
         treatments: [
-          "FUE Transplant",
-          "FUT Transplant",
-          "Robotic Hair Transplant",
-          "Beard Transplant",
+          "Acne scars",
+          "Xanthelasma",
+          "Skin infections",
+          "Melasma",
+          "Mole Surgery",
+          "Skin Tag",
+          "Laser for Moles",
+          "Cautery for warts",
+          "Dermapen Treatment",
+          "Stretch Marks",
         ],
-        startingPrice: "₹45,000",
-        duration: "4-8 hours",
+        duration: "30-90 mins",
         benefits: [
-          "Permanent solution",
-          "Natural appearance",
-          "Minimal scarring",
-          "High success rate",
+          "Clear complexion",
+          "Remove imperfections",
+          "Treat skin conditions",
+          "Improve skin texture",
         ],
-        icon: "🏥",
+        icon: "✨",
       },
-      "AYURVEDIC TREATMENTS": {
+      "ACNE AND SCARS": {
         treatments: [
-          "Abhyanga Massage",
-          "Panchakarma",
-          "Herbal Therapies",
-          "Ayurvedic Facials",
+          "Acne Peels",
+          "Advanced Acne Treatments",
+          "Carbon Peels",
+          "Chemical Peels",
+          "Derma roller",
+          "Fractional Laser",
+          "Radiofrequency Microneedling",
+          "Acne Cleanup Facial",
+          "Laser for Freckles",
+          "Microneedling Radiofrequency for stretch Marks",
         ],
-        startingPrice: "₹5,000",
-        duration: "60-120 mins",
-        benefits: [
-          "Holistic healing",
-          "Stress reduction",
-          "Natural detoxification",
-          "Long-lasting wellness",
-        ],
-        icon: "🌿",
-      },
-      " SLIMMING": {
-        treatments: [
-          "CoolSculpting",
-          "Body Contouring",
-          "RF Treatment",
-          "Cavitation",
-        ],
-        startingPrice: "₹15,000",
         duration: "45-90 mins",
         benefits: [
-          "Targeted fat reduction",
-          "Body shaping",
-          "Non-invasive",
-          "Long-lasting results",
+          "Clear acne",
+          "Reduce scars",
+          "Smooth skin texture",
+          "Prevent future breakouts",
         ],
-        icon: "🏃‍♀️",
+        icon: "🧴",
       },
-      " LASER TREATMENTS": {
+      "UNDER EYES SERVICES": {
+        treatments: [
+          "Dark Circles Removal",
+          "Under Eye Rejuvenation",
+          "Under Eye Boosters",
+        ],
+        duration: "30-45 mins",
+        benefits: [
+          "Brighten under eyes",
+          "Reduce dark circles",
+          "Hydrate delicate skin",
+          "Youthful appearance",
+        ],
+        icon: "👁️",
+      },
+      PIGMENTATION: {
+        treatments: [
+          "Freckles",
+          "Depigmentation Peels",
+          "Cosmelan",
+          "Glow Peel",
+          "Dermapen 4 for Pigmentation",
+          "Vampire Facial",
+          "Hydrafacial Basic",
+          "HydraFacial Elite",
+          "Skin Boosters",
+        ],
+        duration: "45-75 mins",
+        benefits: [
+          "Even skin tone",
+          "Reduce pigmentation",
+          "Brighten complexion",
+          "Improve skin radiance",
+        ],
+        icon: "🌟",
+      },
+      MEDIFACIAL: {
+        treatments: [
+          "Diamond Polishing",
+          "OxyFacials",
+          "Oxyglow",
+          "InstaBright Rejuvenation",
+          "Powerlift Medifacial",
+          "Power Glow Facial",
+          "IV Infusions for glow",
+        ],
+        duration: "60-90 mins",
+        benefits: [
+          "Deep cleansing",
+          "Skin rejuvenation",
+          "Improved texture",
+          "Radiant glow",
+        ],
+        icon: "💎",
+      },
+      "ANTI AGING": {
+        treatments: [
+          "Wrinkles Treatment",
+          "Anti-aging Peels",
+          "Collagen Boosters",
+          "Skin Tightening",
+        ],
+        duration: "45-75 mins",
+        benefits: [
+          "Reduce wrinkles",
+          "Firm skin",
+          "Boost collagen",
+          "Youthful appearance",
+        ],
+        icon: "⏳",
+      },
+      LASER: {
         treatments: [
           "Laser Hair Removal",
-          "Laser Toning",
-          "Acne Scar Treatment",
-          "Skin Rejuvenation",
+          "Laser Hair Reduction for Females",
+          "Laser Hair Reduction for Males",
+          "Birthmark removal",
+          "Tattoo Removal",
+          "Mole removal",
+          "Wart Removal",
         ],
-        startingPrice: "₹4,000",
         duration: "30-60 mins",
         benefits: [
+          "Permanent hair removal",
+          "Remove unwanted marks",
           "Precision treatment",
           "Minimal downtime",
-          "Effective results",
-          "Safe & approved",
         ],
         icon: "⚡",
       },
-      SALON: {
+      "BODY CONTOURING": {
         treatments: [
-          "Hair Styling",
-          "Hair Coloring",
-          "Nail Care",
-          "Facial Treatments",
+          "Weight Loss Treatments",
+          "Cellulite Treatment",
+          "Cryolipolysis",
+          "Body Shaping",
+          "Fat Reduction",
         ],
-        startingPrice: "₹1,500",
-        duration: "30-120 mins",
+        duration: "45-120 mins",
         benefits: [
-          "Professional styling",
-          "Quality products",
-          "Expert technicians",
-          "Relaxing experience",
+          "Targeted fat reduction",
+          "Body shaping",
+          "Cellulite reduction",
+          "Improved contours",
         ],
-        icon: "💄",
+        icon: "🏃‍♀️",
       },
     };
     return (
       details[title] || {
         treatments: [],
-        startingPrice: "Contact for pricing",
         duration: "Varies",
         benefits: [],
         icon: "✨",
@@ -763,19 +811,6 @@ const CategoryCard = ({ title, description, delay }) => {
               </motion.p>
 
               {/* Service highlights */}
-              {/* <motion.div
-                animate={{ opacity: isHovered ? 1 : 0.7 }}
-                className="space-y-2"
-              >
-                <div className="flex items-center gap-2 text-sm text-gray-500">
-                  <span className="w-2 h-2 bg-[#efae4c] rounded-full"></span>
-                  <span>Starting from {serviceDetails.startingPrice}</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm text-gray-500">
-                  <span className="w-2 h-2 bg-[#efae4c] rounded-full"></span>
-                  <span>{serviceDetails.duration} sessions</span>
-                </div>
-              </motion.div> */}
             </div>
 
             {/* Enhanced CTA with animation */}
@@ -886,10 +921,6 @@ const CategoryCard = ({ title, description, delay }) => {
               </h4>
               <div className="space-y-2 text-gray-600">
                 <p>
-                  <strong>Starting Price:</strong>{" "}
-                  {serviceDetails.startingPrice}
-                </p>
-                <p>
                   <strong>Session Duration:</strong> {serviceDetails.duration}
                 </p>
               </div>
@@ -943,39 +974,49 @@ const CategoryCard = ({ title, description, delay }) => {
 const CategorySection = () => {
   const categories = [
     {
-      title: "SKIN ",
+      title: "HAIR",
       description:
-        "Advanced dermatological treatments for rejuvenation, clarity, and timeless radiance. Experience the transformative power of professional skin care.",
+        "Comprehensive hair care solutions including growth boosters, scalp treatments, and restoration therapies for healthy, vibrant hair.",
     },
     {
-      title: "HAIR RESTORATION",
+      title: "SKIN",
       description:
-        "Restorative solutions combining medical expertise with personalized care for optimal hair vitality and luxurious appearance.",
+        "Advanced dermatological treatments for acne scars, skin conditions, mole removal, and various skin imperfections.",
     },
     {
-      title: "HAIR TRANSPLANT",
+      title: "ACNE AND SCARS",
       description:
-        "Precision sculpting and contouring treatments tailored to your aesthetic vision. Achieve the body confidence you deserve.",
+        "Specialized treatments for acne control, scar reduction, and comprehensive skin clearing solutions.",
     },
     {
-      title: "AYURVEDIC TREATMENTS",
+      title: "UNDER EYES SERVICES",
       description:
-        "Restorative solutions combining medical expertise with personalized care for optimal hair vitality and luxurious appearance.",
+        "Targeted treatments for dark circles, under-eye rejuvenation, and delicate eye area enhancement.",
     },
     {
-      title: " SLIMMING",
+      title: "PIGMENTATION",
       description:
-        "Precision sculpting and contouring treatments tailored to your aesthetic vision. Achieve the body confidence you deserve.",
+        "Effective pigmentation treatments including freckles, melasma, and skin brightening procedures.",
     },
     {
-      title: " LASER TREATMENTS",
+      title: "MEDIFACIAL",
       description:
-        "Precision sculpting and contouring treatments tailored to your aesthetic vision. Achieve the body confidence you deserve.",
+        "Professional medical facials for deep cleansing, rejuvenation, and achieving radiant, healthy skin.",
     },
     {
-      title: "SALON",
+      title: "ANTI AGING",
       description:
-        "Restorative solutions combining medical expertise with personalized care for optimal hair vitality and luxurious appearance.",
+        "Advanced anti-aging treatments focusing on wrinkle reduction and skin rejuvenation.",
+    },
+    {
+      title: "LASER",
+      description:
+        "Precision laser treatments for hair removal, tattoo removal, birthmark treatment, and skin rejuvenation.",
+    },
+    {
+      title: "BODY CONTOURING",
+      description:
+        "Body shaping and weight loss treatments including cellulite reduction and fat contouring procedures.",
     },
   ];
 
@@ -1596,11 +1637,11 @@ const TreatmentQuiz = () => {
       ],
     },
     {
-      question: "What's your treatment budget preference?",
+      question: "What's your preferred treatment level?",
       options: [
-        { text: "Essential (₹5,000-15,000)", value: "budget", icon: "💰" },
-        { text: "Premium (₹15,000-50,000)", value: "premium", icon: "💎" },
-        { text: "Luxury (₹50,000+)", value: "luxury", icon: "👑" },
+        { text: "Essential Care", value: "budget", icon: "💰" },
+        { text: "Premium Experience", value: "premium", icon: "💎" },
+        { text: "Luxury Treatments", value: "luxury", icon: "👑" },
       ],
     },
     {
@@ -2063,37 +2104,31 @@ const BookingModal = ({ isOpen, onClose }) => {
       value: "facial",
       label: "Facial Treatment",
       duration: "60 min",
-      price: "₹3,500",
     },
     {
       value: "laser",
       label: "Laser Treatment",
       duration: "45 min",
-      price: "₹5,000",
     },
     {
       value: "hair-restoration",
       label: "Hair Restoration",
       duration: "90 min",
-      price: "₹8,000",
     },
     {
       value: "body-contouring",
       label: "Body Contouring",
       duration: "120 min",
-      price: "₹15,000",
     },
     {
       value: "ayurvedic",
       label: "Ayurvedic Treatment",
       duration: "75 min",
-      price: "₹4,500",
     },
     {
       value: "consultation",
       label: "Free Consultation",
       duration: "30 min",
-      price: "Free",
     },
   ];
 
@@ -2397,9 +2432,6 @@ const BookingModal = ({ isOpen, onClose }) => {
                         >
                           {service.label}
                         </h4>
-                        <span className="text-[#efae4c] font-bold">
-                          {service.price}
-                        </span>
                       </div>
                       <div className="flex items-center gap-4 text-sm text-gray-600">
                         <span className="flex items-center gap-1">
@@ -2817,12 +2849,6 @@ const BookingModal = ({ isOpen, onClose }) => {
                   <span className="text-gray-600">Duration:</span>
                   <span className="font-medium">
                     {selectedService?.duration}
-                  </span>
-                </div>
-                <div className="flex justify-between border-t pt-2">
-                  <span className="text-gray-600">Price:</span>
-                  <span className="font-bold text-[#efae4c]">
-                    {selectedService?.price}
                   </span>
                 </div>
               </div>
