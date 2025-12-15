@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useLocation } from "react-router-dom";
 import {
   motion,
   useScroll,
@@ -487,6 +487,92 @@ const CategoryCard = ({ title, description, delay }) => {
   const [showTooltip, setShowTooltip] = useState(false);
 
   // Enhanced service details based on category
+  // Mapping of treatment names to their service IDs for routing
+  const getTreatmentServiceId = (treatmentName, categoryTitle) => {
+    const treatmentToServiceMap = {
+      // Hair treatments
+      QR678: "qr678-treatment",
+      "Hair Growth Boosters": "hair-growth-boosters",
+      GFC: "gfc-therapy",
+      Exames: "specialized-hair-exams",
+      "Scalp Peel": "scalp-peel-treatment",
+
+      // Skin treatments
+      "Acne scars": "acne-scar-treatment",
+      Xanthelasma: "xanthelasma-removal",
+      "Skin infections": "skin-infections-treatment",
+      Melasma: "melasma-treatment",
+      "Mole Surgery": "mole-surgery",
+      "Skin Tag": "skin-tag-removal",
+      "Laser for Moles": "laser-mole-treatment",
+      "Cautery for warts": "wart-cautery",
+      "Dermapen Treatment": "dermapen-skin-treatment",
+      "Stretch Marks": "stretch-marks-treatment",
+
+      // Acne and Scars treatments
+      "Acne Peels": "acne-peels",
+      "Advanced Acne Treatments": "advanced-acne-treatments",
+      "Carbon Peels": "carbon-peels",
+      "Chemical Peels": "chemical-peels-acne",
+      "Derma roller": "derma-roller-acne",
+      "Fractional Laser": "fractional-laser-acne",
+      "Radiofrequency Microneedling": "radiofrequency-microneedling",
+      "Acne Cleanup Facial": "acne-cleanup-facial",
+      "Laser for Freckles": "laser-freckles-treatment",
+      "Microneedling Radiofrequency for stretch Marks":
+        "microneedling-radiofrequency-stretch-marks",
+
+      // Under Eyes treatments
+      "Dark Circles Removal": "dark-circles-removal",
+      "Under Eye Rejuvenation": "under-eye-rejuvenation",
+      "Under Eye Boosters": "under-eye-boosters",
+
+      // Pigmentation treatments
+      Freckles: "freckle-treatment",
+      "Depigmentation Peels": "depigmentation-peels",
+      Cosmelan: "cosmelan-depigmentation",
+      "Glow Peel": "glow-brightening-peel",
+      "Dermapen 4 for Pigmentation": "dermapen-for-pigmentation",
+      "Vampire Facial": "prp-vampire-facial",
+      "Hydrafacial Basic": "hydrafacial-basic",
+      "HydraFacial Elite": "hydrafacial-elite",
+      "Skin Boosters": "skin-boosters-pigmentation",
+
+      // Medifacial treatments
+      "Diamond Polishing": "diamond-polishing",
+      OxyFacials: "oxy-facials",
+      Oxyglow: "oxyglow-treatment",
+      "InstaBright Rejuvenation": "instabright-rejuvenation",
+      "Powerlift Medifacial": "powerlift-medifacial",
+      "Power Glow Facial": "power-glow-facial",
+      "IV Infusions for glow": "iv-infusions-glow",
+
+      // Anti Aging treatments
+      "Wrinkles Treatment": "wrinkles-treatment",
+      "Anti-aging Peels": "anti-aging-peels",
+      "Collagen Boosters": "collagen-boosters",
+      "Skin Tightening": "skin-tightening-treatment",
+
+      // Laser treatments
+      "Laser Hair Removal": "laser-hair-removal",
+      "Laser Hair Reduction for Females": "laser-hair-reduction-females",
+      "Laser Hair Reduction for Males": "laser-hair-reduction-males",
+      "Birthmark removal": "birthmark-removal",
+      "Tattoo Removal": "tattoo-removal",
+      "Mole removal": "laser-mole-removal",
+      "Wart Removal": "wart-removal-laser",
+
+      // Body Contouring treatments
+      "Weight Loss Treatments": "weight-loss-treatments",
+      "Cellulite Treatment": "cellulite-treatment",
+      Cryolipolysis: "cryolipolysis-treatment",
+      "Body Shaping": "body-shaping-treatment",
+      "Fat Reduction": "fat-reduction-treatment",
+    };
+
+    return treatmentToServiceMap[treatmentName];
+  };
+
   const getServiceDetails = (title) => {
     const details = {
       HAIR: {
@@ -860,13 +946,18 @@ const CategoryCard = ({ title, description, delay }) => {
             </h4>
             <div className="grid grid-cols-2 gap-3">
               {serviceDetails.treatments.map((treatment, idx) => (
-                <motion.div
+                <Link
                   key={idx}
-                  whileHover={{ scale: 1.02 }}
-                  className="bg-gray-50 px-3 py-2 rounded-lg text-sm text-gray-700 border border-gray-100 hover:border-[#efae4c] transition-colors cursor-pointer"
+                  to={`/service/${getTreatmentServiceId(treatment, title)}`}
+                  className="block"
                 >
-                  {treatment}
-                </motion.div>
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    className="bg-gray-50 px-3 py-2 rounded-lg text-sm text-gray-700 border border-gray-100 hover:border-[#efae4c] transition-colors cursor-pointer"
+                  >
+                    {treatment}
+                  </motion.div>
+                </Link>
               ))}
             </div>
           </div>
@@ -3159,6 +3250,19 @@ const FAQsSection = () => {
 };
 
 // ============================================================================
+// SCROLL TO TOP COMPONENT
+// ============================================================================
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
+
+// ============================================================================
 // HOME PAGE COMPONENT
 // ============================================================================
 const HomePage = ({ onBookAppointment }) => {
@@ -3250,6 +3354,10 @@ const App = () => {
         isOpen={bookingModalOpen}
         onClose={() => setBookingModalOpen(false)}
       />
+
+      {/* Scroll to top on route change */}
+      <ScrollToTop />
+
       <Routes>
         <Route
           path="/"
