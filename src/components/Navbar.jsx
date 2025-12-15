@@ -44,24 +44,29 @@ const Navbar = ({ onBookAppointment }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
 
-  const treatmentsMenuItems = treatments.map((treatment) => ({
-    key: treatment.key,
-    label: (
-      <div className="group relative px-5 py-3.5  transition-all duration-300 cursor-pointer overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#efae4c]/0 via-[#efae4c]/5 to-[#efae4c]/10 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300"></div>
-        <div className="relative flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-1.5 h-1.5 rounded-full bg-[#efae4c]/50 group-hover:bg-[#efae4c] group-hover:scale-150 transition-all duration-300"></div>
-            <span className="text-sm font-medium tracking-wide">
-              {treatment.label}
-            </span>
+  // Treatments dropdown rendered as a compact two-column grid
+  const treatmentsMenuItems = [
+    {
+      key: "treatments-grid",
+      label: (
+        <div className="px-4 py-4 bg-white">
+          <div className="grid grid-cols-2 gap-x-8 gap-y-2">
+            {treatments.map((treatment) => (
+              <button
+                key={treatment.key}
+                type="button"
+                onClick={() => navigate(treatment.path)}
+                className="flex items-center justify-between text-left text-[0.95rem] text-[#001b3d] hover:text-[#d89b3e] transition-colors py-1"
+              >
+                <span className="truncate">{treatment.label}</span>
+                <RightOutlined className="ml-2 text-[10px] text-[#efae4c] opacity-70" />
+              </button>
+            ))}
           </div>
-          <RightOutlined className="text-xs opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 text-[#efae4c]" />
         </div>
-      </div>
-    ),
-    onClick: () => navigate(treatment.path),
-  }));
+      ),
+    },
+  ];
 
   const handleNavClick = (item) => {
     if (item === "Home") {
@@ -113,8 +118,8 @@ const Navbar = ({ onBookAppointment }) => {
                   placement="bottomLeft"
                   overlayClassName="!bg-[#001b3d]/95 !backdrop-blur-sm !border !border-white/10 !rounded-lg !shadow-lg"
                   overlayStyle={{
-                    minWidth: "220px",
-                    padding: "4px 0",
+                    minWidth: "380px",
+                    padding: 0,
                   }}
                 >
                   <span className="hover:text-[#efae4c] transition-colors relative group cursor-pointer">

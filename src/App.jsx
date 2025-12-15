@@ -429,7 +429,12 @@ const HeroSection = ({ onBookAppointment }) => {
             </motion.button>
 
             <motion.button
-              onClick={onBookAppointment}
+              onClick={() => {
+                const section = document.getElementById("treatments-section");
+                if (section) {
+                  section.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+              }}
               whileHover={{ y: -5, scale: 1.02 }}
               whileTap={{ scale: 0.97 }}
               className="group px-10 py-5 w-full sm:w-auto bg-white/60 backdrop-blur-2xl text-[#001b3d] font-semibold rounded-2xl border-2 border-white/70 hover:border-[#efae4c]/50 transition-all duration-300 shadow-xl relative overflow-hidden cursor-pointer"
@@ -510,67 +515,73 @@ const CategoryCard = ({ title, description, delay }) => {
       "Stretch Marks": "stretch-marks-treatment",
 
       // Acne and Scars treatments
-      "Acne Peels": "acne-peels",
-      "Advanced Acne Treatments": "advanced-acne-treatments",
-      "Carbon Peels": "carbon-peels",
-      "Chemical Peels": "chemical-peels-acne",
-      "Derma roller": "derma-roller-acne",
-      "Fractional Laser": "fractional-laser-acne",
-      "Radiofrequency Microneedling": "radiofrequency-microneedling",
-      "Acne Cleanup Facial": "acne-cleanup-facial",
-      "Laser for Freckles": "laser-freckles-treatment",
-      "Microneedling Radiofrequency for stretch Marks":
-        "microneedling-radiofrequency-stretch-marks",
+      "Acne Chemical Peels": "acne-peels",
+      "Advanced Acne Therapy": "advanced-acne-treatments",
+      "Carbon Laser Peels": "carbon-peels",
+      "Professional Chemical Peels": "chemical-peels-acne",
+      "Dermarolling Treatment": "derma-roller-acne",
+      "Fractional CO2 Laser": "fractional-laser-acne",
+      "RF Microneedling": "radiofrequency-microneedling",
+      "Acne Deep Cleansing Facial": "acne-cleanup-facial",
+      "Freckle Laser Treatment": "laser-freckles-treatment",
+      "RF Microneedling for Scars": "microneedling-radiofrequency-stretch-marks",
 
       // Under Eyes treatments
-      "Dark Circles Removal": "dark-circles-removal",
+      "Dark Circle Reduction": "dark-circles-removal",
       "Under Eye Rejuvenation": "under-eye-rejuvenation",
-      "Under Eye Boosters": "under-eye-boosters",
+      "Dermal Fillers for Eyes": "under-eye-boosters",
 
       // Pigmentation treatments
-      Freckles: "freckle-treatment",
+      "Freckle Treatment": "freckle-treatment",
       "Depigmentation Peels": "depigmentation-peels",
-      Cosmelan: "cosmelan-depigmentation",
-      "Glow Peel": "glow-brightening-peel",
-      "Dermapen 4 for Pigmentation": "dermapen-for-pigmentation",
-      "Vampire Facial": "prp-vampire-facial",
-      "Hydrafacial Basic": "hydrafacial-basic",
+      "Cosmelan Depigmentation": "cosmelan-depigmentation",
+      "Glow Brightening Peel": "glow-brightening-peel",
+      "Dermapen for Pigmentation": "dermapen-for-pigmentation",
+      "PRP Vampire Facial": "prp-vampire-facial",
+      "HydraFacial Basic": "hydrafacial-basic",
       "HydraFacial Elite": "hydrafacial-elite",
-      "Skin Boosters": "skin-boosters-pigmentation",
+      "Skin Brightening Boosters": "skin-boosters-pigmentation",
 
       // Medifacial treatments
-      "Diamond Polishing": "diamond-polishing",
-      OxyFacials: "oxy-facials",
-      Oxyglow: "oxyglow-treatment",
-      "InstaBright Rejuvenation": "instabright-rejuvenation",
-      "Powerlift Medifacial": "powerlift-medifacial",
+      "Diamond Microdermabrasion": "diamond-polishing",
+      "Oxygen Facials": "oxy-facials",
+      "Oxyglow Facial": "oxyglow-treatment",
+      "InstaBright Treatment": "instabright-rejuvenation",
+      "Powerlift Medical Facial": "powerlift-medifacial",
       "Power Glow Facial": "power-glow-facial",
-      "IV Infusions for glow": "iv-infusions-glow",
+      "IV Vitamin Infusions": "iv-infusions-glow",
 
       // Anti Aging treatments
-      "Wrinkles Treatment": "wrinkles-treatment",
-      "Anti-aging Peels": "anti-aging-peels",
-      "Collagen Boosters": "collagen-boosters",
-      "Skin Tightening": "skin-tightening-treatment",
+      "Wrinkle Reduction Therapy": "wrinkles-treatment",
+      "Anti-Aging Chemical Peels": "anti-aging-peels",
+      "Collagen Induction Therapy": "collagen-boosters",
+      "Skin Tightening Procedures": "skin-tightening-treatment",
 
       // Laser treatments
-      "Laser Hair Removal": "laser-hair-removal",
-      "Laser Hair Reduction for Females": "laser-hair-reduction-females",
-      "Laser Hair Reduction for Males": "laser-hair-reduction-males",
-      "Birthmark removal": "birthmark-removal",
-      "Tattoo Removal": "tattoo-removal",
-      "Mole removal": "laser-mole-removal",
-      "Wart Removal": "wart-removal-laser",
+      "Full Body Laser Hair Removal": "laser-hair-removal",
+      "Female Hair Reduction": "laser-hair-reduction-females",
+      "Male Hair Reduction": "laser-hair-reduction-males",
+      "Targeted Hair Removal": "laser-hair-removal",
+      "Arm Hair Laser Treatment": "laser-hair-removal",
+      "Leg Hair Laser Treatment": "laser-hair-removal",
+      "Excessive Hair Growth Treatment": "laser-hair-removal",
+      "Bikini Area Laser": "laser-hair-removal",
+      "Facial Hair Laser": "laser-hair-removal",
+      "Underarm Laser Treatment": "laser-hair-removal",
+      "Birthmark Laser Removal": "birthmark-removal",
+      "Professional Tattoo Removal": "tattoo-removal",
+      "Laser Mole Removal": "laser-mole-removal",
+      "Wart Laser Treatment": "wart-removal-laser",
 
       // Body Contouring treatments
-      "Weight Loss Treatments": "weight-loss-treatments",
-      "Cellulite Treatment": "cellulite-treatment",
-      Cryolipolysis: "cryolipolysis-treatment",
-      "Body Shaping": "body-shaping-treatment",
-      "Fat Reduction": "fat-reduction-treatment",
+      "Medical Weight Loss Program": "weight-loss-treatments",
+      "Cellulite Reduction Therapy": "cellulite-treatment",
+      "Cryolipolysis (CoolSculpting)": "cryolipolysis-treatment",
+      "Body Shaping Treatments": "body-shaping-treatment",
+      "Targeted Fat Reduction": "fat-reduction-treatment",
     };
 
-    return treatmentToServiceMap[treatmentName];
+    return treatmentToServiceMap[treatmentName] || treatmentName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
   };
 
   const getServiceDetails = (title) => {
@@ -1025,7 +1036,7 @@ const CategorySection = () => {
   ];
 
   return (
-    <section className="py-32 px-6 bg-gray-50">
+    <section id="treatments-section" className="py-32 px-6 bg-gray-50">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial="hidden"
@@ -1610,7 +1621,7 @@ const ReviewSystem = () => {
 // ============================================================================
 // INTERACTIVE TREATMENT QUIZ - Personalized recommendations
 // ============================================================================
-const TreatmentQuiz = () => {
+const TreatmentQuiz = ({ onBookAppointment }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState({});
   const [isCompleted, setIsCompleted] = useState(false);
@@ -1904,6 +1915,69 @@ const TreatmentQuiz = () => {
     }
   };
 
+  // Mapping quiz result treatment names to service pages
+  const getQuizResultServiceLink = (treatmentName) => {
+    const quizToServiceMap = {
+      // Direct service mappings
+      "HydraFacial": "/service/hydrafacial-basic",
+      "Botox": "/treatment/anti-aging", // No specific Botox page, link to category
+      "PRP Therapy": "/service/prp-vampire-facial",
+      "Chemical Peels": "/service/chemical-peels-acne",
+      "Laser Resurfacing": "/service/fractional-laser-acne",
+      "Stem Cell Treatment": "/treatment/anti-aging", // Link to category
+      "Hair Transplant": "/treatment/hair", // Link to category
+      "Ayurvedic Treatments": "/treatment/medifacial", // Link to category
+      "Dermal Fillers": "/treatment/anti-aging", // Link to category
+      "CO2 Laser": "/service/fractional-laser-acne",
+      "Q-Switched Laser": "/service/laser-freckles-treatment",
+      "Thread Lift": "/treatment/anti-aging", // Link to category
+      "CoolSculpting": "/service/cryolipolysis-treatment",
+      "Body Contouring": "/treatment/body-contouring",
+
+      // Acne treatments
+      "Acne Peels": "/service/acne-peels",
+      "Advanced Acne Treatments": "/service/advanced-acne-treatments",
+      "Carbon Peels": "/service/carbon-peels",
+      "Fractional Laser": "/service/fractional-laser-acne",
+      "Radiofrequency Microneedling": "/service/radiofrequency-microneedling",
+      "Laser for Freckles": "/service/laser-freckles-treatment",
+      "Acne Cleanup Facial": "/service/acne-cleanup-facial",
+      "Derma roller": "/service/derma-roller-acne",
+      "Microneedling Radiofrequency for stretch Marks": "/service/microneedling-radiofrequency-stretch-marks",
+
+      // Pigmentation treatments
+      "Freckles": "/service/freckle-treatment",
+      "Depigmentation Peels": "/service/depigmentation-peels",
+      "Cosmelan": "/service/cosmelan-depigmentation",
+      "Glow Peel": "/service/glow-brightening-peel",
+      "Dermapen 4 for Pigmentation": "/service/dermapen-for-pigmentation",
+      "Vampire Facial": "/service/prp-vampire-facial",
+      "Hydrafacial Basic": "/service/hydrafacial-basic",
+      "HydraFacial Elite": "/service/hydrafacial-elite",
+
+      // Anti-aging treatments
+      "Anti-aging Peels": "/service/anti-aging-peels",
+      "Collagen Boosters": "/service/collagen-boosters",
+      "Skin Tightening": "/service/skin-tightening-treatment",
+      "Wrinkles Treatment": "/service/wrinkles-treatment",
+
+      // Hair treatments
+      "QR678": "/service/qr678-treatment",
+      "Hair Growth Boosters": "/service/hair-growth-boosters",
+
+      // Laser treatments
+      "Laser Hair Removal": "/service/laser-hair-removal",
+      "Tattoo Removal": "/service/tattoo-removal",
+
+      // Body contouring
+      "Weight Loss Treatments": "/service/weight-loss-treatments",
+      "Cellulite Treatment": "/service/cellulite-treatment",
+      "Fat Reduction": "/service/fat-reduction-treatment",
+    };
+
+    return quizToServiceMap[treatmentName] || "/"; // Fallback to home if no mapping found
+  };
+
   const resetQuiz = () => {
     setCurrentStep(0);
     setAnswers({});
@@ -2000,12 +2074,14 @@ const TreatmentQuiz = () => {
                   ].includes(treatment) &&
                     "Premium treatment for your beauty goals"}
                 </p>
-                <Button
-                  type="primary"
-                  className="bg-[#efae4c] hover:bg-[#d89b3e] border-none rounded-full px-6 py-2 text-[#001b3d] font-semibold"
-                >
-                  Learn More
-                </Button>
+                <Link to={getQuizResultServiceLink(treatment)}>
+                  <Button
+                    type="primary"
+                    className="bg-[#efae4c] hover:bg-[#d89b3e] border-none rounded-full px-6 py-2 text-[#001b3d] font-semibold"
+                  >
+                    Learn More
+                  </Button>
+                </Link>
               </motion.div>
             ))}
           </div>
@@ -2024,6 +2100,7 @@ const TreatmentQuiz = () => {
             </Button>
             <Button
               type="primary"
+              onClick={onBookAppointment}
               className="bg-[#efae4c] hover:bg-[#d89b3e] border-none rounded-full px-8 py-3 text-[#001b3d] font-semibold"
             >
               Book Consultation
@@ -2255,10 +2332,8 @@ const CoreServices = () => {
 const BookingModal = ({ isOpen, onClose }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [bookingData, setBookingData] = useState({
-    service: "",
-    date: null,
-    time: null,
-    consultationType: "in-person",
+    category: "",
+    treatment: "",
     name: "",
     phone: "",
     email: "",
@@ -2276,79 +2351,168 @@ const BookingModal = ({ isOpen, onClose }) => {
     email: 0,
   });
 
-  const services = [
+  // Booking categories and their treatments
+  const bookingCategories = [
     {
-      value: "facial",
-      label: "Facial Treatment",
-      duration: "60 min",
+      value: "hair",
+      label: "Hair",
+      description: "Hair fall, thinning, dandruff & scalp concerns",
+      treatments: ["QR678", "Hair Growth Boosters", "GFC", "Exames", "Scalp Peel"],
+    },
+    {
+      value: "skin",
+      label: "Skin",
+      description: "Pigmentation, infections, moles, tags & overall skin health",
+      treatments: [
+        "Acne scars",
+        "Xanthelasma",
+        "Skin infections",
+        "Melasma",
+        "Mole Surgery",
+        "Skin Tag",
+        "Laser for Moles",
+        "Cautery for warts",
+        "Dermapen Treatment",
+        "Stretch Marks",
+      ],
+    },
+    {
+      value: "acne-scars",
+      label: "Acne & Scars",
+      description: "Active acne, old marks and scar correction",
+      treatments: [
+        "Acne Peels",
+        "Advanced Acne Treatments",
+        "Carbon Peels",
+        "Chemical Peels",
+        "Derma roller",
+        "Fractional Laser",
+        "Radiofrequency Microneedling",
+        "Acne Cleanup Facial",
+        "Laser for Freckles",
+        "Microneedling Radiofrequency for stretch Marks",
+      ],
+    },
+    {
+      value: "under-eye",
+      label: "Under Eyes",
+      description: "Dark circles, hollowness and tired-looking eyes",
+      treatments: [
+        "Dark Circles Removal",
+        "Under Eye Rejuvenation",
+        "Under Eye Boosters",
+      ],
+    },
+    {
+      value: "pigmentation",
+      label: "Pigmentation",
+      description: "Uneven tone, spots, freckles & melasma",
+      treatments: [
+        "Freckles",
+        "Depigmentation Peels",
+        "Cosmelan",
+        "Glow Peel",
+        "Dermapen 4 for Pigmentation",
+        "Vampire Facial",
+        "Hydrafacial Basic",
+        "HydraFacial Elite",
+        "Skin Boosters",
+      ],
+    },
+    {
+      value: "medifacial",
+      label: "MediFacials",
+      description: "Glow, hydration and instant event-ready skin",
+      treatments: [
+        "Diamond Polishing",
+        "OxyFacials",
+        "Oxyglow",
+        "InstaBright Rejuvenation",
+        "Powerlift Medifacial",
+        "Power Glow Facial",
+        "IV Infusions for glow",
+      ],
+    },
+    {
+      value: "anti-aging",
+      label: "Anti‑Aging",
+      description: "Lines, wrinkles, sagging and skin tightening",
+      treatments: [
+        "Wrinkles Treatment",
+        "Anti-aging Peels",
+        "Collagen Boosters",
+        "Skin Tightening",
+      ],
     },
     {
       value: "laser",
-      label: "Laser Treatment",
-      duration: "45 min",
-    },
-    {
-      value: "hair-restoration",
-      label: "Hair Restoration",
-      duration: "90 min",
+      label: "Laser",
+      description: "Laser hair reduction & other laser based treatments",
+      treatments: [
+        "Laser Hair Removal",
+        "Laser Hair Reduction for Females",
+        "Laser Hair Reduction for Males",
+        "Birthmark removal",
+        "Tattoo Removal",
+        "Mole removal",
+        "Wart Removal",
+      ],
     },
     {
       value: "body-contouring",
       label: "Body Contouring",
-      duration: "120 min",
+      description: "Shaping, inch loss and stubborn fat pockets",
+      treatments: [
+        "Weight Loss Treatments",
+        "Cellulite Treatment",
+        "Cryolipolysis",
+        "Body Shaping",
+        "Fat Reduction",
+      ],
     },
-    {
-      value: "ayurvedic",
-      label: "Ayurvedic Treatment",
-      duration: "75 min",
-    },
-    {
-      value: "consultation",
-      label: "Free Consultation",
-      duration: "30 min",
-    },
-  ];
-
-  const timeSlots = [
-    "09:00",
-    "09:30",
-    "10:00",
-    "10:30",
-    "11:00",
-    "11:30",
-    "14:00",
-    "14:30",
-    "15:00",
-    "15:30",
-    "16:00",
-    "16:30",
-    "17:00",
   ];
 
   const steps = [
-    { title: "Service", description: "Choose treatment" },
-    { title: "Schedule", description: "Pick date & time" },
-    { title: "Details", description: "Your information" },
-    { title: "Confirm", description: "Review & book" },
+    { title: "Category", description: "Choose concern area" },
+    { title: "Treatment", description: "Select treatment" },
+    { title: "Details", description: "Share contact details" },
   ];
 
-  const handleServiceSelect = (service) => {
-    setBookingData({ ...bookingData, service });
+  const handleCategorySelect = (category) => {
+    setBookingData({ ...bookingData, category, treatment: "" });
     setCurrentStep(1);
   };
 
-  const handleDateSelect = (date) => {
-    setBookingData({ ...bookingData, date });
-  };
-
-  const handleTimeSelect = (time) => {
-    setBookingData({ ...bookingData, time });
+  const handleTreatmentSelect = (treatment) => {
+    setBookingData({ ...bookingData, treatment });
     setCurrentStep(2);
   };
 
   const handleFormSubmit = (values) => {
-    setBookingData({ ...bookingData, ...values });
-    setCurrentStep(3);
+    const finalData = { ...bookingData, ...values };
+    setBookingData(finalData);
+
+    // Here you would typically send the booking data to your backend
+    message.success({
+      content:
+        "Thank you! Our team will reach out shortly to confirm your consultation.",
+      duration: 5,
+      icon: <CheckCircleOutlined style={{ color: "#52c41a" }} />,
+    });
+
+    onClose();
+    setCurrentStep(0);
+    setBookingData({
+      category: "",
+      treatment: "",
+      name: "",
+      phone: "",
+      email: "",
+      notes: "",
+    });
+    setValidationStatus({ name: "", phone: "", email: "" });
+    setFieldProgress({ name: 0, phone: 0, email: 0 });
+    form.resetFields();
   };
 
   // Enhanced validation functions
@@ -2419,15 +2583,18 @@ const BookingModal = ({ isOpen, onClose }) => {
 
     // Real-time validation
     switch (field) {
-      case "name":
+      case "name": {
         validateName(value);
         break;
-      case "phone":
+      }
+      case "phone": {
         validatePhone(value);
         break;
-      case "email":
+      }
+      case "email": {
         validateEmail(value);
         break;
+      }
       default:
         break;
     }
@@ -2435,46 +2602,14 @@ const BookingModal = ({ isOpen, onClose }) => {
 
   const isFormValid = () => {
     return (
-      validateName(bookingData.name) &&
-      validatePhone(bookingData.phone) &&
-      validateEmail(bookingData.email)
+      bookingData.name &&
+      bookingData.phone &&
+      bookingData.email &&
+      validationStatus.name === "success" &&
+      validationStatus.phone === "success" &&
+      validationStatus.email === "success"
     );
   };
-
-  const handleBookingConfirm = () => {
-    // Here you would typically send the booking data to your backend
-    message.success({
-      content:
-        "Appointment booked successfully! You will receive a confirmation email and SMS shortly.",
-      duration: 5,
-      icon: <CheckCircleOutlined style={{ color: "#52c41a" }} />,
-    });
-    onClose();
-    setCurrentStep(0);
-    setBookingData({
-      service: "",
-      date: null,
-      time: null,
-      consultationType: "in-person",
-      name: "",
-      phone: "",
-      email: "",
-      notes: "",
-    });
-    setValidationStatus({ name: "", phone: "", email: "" });
-    setFieldProgress({ name: 0, phone: 0, email: 0 });
-    form.resetFields();
-  };
-
-  const disabledDate = (current) => {
-    // Disable past dates and weekends
-    return (
-      current &&
-      (current < new Date().setHours(0, 0, 0, 0) || current.day() === 0)
-    );
-  };
-
-  const selectedService = services.find((s) => s.value === bookingData.service);
 
   return (
     <>
@@ -2509,11 +2644,11 @@ const BookingModal = ({ isOpen, onClose }) => {
           form.resetFields();
         }}
         footer={null}
-        width={800}
+        width={900}
         className="booking-modal"
         centered
       >
-        <div className="py-6">
+        <div className="py-4">
           {/* Enhanced Progress Steps */}
           <div className="mb-8">
             <Steps
@@ -2566,7 +2701,7 @@ const BookingModal = ({ isOpen, onClose }) => {
             </div>
           </div>
 
-          {/* Step 1: Service Selection */}
+          {/* Step 1: Category Selection */}
           {currentStep === 0 && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -2574,56 +2709,43 @@ const BookingModal = ({ isOpen, onClose }) => {
               className="space-y-4"
             >
               <h3 className="text-xl font-light text-[#001b3d] mb-6 text-center">
-                Choose Your Treatment
+                Choose Your Category
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {services.map((service) => {
-                  const isSelected = bookingData.service === service.value;
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {bookingCategories.map((category) => {
+                  const isSelected = bookingData.category === category.value;
                   return (
                     <motion.div
-                      key={service.value}
+                      key={category.value}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      onClick={() => handleServiceSelect(service.value)}
+                      onClick={() => handleCategorySelect(category.value)}
                       className={`cursor-pointer border-2 rounded-xl p-4 transition-all duration-300 hover:shadow-lg relative ${
                         isSelected
                           ? "border-[#efae4c] bg-[#efae4c]/5 shadow-lg"
                           : "border-gray-200 hover:border-[#efae4c]"
                       }`}
                     >
-                      {isSelected && (
-                        <motion.div
-                          initial={{ scale: 0 }}
-                          animate={{ scale: 1 }}
-                          className="absolute top-2 right-2 w-6 h-6 bg-[#efae4c] rounded-full flex items-center justify-center"
-                        >
-                          <CheckCircleOutlined className="text-white text-xs" />
-                        </motion.div>
-                      )}
-
                       <div className="flex justify-between items-start mb-2">
                         <h4
                           className={`font-semibold transition-colors ${
                             isSelected ? "text-[#efae4c]" : "text-[#001b3d]"
                           }`}
                         >
-                          {service.label}
+                          {category.label}
                         </h4>
                       </div>
-                      <div className="flex items-center gap-4 text-sm text-gray-600">
-                        <span className="flex items-center gap-1">
-                          <ClockCircleOutlined />
-                          {service.duration}
-                        </span>
-                      </div>
+                      <p className="text-sm text-gray-600 leading-relaxed">
+                        {category.description}
+                      </p>
 
                       {isSelected && (
                         <motion.div
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
-                          className="mt-3 text-xs text-[#efae4c] font-medium"
+                          className="mt-3 text-xs text-[#efae4c] font-medium text-right"
                         >
-                          ✓ Selected for your appointment
+                          Selected
                         </motion.div>
                       )}
                     </motion.div>
@@ -2633,7 +2755,7 @@ const BookingModal = ({ isOpen, onClose }) => {
             </motion.div>
           )}
 
-          {/* Step 2: Date & Time Selection */}
+          {/* Step 2: Treatment Selection */}
           {currentStep === 1 && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -2642,121 +2764,78 @@ const BookingModal = ({ isOpen, onClose }) => {
             >
               <div className="text-center mb-6">
                 <h3 className="text-xl font-light text-[#001b3d] mb-2">
-                  Select Date & Time
+                  Select Treatment
                 </h3>
                 <p className="text-gray-600 text-sm">
-                  {selectedService?.label} • {selectedService?.duration}
+                  Based on your chosen category, pick the treatment you're most
+                  interested in.
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Preferred Date
-                  </label>
-                  <DatePicker
-                    disabledDate={disabledDate}
-                    onChange={handleDateSelect}
-                    className="w-full"
-                    size="large"
-                    placeholder="Select date"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Consultation Type
-                  </label>
-                  <Radio.Group
-                    value={bookingData.consultationType}
-                    onChange={(e) =>
-                      setBookingData({
-                        ...bookingData,
-                        consultationType: e.target.value,
-                      })
-                    }
-                    className="w-full"
-                  >
-                    <div className="flex flex-col gap-2">
-                      <Radio value="in-person" className="text-sm">
-                        <span className="flex items-center gap-2">
-                          <UserOutlined />
-                          In-Person Visit
-                        </span>
-                      </Radio>
-                      <Radio value="virtual" className="text-sm">
-                        <span className="flex items-center gap-2">
-                          <PlayCircleOutlined />
-                          Virtual Consultation
-                        </span>
-                      </Radio>
-                    </div>
-                  </Radio.Group>
-                </div>
-              </div>
-
-              {bookingData.date && (
+              {bookingData.category ? (
                 <motion.div
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: "auto" }}
                   className="mt-6"
                 >
                   <label className="block text-sm font-medium text-gray-700 mb-3">
-                    Available Time Slots
+                    Available Treatments
                   </label>
-                  <div className="grid grid-cols-3 md:grid-cols-4 gap-2">
-                    {timeSlots.map((time) => {
-                      const isSelected = bookingData.time === time;
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    {bookingCategories
+                      .find((c) => c.value === bookingData.category)
+                      ?.treatments.map((treatment) => {
+                        const isSelected = bookingData.treatment === treatment;
                       return (
                         <motion.div
-                          key={time}
+                          key={treatment}
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                         >
                           <Button
-                            onClick={() => handleTimeSelect(time)}
-                            className={`w-full transition-all duration-200 ${
+                            onClick={() => handleTreatmentSelect(treatment)}
+                            className={`w-full text-left transition-all duration-200 ${
                               isSelected
-                                ? "bg-[#efae4c] border-[#efae4c] text-white shadow-lg"
-                                : "border-gray-300 hover:border-[#efae4c] hover:bg-[#efae4c]/5"
-                            } rounded-lg`}
-                            size="small"
+                                ? "bg-[#efae4c]/10 border-[#efae4c] text-[#001b3d] shadow-sm"
+                                : "border-gray-200 hover:border-[#efae4c] hover:bg-[#efae4c]/5"
+                            } rounded-lg px-3 py-2 text-sm`}
+                            size="middle"
                           >
-                            <span className="flex items-center gap-1">
-                              {isSelected && (
-                                <CheckCircleOutlined className="text-xs" />
-                              )}
-                              {time}
-                            </span>
+                            <span className="block truncate">{treatment}</span>
                           </Button>
                         </motion.div>
                       );
                     })}
                   </div>
-
-                  {bookingData.time && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg"
-                    >
-                      <div className="flex items-center gap-2 text-green-700 text-sm">
-                        <CheckCircleOutlined />
-                        <span>
-                          <strong>
-                            {bookingData.date?.format("MMM DD, YYYY")}
-                          </strong>{" "}
-                          at <strong>{bookingData.time}</strong> -{" "}
-                          {bookingData.consultationType === "virtual"
-                            ? "Virtual"
-                            : "In-Person"}{" "}
-                          Consultation
-                        </span>
-                      </div>
-                    </motion.div>
-                  )}
                 </motion.div>
+              ) : (
+                <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg text-sm text-yellow-700">
+                  Please select a category first.
+                </div>
               )}
+
+              <div className="flex gap-3 pt-4">
+                <Button
+                  onClick={() => setCurrentStep(0)}
+                  className="flex-1"
+                  size="large"
+                >
+                  Back
+                </Button>
+                <Button
+                  type="primary"
+                  disabled={!bookingData.treatment}
+                  onClick={() => bookingData.treatment && setCurrentStep(2)}
+                  className={`flex-1 border-none ${
+                    bookingData.treatment
+                      ? "bg-[#efae4c] hover:bg-[#d89b3e]"
+                      : "bg-gray-300 cursor-not-allowed"
+                  }`}
+                  size="large"
+                >
+                  Continue
+                </Button>
+              </div>
             </motion.div>
           )}
 
@@ -2779,7 +2858,7 @@ const BookingModal = ({ isOpen, onClose }) => {
                 form={form}
                 layout="vertical"
                 onFinish={handleFormSubmit}
-                className="space-y-6"
+                className="space-y-4"
               >
                 <Form.Item
                   name="name"
@@ -2911,14 +2990,6 @@ const BookingModal = ({ isOpen, onClose }) => {
                   </Form.Item>
                 </div>
 
-                <Form.Item name="notes" label="Special Notes (Optional)">
-                  <Input.TextArea
-                    rows={3}
-                    placeholder="Any specific concerns or preferences..."
-                    className="resize-none"
-                  />
-                </Form.Item>
-
                 {/* Form Progress Indicator */}
                 <div className="bg-gray-50 p-4 rounded-lg border">
                   <div className="flex items-center justify-between mb-2">
@@ -2975,85 +3046,14 @@ const BookingModal = ({ isOpen, onClose }) => {
                     {isFormValid() ? (
                       <span className="flex items-center gap-2">
                         <CheckCircleOutlined />
-                        Continue to Confirmation
+                        Submit Request
                       </span>
                     ) : (
-                      "Complete Form to Continue"
+                      "Complete Form to Submit"
                     )}
                   </Button>
                 </div>
               </Form>
-            </motion.div>
-          )}
-
-          {/* Step 4: Confirmation */}
-          {currentStep === 3 && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-center space-y-6"
-            >
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <CheckCircleOutlined className="text-2xl text-green-600" />
-              </div>
-
-              <h3 className="text-xl font-light text-[#001b3d]">
-                Confirm Your Appointment
-              </h3>
-
-              <div className="bg-gray-50 rounded-xl p-6 space-y-4 text-left max-w-md mx-auto">
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Service:</span>
-                  <span className="font-medium">{selectedService?.label}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Date:</span>
-                  <span className="font-medium">
-                    {bookingData.date?.format("MMMM DD, YYYY")}
-                  </span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Time:</span>
-                  <span className="font-medium">{bookingData.time}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Type:</span>
-                  <span className="font-medium capitalize">
-                    {bookingData.consultationType}
-                  </span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Duration:</span>
-                  <span className="font-medium">
-                    {selectedService?.duration}
-                  </span>
-                </div>
-              </div>
-
-              <div className="bg-blue-50 rounded-xl p-4 max-w-md mx-auto">
-                <p className="text-sm text-blue-800">
-                  📧 A confirmation email will be sent to{" "}
-                  <strong>{bookingData.email}</strong>
-                </p>
-              </div>
-
-              <div className="flex gap-3">
-                <Button
-                  onClick={() => setCurrentStep(2)}
-                  className="flex-1"
-                  size="large"
-                >
-                  Back
-                </Button>
-                <Button
-                  type="primary"
-                  onClick={handleBookingConfirm}
-                  className="flex-1 bg-[#efae4c] hover:bg-[#d89b3e] border-none"
-                  size="large"
-                >
-                  Confirm Booking
-                </Button>
-              </div>
             </motion.div>
           )}
         </div>
@@ -3180,10 +3180,25 @@ const FAQsSection = () => {
       answer:
         "Most treatments are suitable for adults 18 and older. Some procedures may have different age guidelines based on individual circumstances. We'll assess your eligibility during the consultation and recommend the most appropriate treatments.",
     },
+    {
+      question: "How do I know which treatment is right for me?",
+      answer:
+        "You don’t need to decide on your own. During your consultation, our experts will assess your concerns, skin or hair type, lifestyle, and goals, then recommend a customized treatment plan that suits you best.",
+    },
+    {
+      question: "Do I need to stop my current skincare or medications before treatment?",
+      answer:
+        "In some cases, we may ask you to pause certain products or medications, such as retinoids or blood thinners, before a procedure. Our doctor will review your current routine and medical history and give you clear pre-treatment instructions.",
+    },
+    {
+      question: "How soon will I see results after my treatment?",
+      answer:
+        "Some treatments show visible improvement immediately or within a few days, while others work gradually over several weeks as your skin or hair regenerates. During your consultation, we’ll explain the expected timeline and how many sessions you may need.",
+    },
   ];
 
   return (
-    <section className="py-20 px-6 bg-gray-50">
+    <section className="py-20 px-6 bg-gray-50 border-t border-gray-200">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial="hidden"
@@ -3250,6 +3265,196 @@ const FAQsSection = () => {
 };
 
 // ============================================================================
+// GET IN TOUCH SECTION - Callback form
+// ============================================================================
+const GetInTouchSection = () => {
+  const [form] = Form.useForm();
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubmit = () => {
+    setSubmitting(true);
+
+    // Here you would normally send data to your backend / CRM
+    setTimeout(() => {
+      message.success(
+        "Thank you! Our team will call you back shortly to discuss your concerns."
+      );
+      form.resetFields();
+      setSubmitting(false);
+    }, 800);
+  };
+
+  return (
+    <section className="py-20 px-6 bg-gradient-to-br from-[#001b3d] via-[#002952] to-[#001b3d]">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="text-white">
+          <h2 className="text-3xl md:text-4xl font-light mb-4 tracking-wide">
+            Get in touch
+          </h2>
+          <p className="text-gray-300 text-lg mb-6">
+            Share your details and our clinic team will call you back to guide
+            you on the right treatments for your concerns.
+          </p>
+          <ul className="space-y-2 text-gray-300 text-sm">
+            <li>Quick call-back from our care team</li>
+            <li>Help choosing the right category and treatments</li>
+            <li>No obligation – just honest guidance</li>
+          </ul>
+        </div>
+
+        <div className="bg-white rounded-2xl shadow-2xl p-8">
+          <h3 className="text-xl font-semibold text-[#001b3d] mb-4">
+            Request a call back
+          </h3>
+          <p className="text-sm text-gray-500 mb-6">
+            Fill in your basic details and select the category you are
+            interested in.
+          </p>
+
+          <Form
+            form={form}
+            layout="vertical"
+            onFinish={handleSubmit}
+            requiredMark={false}
+          >
+            <Form.Item
+              name="name"
+              label="Full Name"
+              rules={[{ required: true, message: "Please enter your name" }]}
+            >
+              <Input placeholder="Enter your full name" size="large" />
+            </Form.Item>
+
+            <Form.Item
+              name="phone"
+              label="Phone Number"
+              rules={[{ required: true, message: "Please enter your phone" }]}
+            >
+              <Input placeholder="+91 XXXXX XXXXX" size="large" />
+            </Form.Item>
+
+            <Form.Item
+              name="category"
+              label="Service category you’re interested in"
+              rules={[
+                { required: true, message: "Please select a service category" },
+              ]}
+            >
+              <Select
+                placeholder="Select a category"
+                size="large"
+                options={[
+                  { value: "hair", label: "Hair" },
+                  { value: "skin", label: "Skin" },
+                  { value: "acne-scars", label: "Acne & Scars" },
+                  { value: "under-eye", label: "Under Eye" },
+                  { value: "pigmentation", label: "Pigmentation" },
+                  { value: "medifacial", label: "Medifacial" },
+                  { value: "anti-aging", label: "Anti-aging" },
+                  { value: "laser", label: "Laser" },
+                  { value: "body-contouring", label: "Body Contouring" },
+                  { value: "other", label: "Not sure / Other" },
+                ]}
+              />
+            </Form.Item>
+
+            <Form.Item name="notes" label="Any specific concern (optional)">
+              <Input.TextArea
+                rows={3}
+                placeholder="Tell us briefly what you’d like help with..."
+              />
+            </Form.Item>
+
+            <Button
+              type="primary"
+              htmlType="submit"
+              loading={submitting}
+              className="w-full bg-[#efae4c] hover:bg-[#d89b3e] border-none h-12 font-semibold text-[#001b3d] mt-2"
+              size="large"
+            >
+              Request call back
+            </Button>
+          </Form>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// ============================================================================
+// CONTACT SECTION - Map and clinic details
+// ============================================================================
+const ContactSection = () => {
+  return (
+    <section id="contact" className="py-20 px-6 bg-gray-50">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
+        <div className="rounded-2xl overflow-hidden shadow-lg bg-gray-200 h-full min-h-[320px]">
+          <iframe
+            title="Elaria Esthetique Location"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.11610193525!2d72.772987!3d19.0821978!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDA0JzU2LjAiTiA3MsKwNDYnMzIuMCJF!5e0!3m2!1sen!2sin!4v1700000000000"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            className="pointer-events-none"
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+
+        <div className="flex flex-col justify-center">
+          <h2 className="text-3xl md:text-4xl font-light text-[#001b3d] mb-4 tracking-wide">
+            Contact us
+          </h2>
+          <p className="text-gray-600 mb-6">
+            Visit our centre or reach out to us directly for appointments,
+            queries, and support.
+          </p>
+
+          <div className="space-y-4 text-gray-700">
+            <div>
+              <h3 className="font-semibold text-[#001b3d] mb-1">Clinic address</h3>
+              <p className="text-sm leading-relaxed">
+                Elaria Esthetique
+                <br />
+                123 Wellness Avenue, 2nd Floor
+                <br />
+                Bandra (W), Mumbai, Maharashtra 400050
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-semibold text-[#001b3d] mb-1">Call us</h3>
+              <p className="text-sm">
+                Phone: <a href="tel:+919999999999">+91 99999 99999</a>
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-semibold text-[#001b3d] mb-1">Email</h3>
+              <p className="text-sm">
+                <a href="mailto:care@elariaesthetique.com">
+                  care@elariaesthetique.com
+                </a>
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-semibold text-[#001b3d] mb-1">Clinic hours</h3>
+              <p className="text-sm">
+                Monday – Saturday: 10:00 AM to 8:00 PM
+                <br />
+                Sunday: By prior appointment only
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// ============================================================================
 // SCROLL TO TOP COMPONENT
 // ============================================================================
 const ScrollToTop = () => {
@@ -3300,10 +3505,13 @@ const HomePage = ({ onBookAppointment }) => {
       <HeroSection onBookAppointment={onBookAppointment} />
       <CategorySection />
       <TrustMetrics />
-      <TreatmentQuiz />
+      <TreatmentQuiz onBookAppointment={onBookAppointment} />
       <CoreServices />
       <TestimonialCarousel />
       <ReviewSystem />
+      {/* Get in Touch & Contact Sections */}
+      <GetInTouchSection />
+      <ContactSection />
       <FAQsSection />
       <Footer />
     </div>

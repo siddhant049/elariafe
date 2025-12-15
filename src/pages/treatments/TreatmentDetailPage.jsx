@@ -66,6 +66,98 @@ const staggerContainer = {
   },
 };
 
+// Mapping of treatment names to service IDs
+const getServiceIdFromTreatment = (treatmentName) => {
+  const treatmentToServiceMap = {
+    // Hair treatments
+    "QR678 Treatment": "qr678-treatment",
+    "Hair Growth Boosters": "hair-growth-boosters",
+    "GFC Therapy": "gfc-therapy",
+    "Specialized Hair Exams": "specialized-hair-exams",
+    "Scalp Peel Treatment": "scalp-peel-treatment",
+
+    // Skin treatments
+    "Acne Scar Treatment": "acne-scar-treatment",
+    "Xanthelasma Removal": "xanthelasma-removal",
+    "Skin Infection Treatment": "skin-infections-treatment",
+    "Melasma Therapy": "melasma-treatment",
+    "Mole Surgery": "mole-surgery",
+    "Skin Tag Removal": "skin-tag-removal",
+    "Laser Mole Treatment": "laser-mole-treatment",
+    "Wart Cautery": "wart-cautery",
+    "Dermapen Treatment": "dermapen-skin-treatment",
+    "Stretch Mark Reduction": "stretch-marks-treatment",
+
+    // Acne and Scars treatments
+    "Acne Chemical Peels": "acne-peels",
+    "Advanced Acne Therapy": "advanced-acne-treatments",
+    "Carbon Laser Peels": "carbon-peels",
+    "Professional Chemical Peels": "chemical-peels-acne",
+    "Dermarolling Treatment": "derma-roller-acne",
+    "Fractional CO2 Laser": "fractional-laser-acne",
+    "RF Microneedling": "radiofrequency-microneedling",
+    "Acne Deep Cleansing Facial": "acne-cleanup-facial",
+    "Freckle Laser Treatment": "laser-freckles-treatment",
+    "RF Microneedling for Scars": "microneedling-radiofrequency-stretch-marks",
+
+    // Under Eyes treatments
+    "Dark Circle Reduction": "dark-circles-removal",
+    "Under Eye Rejuvenation": "under-eye-rejuvenation",
+    "Dermal Fillers for Eyes": "under-eye-boosters",
+
+    // Pigmentation treatments
+    "Freckle Treatment": "freckle-treatment",
+    "Depigmentation Peels": "depigmentation-peels",
+    "Cosmelan Depigmentation": "cosmelan-depigmentation",
+    "Glow Brightening Peel": "glow-brightening-peel",
+    "Dermapen for Pigmentation": "dermapen-for-pigmentation",
+    "PRP Vampire Facial": "prp-vampire-facial",
+    "HydraFacial Basic": "hydrafacial-basic",
+    "HydraFacial Elite": "hydrafacial-elite",
+    "Skin Brightening Boosters": "skin-boosters-pigmentation",
+
+    // Medifacial treatments
+    "Diamond Microdermabrasion": "diamond-polishing",
+    "Oxygen Facials": "oxy-facials",
+    "Oxyglow Facial": "oxyglow-treatment",
+    "InstaBright Treatment": "instabright-rejuvenation",
+    "Powerlift Medical Facial": "powerlift-medifacial",
+    "Power Glow Facial": "power-glow-facial",
+    "IV Vitamin Infusions": "iv-infusions-glow",
+
+    // Anti Aging treatments
+    "Wrinkle Reduction Therapy": "wrinkles-treatment",
+    "Anti-Aging Chemical Peels": "anti-aging-peels",
+    "Collagen Induction Therapy": "collagen-boosters",
+    "Skin Tightening Procedures": "skin-tightening-treatment",
+
+    // Laser treatments
+    "Full Body Laser Hair Removal": "laser-hair-removal",
+    "Female Hair Reduction": "laser-hair-reduction-females",
+    "Male Hair Reduction": "laser-hair-reduction-males",
+    "Targeted Hair Removal": "laser-hair-removal",
+    "Arm Hair Laser Treatment": "laser-hair-removal",
+    "Leg Hair Laser Treatment": "laser-hair-removal",
+    "Excessive Hair Growth Treatment": "laser-hair-removal",
+    "Bikini Area Laser": "laser-hair-removal",
+    "Facial Hair Laser": "laser-hair-removal",
+    "Underarm Laser Treatment": "laser-hair-removal",
+    "Birthmark Laser Removal": "birthmark-removal",
+    "Professional Tattoo Removal": "tattoo-removal",
+    "Laser Mole Removal": "laser-mole-removal",
+    "Wart Laser Treatment": "wart-removal-laser",
+
+    // Body Contouring treatments
+    "Medical Weight Loss Program": "weight-loss-treatments",
+    "Cellulite Reduction Therapy": "cellulite-treatment",
+    "Cryolipolysis (CoolSculpting)": "cryolipolysis-treatment",
+    "Body Shaping Treatments": "body-shaping-treatment",
+    "Targeted Fat Reduction": "fat-reduction-treatment",
+  };
+
+  return treatmentToServiceMap[treatmentName] || treatmentName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+};
+
 // Treatment data - same as in Services.jsx but expanded
 const TREATMENT_DATA = {
   hair: {
@@ -908,11 +1000,8 @@ const TreatmentDetailPage = ({ onBookAppointment }) => {
 
                         <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
                           {treatment.subServices.map((service, index) => {
-                            // Create URL-friendly slug from service name
-                            const serviceSlug = service.name
-                              .toLowerCase()
-                              .replace(/[^a-z0-9]+/g, "-")
-                              .replace(/(^-|-$)/g, "");
+                            // Get the correct service ID from treatment name
+                            const serviceSlug = getServiceIdFromTreatment(service.name);
 
                             return (
                               <motion.div
