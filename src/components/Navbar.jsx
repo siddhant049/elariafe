@@ -8,13 +8,14 @@ import {
 } from "@ant-design/icons";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
+import elariaLogo from "../assets/images/Elaria Logo.png";
 
 const navVariants = {
   hidden: { y: -20, opacity: 0 },
   visible: { y: 0, opacity: 1, transition: { duration: 0.6 } },
 };
 
-const navLinks = ["Home", "Treatments", "Specialists", "Stories", "Contact"];
+const navLinks = ["Home", "Treatments", "Contact"];
 
 const treatments = [
   { key: "hair", label: "Hair Treatments", path: "/treatment/hair" },
@@ -95,9 +96,11 @@ const Navbar = ({ onBookAppointment }) => {
       <div className="container mx-auto px-6 h-20 flex items-center justify-between">
         {/* Brand Name / Logo */}
         <div className="flex items-center gap-2 cursor-pointer">
-          <div className="w-10 h-10 bg-[#efae4c] rounded-lg flex items-center justify-center text-white text-xl">
-            ✨
-          </div>
+          <img
+            src={elariaLogo}
+            alt="Elaria Esthetique"
+            className="w-14 h-14 object-contain"
+          />
           <span className="text-2xl font-bold text-white tracking-tight">
             Elaria<span className="text-[#efae4c]">Esthetique</span>
           </span>

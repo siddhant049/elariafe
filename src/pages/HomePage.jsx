@@ -46,7 +46,7 @@ const HomePage = ({ onBookAppointment }) => {
       <CategorySection />
       <TrustMetrics />
       <TreatmentQuiz onBookAppointment={onBookAppointment} />
-      <CoreServices />
+      {/* <CoreServices /> */}
       <TestimonialCarousel />
       <ReviewSystem />
       {/* Get in Touch & Contact Sections */}
