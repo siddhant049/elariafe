@@ -35,9 +35,9 @@ const ContactSection = () => {
               <p className="text-sm leading-relaxed">
                 Elaria Esthetique
                 <br />
-                123 Wellness Avenue, 2nd Floor
+                1st Floor, Sector 47, Malibu Towne 
                 <br />
-                Bandra (W), Mumbai, Maharashtra 400050
+                Sector 47, Gurgaon, Haryana 122002
               </p>
             </div>
 
@@ -62,9 +62,9 @@ const ContactSection = () => {
                 Clinic hours
               </h3>
               <p className="text-sm">
-                Monday – Saturday: 10:00 AM to 8:00 PM
+                Monday – Sunday: 11:00 AM to 7:00 PM
                 <br />
-                Sunday: By prior appointment only
+                 By Prior Appointments only
               </p>
             </div>
           </div>

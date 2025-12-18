@@ -63,7 +63,7 @@ const Footer = () => {
         <div className="border-t border-white/10 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-gray-500 text-xs font-light tracking-widest">
-              © 2024 ELARIA ESTHETIQUE. ALL RIGHTS RESERVED.
+              © 2025 ELARIA ESTHETIQUE. ALL RIGHTS RESERVED.
             </div>
             <div className="flex gap-6">
               <div className="w-8 h-8 border border-[#efae4c]/30 flex items-center justify-center hover:border-[#efae4c] transition-colors cursor-pointer">

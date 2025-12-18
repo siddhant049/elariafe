@@ -13,7 +13,7 @@ const fadeUp = {
   },
 };
 
-const CategoryCard = ({ title, description, delay }) => {
+const CategoryCard = ({ title, description, image, delay }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
 
@@ -335,6 +335,19 @@ const CategoryCard = ({ title, description, delay }) => {
             transition={{ duration: 0.3, ease: "easeOut" }}
             className="relative h-96 bg-white border border-gray-100 overflow-hidden shadow-lg hover:shadow-2xl"
           >
+            {/* Hover reveal background image */}
+            {image && (
+              <motion.div
+                animate={{
+                  opacity: isHovered ? 0.15 : 0,
+                  scale: isHovered ? 1.05 : 1,
+                }}
+                transition={{ duration: 0.5 }}
+                className="absolute inset-0 bg-cover bg-center"
+                style={{ backgroundImage: `url(${image})` }}
+              />
+            )}
+
             {/* Multiple animated accent lines */}
             <motion.div
               animate={{ scaleX: isHovered ? 1 : 0 }}
@@ -346,19 +359,6 @@ const CategoryCard = ({ title, description, delay }) => {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="absolute top-0 left-0 w-full h-px bg-[#efae4c] origin-left opacity-60"
             />
-
-            {/* Floating icon */}
-            <motion.div
-              animate={{
-                y: isHovered ? -10 : 0,
-                rotate: isHovered ? 5 : 0,
-                scale: isHovered ? 1.1 : 1,
-              }}
-              transition={{ duration: 0.4 }}
-              className="absolute top-6 right-6 w-12 h-12 bg-[#efae4c]/10 rounded-full flex items-center justify-center text-2xl"
-            >
-              {serviceDetails.icon}
-            </motion.div>
 
             <div className="relative z-10 h-full flex flex-col justify-between p-10">
               <div>
