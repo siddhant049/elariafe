@@ -7,7 +7,7 @@ const ContactSection = () => {
         <div className="rounded-2xl overflow-hidden shadow-lg bg-gray-200 h-full min-h-[320px]">
           <iframe
             title="Elaria Esthetique Location"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.11610193525!2d72.772987!3d19.0821978!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDA0JzU2LjAiTiA3MsKwNDYnMzIuMCJF!5e0!3m2!1sen!2sin!4v1700000000000"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3508.911568566786!2d77.04987607545611!3d28.421925093613467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d2360b5981ebd%3A0x863c8d3f8a6fe161!2sElaria%20Esthetique!5e0!3m2!1sen!2sin!4v1766164104142!5m2!1sen!2sin"
             width="100%"
             height="100%"
             style={{ border: 0 }}
@@ -35,7 +35,7 @@ const ContactSection = () => {
               <p className="text-sm leading-relaxed">
                 Elaria Esthetique
                 <br />
-                1st Floor, Sector 47, Malibu Towne 
+                1st Floor, Sector 47, Malibu Town 
                 <br />
                 Sector 47, Gurgaon, Haryana 122002
               </p>
@@ -44,7 +44,7 @@ const ContactSection = () => {
             <div>
               <h3 className="font-semibold text-[#001b3d] mb-1">Call us</h3>
               <p className="text-sm">
-                Phone: <a href="tel:+919999999999">+91 99999 99999</a>
+                Phone: <a href="tel:+919999999999">+91 92665 11393</a>
               </p>
             </div>
 
