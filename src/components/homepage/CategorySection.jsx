@@ -1,53 +1,62 @@
 import React from "react";
 import { motion } from "framer-motion";
-import CategoryCard from "./CategoryCard";
+import CategoryCard from "./CategoryCard";    
+import hair from "../../assets/images/hair.jpg";
+import skin from "../../assets/images/skin.jpg";
+import acne from "../../assets/images/acne.jpg";
+import under_eyes from "../../assets/images/under_eyes.png";
+import pigmentation from "../../assets/images/pigmentation.png";
+import medifacial from "../../assets/images/medifacial.png";
+import anti_aging from "../../assets/images/anti_aging.png";
+import laser from "../../assets/images/laser.png";
+import slimming from "../../assets/images/slimming.png";
 
 const CategorySection = () => {
   const categories = [
     {
       title: "HAIR",
       description: "Advanced hair restoration treatments for healthy, voluminous hair growth and scalp wellness.",
-      image: "/src/assets/images/hair.jpg",
+      image: hair,
     },
     {
       title: "SKIN",
       description: "Comprehensive skin care solutions addressing pigmentation, acne, aging, and overall skin health.",
-      image: "/src/assets/images/skin.jpg",
+      image: skin,
     },
     {
       title: "ACNE AND SCARS",
       description: "Targeted treatments for active acne, acne scars, and blemishes for clear, smooth skin.",
-      image: "/src/assets/images/acne.jpg",
+      image: acne,
     },
     {
       title: "UNDER EYES SERVICES",
       description: "Specialized treatments for dark circles, hollowness, and rejuvenation of delicate under-eye area.",
-      image: "/src/assets/images/under_eyes.png",
+      image: under_eyes,
     },
     {
       title: "PIGMENTATION",
       description: "Effective solutions for uneven skin tone, melasma, freckles, and pigmentation concerns.",
-      image: "/src/assets/images/pigmentation.png",
+      image: pigmentation,
     },
     {
       title: "MEDIFACIAL",
       description: "Medical-grade facials combining advanced technology with expert care for radiant skin.",
-      image: "/src/assets/images/medifacial.png",
+      image: medifacial,
     },
     {
       title: "ANTI AGING",
       description: "Cutting-edge anti-aging treatments for wrinkles, fine lines, and skin rejuvenation.",
-      image: "/src/assets/images/anti_aging.png",
+      image: anti_aging,
     },
     {
       title: "LASER",
       description: "Precision laser treatments for hair removal, tattoo removal, and skin resurfacing.",
-      image: "/src/assets/images/laser.png",
+      image: laser,
     },
     {
       title: "BODY CONTOURING",
       description: "Non-invasive body shaping and fat reduction treatments for your ideal silhouette.",
-      image: "/src/assets/images/slimming.png",
+      image: slimming,
     },
   ];
 
