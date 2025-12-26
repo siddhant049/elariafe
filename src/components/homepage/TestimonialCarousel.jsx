@@ -1,28 +1,65 @@
-import React from "react";
+import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { Carousel } from "antd";
-import { StarFilled } from "@ant-design/icons";
+import { StarFilled, LeftOutlined, RightOutlined } from "@ant-design/icons";
 
 const TestimonialCarousel = () => {
+  const carouselRef = useRef();
+
+  // Custom arrow components
+  const CustomPrevArrow = ({ onClick }) => (
+    <button
+      onClick={onClick}
+      className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-full flex items-center justify-center shadow-lg hover:bg-white hover:shadow-xl transition-all duration-300 group"
+      aria-label="Previous testimonial"
+    >
+      <LeftOutlined className="text-[#001b3d] text-lg group-hover:text-[#efae4c] transition-colors duration-300" />
+    </button>
+  );
+
+  const CustomNextArrow = ({ onClick }) => (
+    <button
+      onClick={onClick}
+      className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-full flex items-center justify-center shadow-lg hover:bg-white hover:shadow-xl transition-all duration-300 group"
+      aria-label="Next testimonial"
+    >
+      <RightOutlined className="text-[#001b3d] text-lg group-hover:text-[#efae4c] transition-colors duration-300" />
+    </button>
+  );
+
   const testimonials = [
     {
-      name: "Sophia Chen",
+      name: "Sharul Saxena",
       role: "Skin Rejuvenation",
       text: "The transformation has been incredible. My skin glows naturally and I feel confident in my own skin for the first time in years.",
-      initials: "SC",
+      initials: "SS",
     },
     {
-      name: "Marcus Rodriguez",
+      name: "Akul Varshney",
       role: "Hair Restoration",
       text: "Professional excellence combined with genuine care. The results exceeded my expectations and restored my confidence completely.",
-      initials: "MR",
+      initials: "AV",
     },
     {
-      name: "Isabella Thompson",
+      name: "Kaashvi Malhotra",
       role: "Body Contouring",
       text: "Sophisticated approach to beauty enhancement. The team understood my vision perfectly and delivered outstanding results.",
-      initials: "IT",
+      initials: "KM",
     },
+    {
+      "name": "Devanshi Gupta",
+      "role": "Skin Rejuvenation",
+      "text": "I was amazed by the results of my skin rejuvenation treatment. The team listened carefully to my concerns and delivered a natural, glowing transformation that exceeded my expectations.",
+      "initials": "DG"
+    },
+    {
+      "name": "Priya Sharma",
+      "role": "Facial Aesthetics",
+      "text": "My facial aesthetics treatment was handled with such precision and artistry. The results look subtle yet transformative, and I couldn’t be happier with the experience.",
+      "initials": "PS"
+    }
+    
+    
   ];
 
   return (
@@ -65,9 +102,13 @@ const TestimonialCarousel = () => {
           }}
         >
           <Carousel
+            ref={carouselRef}
             autoplay
             autoplaySpeed={6000}
             dotPosition="bottom"
+            arrows={true}
+            prevArrow={<CustomPrevArrow />}
+            nextArrow={<CustomNextArrow />}
             className="testimonial-carousel"
           >
             {testimonials.map((testimonial, index) => (
