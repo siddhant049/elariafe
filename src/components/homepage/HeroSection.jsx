@@ -1,361 +1,267 @@
-import React, { useState, useEffect } from "react";
+import React, { useMemo, useState } from "react";
+import { motion } from "framer-motion";
 import {
-  motion,
-  useScroll,
-  useTransform,
-  AnimatePresence,
-} from "framer-motion";
-import {
+  ArrowRightOutlined,
   CalendarOutlined,
-  PlayCircleOutlined,
+  RadarChartOutlined,
+  SafetyCertificateOutlined,
+  ScanOutlined,
 } from "@ant-design/icons";
+import skinImage from "../../assets/images/skin.jpg";
+
+const keyMetrics = [
+  { value: "15K+", label: "Consultations", icon: RadarChartOutlined },
+  { value: "50+", label: "Aesthetic Treatments", icon: ScanOutlined },
+  { value: "98%", label: "Client Satisfaction", icon: SafetyCertificateOutlined },
+];
+
+const featureTags = [
+  "Personalized skin and hair care",
+  "Luxury clinic experience",
+];
 
 const HeroSection = ({ onBookAppointment }) => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const { scrollY } = useScroll();
-  const [currentWord, setCurrentWord] = useState(0);
+  const [pointer, setPointer] = useState({ x: 0, y: 0 });
 
-  const floatingWords = ["Radiant", "Confident", "Beautiful", "Timeless"];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentWord((prev) => (prev + 1) % floatingWords.length);
-    }, 2500);
-    return () => clearInterval(interval);
-  }, []);
-
-  // Enhanced parallax
-  const yBg = useTransform(scrollY, [0, 500], [0, -50]);
-  const yContent = useTransform(scrollY, [0, 500], [0, 25]);
-
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setMousePosition({
-      x: (e.clientX - rect.left - rect.width / 2) / (rect.width / 2),
-      y: (e.clientY - rect.top - rect.height / 2) / (rect.height / 2),
-    });
+  const scrollToTreatments = () => {
+    const section = document.getElementById("treatments-section");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   };
 
+  const dynamicStyles = useMemo(
+    () => ({
+      background: {
+        transform: `scale(1.05) translate(${pointer.x * 10}px, ${pointer.y * 10}px)`,
+      },
+      visualCard: {
+        transform: `translate(${pointer.x * -10}px, ${pointer.y * -10}px)`,
+      },
+      accentCard: {
+        transform: `translate(${pointer.x * 8}px, ${pointer.y * 8}px)`,
+      },
+    }),
+    [pointer]
+  );
+
   return (
-    <div
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      onMouseMove={handleMouseMove}
+    <section
+      id="home"
+      className="relative overflow-hidden bg-[#07101a]"
+      onMouseMove={(event) => {
+        const rect = event.currentTarget.getBoundingClientRect();
+        const x = (event.clientX - rect.left - rect.width / 2) / rect.width;
+        const y = (event.clientY - rect.top - rect.height / 2) / rect.height;
+        setPointer({ x, y });
+      }}
+      onMouseLeave={() => setPointer({ x: 0, y: 0 })}
     >
-      {/* Dynamic Gradient Background */}
-      <motion.div
-        className="absolute inset-0 z-0"
-        animate={{
-          background: [
-            "linear-gradient(135deg, #fdfbf7 0%, #f7f2ed 50%, #faf8f5 100%)",
-            "linear-gradient(135deg, #faf8f5 0%, #f5efe8 50%, #fdfbf7 100%)",
-            "linear-gradient(135deg, #fdfbf7 0%, #f7f2ed 50%, #faf8f5 100%)",
-          ],
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-70 transition-transform duration-300 ease-out"
+        style={{
+          backgroundImage: `url(${skinImage})`,
+          filter: "blur(18px) brightness(0.22) saturate(0.75)",
+          ...dynamicStyles.background,
         }}
-        transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
       />
-
-      {/* Parallax Background Image */}
-      <motion.div className="absolute inset-0 z-0" style={{ y: yBg }}>
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+      <div className="absolute inset-0 bg-[linear-gradient(125deg,rgba(4,9,17,0.96),rgba(8,18,30,0.9),rgba(8,18,30,0.76))]" />
+      <div
+        className="absolute inset-0 opacity-25"
           style={{
-            backgroundImage: `url(https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80)`,
-            filter: "blur(1.5px) brightness(1.08) saturate(0.95)",
-            transform: "scale(1.05)",
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-white/65 via-amber-50/45 to-white/70" />
-      </motion.div>
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)",
+          backgroundSize: "96px 96px",
+        }}
+      />
+      <div className="absolute left-[8%] top-[18%] h-56 w-56 rounded-full bg-[rgba(214,179,132,0.14)] blur-3xl" />
+      <div className="absolute bottom-[12%] right-[8%] h-72 w-72 rounded-full bg-[rgba(21,48,78,0.4)] blur-3xl" />
 
-      {/* Enhanced Floating Orbs with More Variety */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
-        {/* Primary Gold Orb */}
-        <motion.div
-          className="absolute top-[15%] left-[8%] w-[700px] h-[700px] rounded-full blur-3xl"
-          style={{
-            background:
-              "radial-gradient(circle at center, rgba(239, 174, 76, 0.18) 0%, rgba(239, 174, 76, 0.08) 40%, transparent 70%)",
-            transform: `translate(${mousePosition.x * 40}px, ${
-              mousePosition.y * 40
-            }px)`,
-          }}
-          animate={{
-            scale: [1, 1.15, 1],
-            opacity: [0.4, 0.6, 0.4],
-            x: [0, 30, 0],
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-        />
-
-        {/* Navy Accent Orb */}
-        <motion.div
-          className="absolute bottom-[12%] right-[5%] w-[550px] h-[550px] rounded-full blur-3xl"
-          style={{
-            background:
-              "radial-gradient(circle at center, rgba(0, 27, 61, 0.12) 0%, rgba(0, 27, 61, 0.05) 45%, transparent 70%)",
-            transform: `translate(${-mousePosition.x * 30}px, ${
-              -mousePosition.y * 30
-            }px)`,
-          }}
-          animate={{
-            scale: [1, 1.18, 1],
-            opacity: [0.3, 0.5, 0.3],
-            x: [0, -25, 0],
-          }}
-          transition={{
-            duration: 18,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 3,
-          }}
-        />
-
-        {/* Soft Center Glow */}
-        <motion.div
-          className="absolute top-1/2 left-1/2 w-[1400px] h-[1400px] -translate-x-1/2 -translate-y-1/2 rounded-full"
-          style={{
-            background:
-              "radial-gradient(circle, rgba(255,251,235,0.6) 0%, rgba(239,174,76,0.08) 35%, transparent 65%)",
-            filter: "blur(80px)",
-          }}
-          animate={{
-            scale: [1, 1.1, 1],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        />
-
-        {/* Sparkle Effects */}
-        {[...Array(12)].map((_, i) => (
+      <div className="relative mx-auto flex min-h-[calc(100vh-112px)] max-w-7xl items-center px-6 pb-12 pt-[148px] lg:px-8">
+        <div className="grid w-full items-center gap-14 lg:grid-cols-[1.02fr_0.98fr]">
           <motion.div
-            key={i}
-            className="absolute w-2 h-2 bg-[#efae4c] rounded-full"
-            style={{
-              top: `${15 + i * 7}%`,
-              left: `${10 + i * 8}%`,
-              filter: "blur(1px)",
-            }}
-            animate={{
-              opacity: [0, 0.8, 0],
-              scale: [0, 1.5, 0],
-              y: [-20, -40, -20],
-            }}
-            transition={{
-              duration: 3 + (i % 3),
-              repeat: Infinity,
-              delay: i * 0.4,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Main Content */}
-      <motion.div
-        className="container mx-auto px-4 sm:px-6 md:px-8 relative z-20 py-16 md:py-24 lg:py-32"
-        style={{ y: yContent }}
-      >
-        <div className="max-w-6xl mx-auto text-center space-y-8 lg:space-y-12">
-          {/* Headline - More Dynamic */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.4 }}
-            className="space-y-3"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl"
           >
-            {/* Main Title */}
-            <motion.h1
-              className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light tracking-tight leading-[0.95] text-gray-900"
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.9,
-                delay: 0.5,
-                type: "spring",
-                stiffness: 50,
-              }}
-            >
-              Feel{" "}
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={currentWord}
-                  initial={{ opacity: 0, y: 20, rotateX: 90 }}
-                  animate={{ opacity: 1, y: 0, rotateX: 0 }}
-                  exit={{ opacity: 0, y: -20, rotateX: -90 }}
-                  transition={{ duration: 0.5 }}
-                  className="inline-block bg-gradient-to-r from-[#efae4c] via-[#d89b3e] to-[#efae4c] bg-clip-text text-transparent"
-                  style={{ backgroundSize: "200% auto" }}
-                >
-                  {floatingWords[currentWord]}
-                </motion.span>
-              </AnimatePresence>
-            </motion.h1>
+            <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/10 px-5 py-2 backdrop-blur-xl">
+              <span className="h-2 w-2 rounded-full bg-[#d6b384]" />
+              <span className="text-[11px] uppercase tracking-[0.35em] text-white/80">
+                Wellness And Aesthetic Care
+              </span>
+            </div>
 
-            {/* Sub Title with Elegant Animation */}
-            <div className="relative inline-block">
-              <motion.h2
-                className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light tracking-tight leading-[0.95]"
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.9,
-                  delay: 0.7,
-                  type: "spring",
-                  stiffness: 50,
-                }}
+            <h1 className="mt-8 text-5xl font-light leading-[0.9] tracking-[-0.065em] text-white md:text-7xl xl:text-[6.1rem]">
+              Feel Beautiful.
+              <span className="block text-[#d6b384]">Be Elaria.</span>
+            </h1>
+
+            <p className="mt-7 max-w-2xl text-lg leading-8 text-white md:text-[1.14rem]">
+              Discover expert-led skin, hair and wellness-focused aesthetic care
+              in a calming clinic environment designed around refined results,
+              comfort and confidence.
+            </p>
+
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+              <button
+                type="button"
+                onClick={onBookAppointment}
+                className="inline-flex items-center justify-center gap-3 rounded-full bg-[#d6b384] px-8 py-4 text-sm font-medium tracking-[0.18em] text-[#0b1727] transition hover:bg-[#c9a26f]"
               >
-                <span className="relative inline-block">
-                  <span className="text-[#001b3d]">Be </span>
-                  <motion.span
-                    className="relative inline-block"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, #efae4c 0%, #d89b3e 50%, #efae4c 100%)",
-                      backgroundSize: "200% auto",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                      backgroundClip: "text",
-                    }}
-                    animate={{
-                      backgroundPosition: [
-                        "0% center",
-                        "200% center",
-                        "0% center",
-                      ],
-                    }}
-                    transition={{
-                      duration: 4,
-                      repeat: Infinity,
-                      ease: "linear",
-                    }}
-                  >
-                    Elaria
-                  </motion.span>
-                </span>
-              </motion.h2>
+                <CalendarOutlined />
+                BOOK CONSULTATION
+              </button>
 
-              {/* Sophisticated Multi-Layer Underline */}
-              <motion.div className="absolute -bottom-3 left-1/2 w-full -translate-x-1/2 flex flex-col gap-1">
+              <button
+                type="button"
+                onClick={scrollToTreatments}
+                className="inline-flex items-center justify-center gap-3 rounded-full border border-white/20 bg-white/5 px-8 py-4 text-sm font-medium tracking-[0.18em] text-white transition hover:border-[#d6b384] hover:text-[#d6b384]"
+              >
+                EXPLORE TREATMENTS
+                <ArrowRightOutlined />
+              </button>
+            </div>
+
+            <div className="mt-12 flex flex-wrap gap-3">
+              {featureTags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full border border-white/10 bg-white/5 px-4 py-3 text-[11px] uppercase tracking-[0.24em] text-white/80 backdrop-blur-lg"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <div className="mt-12 grid max-w-2xl gap-4 sm:grid-cols-3">
+              {keyMetrics.map((metric, index) => {
+                const Icon = metric.icon;
+                return (
                 <motion.div
-                  className="h-px bg-gradient-to-r from-transparent via-[#efae4c] to-transparent opacity-40"
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ duration: 1.2, delay: 1.1, ease: "easeOut" }}
-                />
-                <motion.div
-                  className="h-0.5 bg-gradient-to-r from-transparent via-[#d89b3e] to-transparent"
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 0.8 }}
-                  transition={{ duration: 1, delay: 1.3, ease: "easeOut" }}
-                />
+                    key={metric.label}
+                    initial={{ opacity: 0, y: 18 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.45, delay: 0.15 + index * 0.08 }}
+                    className="rounded-[26px] border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.12),rgba(255,255,255,0.05))] px-5 py-5 backdrop-blur-xl"
+                  >
+                    <Icon className="text-base text-[#d6b384]" />
+                    <p className="mt-4 text-3xl font-semibold text-white">{metric.value}</p>
+                    <p className="mt-2 text-[10px] uppercase tracking-[0.26em] text-white/60">
+                      {metric.label}
+                    </p>
               </motion.div>
+                );
+              })}
             </div>
           </motion.div>
 
-          {/* Tagline - More Poetic */}
-          <motion.p
-            className="text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4 font-light"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 1.2 }}
-          >
-            Where cutting-edge science embraces timeless artistry.
-            <br className="hidden sm:block" />
-            Discover treatments that honor your unique beauty journey and
-            <span className="text-[#efae4c] font-medium">
-              {" "}
-              transform from within
-            </span>
-            .
-          </motion.p>
-
-          {/* Enhanced CTA Buttons */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 1.4 }}
+            transition={{ duration: 0.7, delay: 0.08 }}
+            className="relative"
+            style={dynamicStyles.visualCard}
           >
-            <motion.button
-              onClick={onBookAppointment}
-              whileHover={{ y: -5, scale: 1.02 }}
-              whileTap={{ scale: 0.97 }}
-              className="group relative px-10 py-5 w-full sm:w-auto bg-gradient-to-r from-[#efae4c] via-[#d89b3e] to-[#c8892f] text-white font-semibold rounded-2xl shadow-2xl shadow-[#efae4c]/30 overflow-hidden cursor-pointer"
-            >
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-[#d89b3e] to-[#efae4c]"
-                initial={{ x: "-100%" }}
-                whileHover={{ x: 0 }}
-                transition={{ duration: 0.4 }}
-              />
-              <span className="relative z-10 flex items-center justify-center gap-3 text-sm tracking-wider uppercase">
-                <CalendarOutlined className="text-lg" />
-                Book Your Transformation
-                <motion.span
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                >
-                  →
-                </motion.span>
-              </span>
-            </motion.button>
+            <div className="relative overflow-hidden rounded-[34px] border border-white/10 bg-[linear-gradient(145deg,rgba(255,255,255,0.12),rgba(255,255,255,0.05))] p-4 shadow-[0_30px_90px_rgba(0,0,0,0.35)] backdrop-blur-2xl">
+              <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-[rgba(9,19,33,0.88)]">
+                <div className="absolute inset-0">
+                  <img
+                    src={skinImage}
+                    alt="Elaria premium treatment experience"
+                    className="h-full w-full object-cover opacity-28"
+                  />
+                  <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(8,17,30,0.3),rgba(8,17,30,0.82))]" />
+                </div>
 
-            <motion.button
-              onClick={() => {
-                const section = document.getElementById("treatments-section");
-                if (section) {
-                  section.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start",
-                  });
-                }
-              }}
-              whileHover={{ y: -5, scale: 1.02 }}
-              whileTap={{ scale: 0.97 }}
-              className="group px-10 py-5 w-full sm:w-auto bg-white/60 backdrop-blur-2xl text-[#001b3d] font-semibold rounded-2xl border-2 border-white/70 hover:border-[#efae4c]/50 transition-all duration-300 shadow-xl relative overflow-hidden cursor-pointer"
-            >
+                <motion.div
+                  animate={{ y: ["-8%", "92%"] }}
+                  transition={{ duration: 4.8, repeat: Infinity, repeatType: "loop", ease: "linear" }}
+                  className="pointer-events-none absolute left-6 right-6 top-0 h-20 bg-[linear-gradient(180deg,rgba(214,179,132,0),rgba(214,179,132,0.28),rgba(214,179,132,0))] blur-xl"
+                />
+
+                <div className="relative p-6 md:p-8">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-[10px] uppercase tracking-[0.34em] text-[#d6b384]">
+                        Signature Care Journey
+                      </p>
+                      <h2 className="mt-3 text-2xl font-light text-white md:text-[2rem]">
+                        Personalized Aesthetic Planning
+                      </h2>
+                    </div>
+                    <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2 text-[10px] uppercase tracking-[0.26em] text-white/80">
+                      <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_14px_rgba(52,211,153,0.72)]" />
+                      Live
+                    </div>
+                  </div>
+
+                  <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                    <div className="rounded-[24px] border border-white/10 bg-white/5 p-5 backdrop-blur-xl">
+                      <p className="text-[10px] uppercase tracking-[0.28em] text-white/60">
+                        Consultation First
+                      </p>
+                      <p className="mt-4 text-3xl font-semibold text-white">01</p>
+                      <p className="mt-3 text-sm leading-6 text-white/80">
+                        Every journey begins with understanding your concerns,
+                        lifestyle and goals before suggesting the right treatment.
+                      </p>
+                    </div>
+
+                    <div className="rounded-[24px] border border-[rgba(214,179,132,0.2)] bg-[linear-gradient(135deg,rgba(214,179,132,0.12),rgba(255,255,255,0.05))] p-5 backdrop-blur-xl">
+                      <p className="text-[10px] uppercase tracking-[0.28em] text-[#d6b384]">
+                        Tailored Results
+                      </p>
+                      <p className="mt-4 text-3xl font-semibold text-white">02</p>
+                      <p className="mt-3 text-sm leading-6 text-white/80">
+                        From skin rejuvenation to hair restoration, treatments
+                        are selected to suit you naturally and precisely.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="mt-6 rounded-[24px] border border-white/10 bg-[rgba(7,16,26,0.7)] p-5">
+                    <div className="flex items-center justify-between">
+                      <p className="text-[10px] uppercase tracking-[0.3em] text-white/60">
+                        Care Philosophy
+                      </p>
+                      <p className="text-sm font-medium text-white">98% Satisfaction</p>
+                    </div>
+                    <div className="mt-5 h-2 overflow-hidden rounded-full bg-white/10">
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-[#efae4c]/10 via-[#efae4c]/5 to-transparent"
-                initial={{ x: "-100%" }}
-                whileHover={{ x: "100%" }}
-                transition={{ duration: 0.8 }}
-              />
-              <span className="relative z-10 flex items-center justify-center gap-3 text-sm tracking-wider uppercase">
-                <PlayCircleOutlined className="text-lg" />
-                Explore Treatments
-              </span>
-            </motion.button>
+                        initial={{ width: 0 }}
+                        animate={{ width: "98%" }}
+                        transition={{ duration: 1.2, delay: 0.5 }}
+                        className="h-full rounded-full bg-[linear-gradient(90deg,#d6b384,#f1dfc4)]"
+                      />
+                    </div>
+                    <p className="mt-4 max-w-xl text-sm leading-7 text-white/80">
+                      Thoughtful consultations, advanced aesthetic solutions and
+                      a warm premium experience come together to help you look
+                      refreshed, confident and naturally radiant.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.55, delay: 0.3 }}
+              style={dynamicStyles.accentCard}
+              className="absolute -right-3 top-10 hidden rounded-[22px] border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.12),rgba(255,255,255,0.05))] px-5 py-4 backdrop-blur-xl lg:block"
+            >
+              <p className="text-[10px] uppercase tracking-[0.28em] text-[#d6b384]">
+                Elaria Experience
+              </p>
+              <p className="mt-3 text-xl font-medium text-white">Calm. Refined. Personal.</p>
+              <p className="mt-2 text-sm text-white/70">Designed to feel like a modern premium aesthetics clinic.</p>
+            </motion.div>
           </motion.div>
         </div>
-      </motion.div>
-
-      {/* Enhanced Corner Decorations */}
-      {[
-        { top: 8, left: 8, rotate: 0 },
-        { top: 8, right: 8, rotate: 90 },
-        { bottom: 8, left: 8, rotate: -90 },
-        { bottom: 8, right: 8, rotate: 180 },
-      ].map((corner, i) => (
-        <motion.div
-          key={i}
-          className="absolute"
-          style={{
-            top: corner.top,
-            bottom: corner.bottom,
-            left: corner.left,
-            right: corner.right,
-          }}
-          initial={{ opacity: 0, scale: 0.5, rotate: corner.rotate - 45 }}
-          animate={{ opacity: 1, scale: 1, rotate: corner.rotate }}
-          transition={{ delay: 2 + i * 0.1, duration: 0.6, type: "spring" }}
-        >
-          <div className="relative w-12 h-12">
-            <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#efae4c] to-transparent" />
-            <div className="absolute top-0 left-0 w-0.5 h-full bg-gradient-to-b from-[#efae4c] to-transparent" />
           </div>
-        </motion.div>
-      ))}
-    </div>
+    </section>
   );
 };
 

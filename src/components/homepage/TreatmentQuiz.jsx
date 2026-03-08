@@ -409,47 +409,40 @@ const TreatmentQuiz = ({ onBookAppointment }) => {
 
   if (isCompleted) {
     return (
-      <section className="py-32 px-6 bg-gradient-to-br from-[#001b3d] via-[#002952] to-[#001b3d] relative overflow-hidden">
-        {/* Background effects */}
-        <div
-          className="absolute inset-0 opacity-40"
-          style={{
-            backgroundImage:
-              "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23efae4c' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
-          }}
-        ></div>
-
-        <div className="max-w-4xl mx-auto relative z-10">
+      <section className="bg-[#f8f4ef] px-6 py-24">
+        <div className="mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center mb-12"
+            className="mb-14 text-center"
           >
-            <div className="inline-block mb-6 px-6 py-2 border border-[#efae4c] text-[#efae4c] text-xs font-light tracking-widest rounded-full">
-              ✨ YOUR PERSONALIZED RECOMMENDATIONS
+            <div className="inline-block rounded-full border border-[#dcc8ad] bg-white px-5 py-2 text-[11px] uppercase tracking-[0.32em] text-[#9a7b52]">
+              Your Personalized Recommendations
             </div>
-            <h2 className="text-4xl md:text-5xl font-light text-white mb-6 tracking-tight">
+            <h2 className="mt-6 text-4xl font-light tracking-[-0.03em] text-slate-900 md:text-5xl">
               Your Perfect Treatment Journey
             </h2>
-            <p className="text-lg text-gray-300 font-light tracking-wide">
+            <p className="mt-4 text-lg text-slate-600">
               Based on your answers, here are our top recommendations for you
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <div className="mb-12 grid grid-cols-1 gap-6 md:grid-cols-3">
             {recommendations.map((treatment, index) => (
               <motion.div
                 key={treatment}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.2 }}
-                className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 text-center hover:bg-white/15 transition-all duration-300"
+                className="rounded-[28px] border border-[#e7dccf] bg-white p-8 text-left shadow-[0_18px_45px_rgba(17,24,39,0.05)]"
               >
-                <div className="text-6xl mb-4">💫</div>
-                <h3 className="text-xl font-light text-white mb-4 tracking-wide">
+                <p className="text-[11px] uppercase tracking-[0.32em] text-[#9a7b52]">
+                  Recommendation {index + 1}
+                </p>
+                <h3 className="mt-4 text-2xl font-medium text-slate-900">
                   {treatment}
                 </h3>
-                <p className="text-gray-300 text-sm font-light leading-relaxed mb-6">
+                <p className="mb-7 mt-4 text-sm leading-7 text-slate-600">
                   {treatment === "HydraFacial" &&
                     "Deep cleansing and hydration treatment for radiant skin"}
                   {treatment === "Botox" &&
@@ -499,7 +492,7 @@ const TreatmentQuiz = ({ onBookAppointment }) => {
                 <Link to={getQuizResultServiceLink(treatment)}>
                   <Button
                     type="primary"
-                    className="bg-[#efae4c] hover:bg-[#d89b3e] border-none rounded-full px-6 py-2 text-[#001b3d] font-semibold"
+                    className="h-11 rounded-full border-none bg-[#10233f] px-6 font-medium text-white hover:!bg-[#0d1d34]"
                   >
                     Learn More
                   </Button>
@@ -516,14 +509,14 @@ const TreatmentQuiz = ({ onBookAppointment }) => {
           >
             <Button
               onClick={resetQuiz}
-              className="bg-white/10 hover:bg-white/20 border border-white/30 rounded-full px-8 py-3 text-white font-light tracking-wider mr-4"
+              className="mr-4 h-11 rounded-full border border-[#d7c4ab] bg-transparent px-8 font-medium tracking-[0.2em] text-slate-700 hover:!border-[#9a7b52] hover:!text-[#9a7b52]"
             >
               Retake Quiz
             </Button>
             <Button
               type="primary"
               onClick={onBookAppointment}
-              className="bg-[#efae4c] hover:bg-[#d89b3e] border-none rounded-full px-8 py-3 text-[#001b3d] font-semibold"
+              className="h-11 rounded-full border-none bg-[#b8925f] px-8 font-medium tracking-[0.14em] text-white hover:!bg-[#a78454]"
             >
               Book Consultation
             </Button>
@@ -536,32 +529,23 @@ const TreatmentQuiz = ({ onBookAppointment }) => {
   const currentQuestion = quizQuestions[currentStep];
 
   return (
-    <section className="py-32 px-6 bg-gradient-to-br from-[#001b3d] via-[#002952] to-[#001b3d] relative overflow-hidden">
-      {/* Background effects */}
-      <div
-        className="absolute inset-0 opacity-40"
-        style={{
-          background:
-            "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23efae4c' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
-        }}
-      />
-
-      <div className="max-w-4xl mx-auto relative z-10">
+    <section className="bg-[#10233f] px-6 py-24">
+      <div className="mx-auto max-w-6xl">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeUp}
-          className="text-center mb-16"
+          className="mb-14 text-center"
         >
-          <div className="inline-block mb-6 px-6 py-2 border border-[#efae4c] text-[#efae4c] text-xs font-light tracking-widest rounded-full">
-            🤖 AI ASSESSMENT
+          <div className="inline-block rounded-full border border-white/20 px-5 py-2 text-[11px] uppercase tracking-[0.32em] text-[#d6b384]">
+            Consultation Finder
           </div>
-          <h2 className="text-5xl md:text-6xl font-light text-white mb-6 tracking-tight">
-            Find Your Perfect Treatment
+          <h2 className="mt-6 text-4xl font-light tracking-[-0.03em] text-white md:text-5xl">
+            Find your ideal treatment path.
           </h2>
-          <p className="text-lg text-gray-300 font-light tracking-wide">
-            Answer a few questions and discover personalized recommendations
+          <p className="mt-4 text-lg text-white/70">
+            A more guided way to shortlist treatments before your consultation.
           </p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -572,7 +556,7 @@ const TreatmentQuiz = ({ onBookAppointment }) => {
             <Link to="/ai-assessment">
               <Button
                 type="primary"
-                className="bg-[#efae4c] hover:bg-[#d89b3e] border-none rounded-full px-8 py-3 text-[#001b3d] font-semibold"
+                className="h-11 rounded-full border-none bg-[#d6b384] px-8 font-medium text-[#10233f] hover:!bg-[#c79f6c]"
               >
                 Learn More <ArrowRightOutlined className="ml-2 text-sm" />
               </Button>
@@ -580,14 +564,13 @@ const TreatmentQuiz = ({ onBookAppointment }) => {
           </motion.div>
         </motion.div>
 
-        {/* Progress Bar */}
-        <div className="mb-12">
-          <div className="flex justify-center mb-4">
+        <div className="mb-10">
+          <div className="mb-4 flex justify-center">
             {quizQuestions.map((_, index) => (
               <motion.div
                 key={index}
-                className={`w-3 h-3 rounded-full mx-2 ${
-                  index <= currentStep ? "bg-[#efae4c]" : "bg-white/30"
+                className={`mx-2 h-2.5 w-10 rounded-full ${
+                  index <= currentStep ? "bg-[#d6b384]" : "bg-white/15"
                 }`}
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
@@ -595,20 +578,19 @@ const TreatmentQuiz = ({ onBookAppointment }) => {
               />
             ))}
           </div>
-          <div className="text-center text-gray-400 text-sm font-light">
+          <div className="text-center text-sm text-white/60">
             Question {currentStep + 1} of {quizQuestions.length}
           </div>
         </div>
 
-        {/* Question Card */}
         <motion.div
           key={currentStep}
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -50 }}
-          className="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 md:p-12"
+          className="rounded-[32px] border border-white/10 bg-white/6 p-8 backdrop-blur-md md:p-12"
         >
-          <h3 className="text-2xl md:text-3xl font-light text-white text-center mb-12 tracking-wide">
+          <h3 className="mb-12 text-center text-2xl font-light tracking-wide text-white md:text-3xl">
             {currentQuestion.question}
           </h3>
 
@@ -622,16 +604,16 @@ const TreatmentQuiz = ({ onBookAppointment }) => {
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => handleAnswer(currentStep, option)}
-                className="group bg-white/5 hover:bg-white/15 border border-white/20 hover:border-[#efae4c]/50 rounded-2xl p-6 text-left transition-all duration-300"
+                className="group rounded-[24px] border border-white/10 bg-white/5 p-6 text-left transition-all duration-300 hover:border-[#d6b384]/45 hover:bg-white/10"
               >
-                <div className="text-3xl mb-3 group-hover:scale-110 transition-transform">
-                  {option.icon}
+                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-sm font-medium text-[#d6b384]">
+                  {index + 1}
                 </div>
-                <div className="text-white font-light tracking-wide group-hover:text-[#efae4c] transition-colors">
+                <div className="font-light tracking-wide text-white transition-colors group-hover:text-[#d6b384]">
                   {option.text}
                 </div>
                 {option.description && (
-                  <div className="text-white/70 text-sm mt-3 leading-relaxed group-hover:text-white/90 transition-colors">
+                  <div className="mt-3 text-sm leading-relaxed text-white/70 transition-colors group-hover:text-white/90">
                     {option.description}
                   </div>
                 )}

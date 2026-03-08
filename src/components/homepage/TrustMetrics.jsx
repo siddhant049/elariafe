@@ -1,104 +1,50 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0.3,
-    },
-  },
-};
-
-const scaleIn = {
-  hidden: { scale: 0.95, opacity: 0 },
-  visible: {
-    scale: 1,
-    opacity: 1,
-    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
-  },
-};
+const metrics = [
+  { value: "15+", label: "Years of Expertise" },
+  { value: "15K+", label: "Consultations Conducted" },
+  { value: "98%", label: "Client Satisfaction" },
+  { value: "Advanced", label: "Technology-led Care" },
+];
 
 const TrustMetrics = () => {
-  const [counters, setCounters] = useState({
-    years: 0,
-    clients: 0,
-    satisfaction: 0,
-    fdaApprMach: 0,
-  });
-
-  useEffect(() => {
-    const targets = {
-      years: 15,
-      clients: 15000,
-      satisfaction: 98,
-      fdaApprMach: 100,
-    };
-    const duration = 2000;
-    const steps = 60;
-    const interval = duration / steps;
-
-    let currentStep = 0;
-    const timer = setInterval(() => {
-      currentStep++;
-      const progress = currentStep / steps;
-
-      setCounters({
-        years: Math.floor(targets.years * progress),
-        clients: Math.floor(targets.clients * progress),
-        satisfaction: Math.floor(targets.satisfaction * progress),
-        fdaApprMach: Math.floor(targets.fdaApprMach * progress),
-      });
-
-      if (currentStep >= steps) clearInterval(timer);
-    }, interval);
-
-    return () => clearInterval(timer);
-  }, []);
-
-  const metrics = [
-    { label: "CERTIFIED SPECIALISTS", value: counters.years + "+" },
-    {
-      label: "WELLNESS SESSIONS CONDUCTED",
-      value: counters.clients.toLocaleString() + "+",
-    },
-    { label: "SATISFACTION RATE", value: counters.satisfaction + "%" },
-    { label: "FDA APPROVED MACHINES", value: counters.fdaApprMach + "%" },
-  ];
-
   return (
-    <section className="py-24 bg-[#001b3d] relative overflow-hidden">
-      {/* Subtle golden line */}
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#efae4c] to-transparent"></div>
+    <section className="bg-[#10233f] px-6 py-14 text-white">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-10 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <p className="text-[11px] uppercase tracking-[0.35em] text-[#d6b384]">
+              Why Elaria
+            </p>
+            <h2 className="mt-4 text-3xl font-light tracking-[-0.03em] text-white md:text-4xl">
+              Clinical precision with a premium experience.
+            </h2>
+          </div>
+          <p className="max-w-2xl text-sm leading-7 text-white/70">
+            A calmer, more elevated treatment experience built around safety,
+            personalization and results that feel polished, not overdone.
+          </p>
+        </div>
 
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={staggerContainer}
-        className="max-w-7xl mx-auto px-6"
-      >
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-16">
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {metrics.map((metric, index) => (
             <motion.div
               key={metric.label}
-              variants={scaleIn}
-              className="text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45, delay: index * 0.08 }}
+              className="rounded-[28px] border border-white/10 bg-white/5 px-6 py-8 backdrop-blur-sm"
             >
-              <div className="text-5xl font-light text-[#efae4c] mb-4 tracking-tight">
-                {metric.value}
-              </div>
-              <div className="text-xs text-gray-400 tracking-widest font-light">
+              <p className="text-3xl font-medium text-[#d6b384]">{metric.value}</p>
+              <p className="mt-3 text-[11px] uppercase tracking-[0.28em] text-white/70">
                 {metric.label}
-              </div>
+              </p>
             </motion.div>
           ))}
         </div>
-      </motion.div>
-
-      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#efae4c] to-transparent"></div>
+      </div>
     </section>
   );
 };

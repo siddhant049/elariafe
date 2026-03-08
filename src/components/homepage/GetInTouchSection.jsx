@@ -19,28 +19,43 @@ const GetInTouchSection = () => {
   };
 
   return (
-    <section className="py-20 px-6 bg-gradient-to-br from-[#001b3d] via-[#002952] to-[#001b3d]">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <section className="bg-[#10233f] px-6 py-24">
+      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
         <div className="text-white">
-          <h2 className="text-3xl md:text-4xl font-light mb-4 tracking-wide">
-            Get in touch
-          </h2>
-          <p className="text-gray-300 text-lg mb-6">
-            Share your details and our clinic team will call you back to guide
-            you on the right treatments for your concerns.
+          <p className="text-[11px] uppercase tracking-[0.35em] text-[#d6b384]">
+            Get In Touch
           </p>
-          <ul className="space-y-2 text-gray-300 text-sm">
-            <li>Quick call-back from our care team</li>
-            <li>Help choosing the right category and treatments</li>
-            <li>No obligation – just honest guidance</li>
-          </ul>
+          <h2 className="mt-5 text-4xl font-light leading-tight tracking-[-0.03em] md:text-5xl">
+            Tell us your concern and we will guide you personally.
+          </h2>
+          <p className="mt-6 max-w-xl text-lg leading-8 text-white/72">
+            Share your details and our clinic team will call you back to help
+            you understand which treatments fit your goals best.
+          </p>
+          <div className="mt-8 grid gap-4 sm:grid-cols-3">
+            {[
+              "Quick callback from our care team",
+              "Guidance on categories and suitable treatments",
+              "No pressure, only honest recommendations",
+            ].map((item) => (
+              <div
+                key={item}
+                className="rounded-[24px] border border-white/10 bg-white/5 p-5 text-sm leading-6 text-white/75"
+              >
+                {item}
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-2xl p-8">
-          <h3 className="text-xl font-semibold text-[#001b3d] mb-4">
+        <div className="rounded-[32px] bg-[#fbf8f4] p-8 shadow-[0_28px_70px_rgba(0,0,0,0.18)] md:p-10">
+          <p className="text-[11px] uppercase tracking-[0.35em] text-[#9a7b52]">
+            Consultation Request
+          </p>
+          <h3 className="mt-4 text-2xl font-medium text-[#10233f]">
             Request a call back
           </h3>
-          <p className="text-sm text-gray-500 mb-6">
+          <p className="mb-6 mt-3 text-sm leading-7 text-slate-500">
             Fill in your basic details and select the category you are
             interested in.
           </p>

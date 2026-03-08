@@ -81,24 +81,24 @@ const FAQsSection = () => {
   ];
 
   return (
-    <section className="py-20 px-6 bg-gray-50 border-t border-gray-200">
-      <div className="max-w-7xl mx-auto">
+    <section className="border-t border-[#eee2d4] bg-[#fcfaf7] px-6 py-24">
+      <div className="mx-auto max-w-7xl">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={staggerContainer}
-          className="text-center mb-16"
+          className="mb-16 text-center"
         >
           <motion.h2
             variants={fadeUp}
-            className="text-4xl font-light text-[#001b3d] mb-4 tracking-wide"
+            className="text-4xl font-light tracking-[-0.03em] text-[#10233f] md:text-5xl"
           >
             Frequently Asked Questions
           </motion.h2>
           <motion.p
             variants={fadeUp}
-            className="text-gray-600 text-lg max-w-2xl mx-auto"
+            className="mx-auto mt-4 max-w-3xl text-lg leading-8 text-slate-600"
           >
             Find answers to common questions about our treatments and services
           </motion.p>
@@ -106,39 +106,21 @@ const FAQsSection = () => {
 
         <motion.div
           variants={staggerContainer}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 gap-6 md:grid-cols-2"
         >
           {faqs.map((faq, index) => (
             <motion.div
               key={index}
               variants={scaleIn}
-              className="group h-64 [perspective:1000px]"
+              className="rounded-[28px] border border-[#e9dfd2] bg-white p-7 shadow-[0_16px_40px_rgba(17,24,39,0.04)]"
             >
-              <div className="relative h-full w-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-                {/* Front of card */}
-                <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] bg-white rounded-xl shadow-lg border border-gray-200 p-6 flex flex-col justify-center items-center text-center hover:shadow-xl transition-shadow duration-300">
-                  <div className="w-12 h-12 bg-[#efae4c]/10 rounded-full flex items-center justify-center mb-4">
-                    <span className="text-[#efae4c] text-xl font-bold">?</span>
-                  </div>
-                  <h3 className="text-lg font-semibold text-[#001b3d] leading-tight">
-                    {faq.question}
-                  </h3>
-                  <div className="mt-4 text-[#efae4c] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    Hover to reveal answer →
-                  </div>
-                </div>
-
-                {/* Back of card */}
-                <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] bg-gradient-to-br from-[#001b3d] to-[#002952] rounded-xl shadow-lg p-6 flex flex-col justify-center items-center text-center text-white">
-                  <div className="w-12 h-12 bg-[#efae4c]/20 rounded-full flex items-center justify-center mb-4">
-                    <span className="text-[#efae4c] text-xl font-bold">✓</span>
-                  </div>
-                  <p className="text-sm leading-relaxed">{faq.answer}</p>
-                  <div className="mt-4 text-[#efae4c] text-sm font-medium">
-                    ← Back to question
-                  </div>
-                </div>
+              <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#f7f1ea] text-[#9a7b52]">
+                {String(index + 1).padStart(2, "0")}
               </div>
+              <h3 className="max-w-xl text-xl font-medium leading-8 text-[#10233f]">
+                {faq.question}
+              </h3>
+              <p className="mt-4 text-sm leading-7 text-slate-600">{faq.answer}</p>
             </motion.div>
           ))}
         </motion.div>

@@ -6,27 +6,6 @@ import { StarFilled, LeftOutlined, RightOutlined } from "@ant-design/icons";
 const TestimonialCarousel = () => {
   const carouselRef = useRef();
 
-  // Custom arrow components
-  const CustomPrevArrow = ({ onClick }) => (
-    <button
-      onClick={onClick}
-      className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-full flex items-center justify-center shadow-lg hover:bg-white hover:shadow-xl transition-all duration-300 group"
-      aria-label="Previous testimonial"
-    >
-      <LeftOutlined className="text-[#001b3d] text-lg group-hover:text-[#efae4c] transition-colors duration-300" />
-    </button>
-  );
-
-  const CustomNextArrow = ({ onClick }) => (
-    <button
-      onClick={onClick}
-      className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-full flex items-center justify-center shadow-lg hover:bg-white hover:shadow-xl transition-all duration-300 group"
-      aria-label="Next testimonial"
-    >
-      <RightOutlined className="text-[#001b3d] text-lg group-hover:text-[#efae4c] transition-colors duration-300" />
-    </button>
-  );
-
   const testimonials = [
     {
       name: "Sharul Saxena",
@@ -47,24 +26,22 @@ const TestimonialCarousel = () => {
       initials: "KM",
     },
     {
-      "name": "Devanshi Gupta",
-      "role": "Skin Rejuvenation",
-      "text": "I was amazed by the results of my skin rejuvenation treatment. The team listened carefully to my concerns and delivered a natural, glowing transformation that exceeded my expectations.",
-      "initials": "DG"
+      name: "Devanshi Gupta",
+      role: "Skin Rejuvenation",
+      text: "I was amazed by the results of my skin rejuvenation treatment. The team listened carefully to my concerns and delivered a natural, glowing transformation that exceeded my expectations.",
+      initials: "DG",
     },
     {
-      "name": "Priya Sharma",
-      "role": "Facial Aesthetics",
-      "text": "My facial aesthetics treatment was handled with such precision and artistry. The results look subtle yet transformative, and I couldn’t be happier with the experience.",
-      "initials": "PS"
-    }
-    
-    
+      name: "Priya Sharma",
+      role: "Facial Aesthetics",
+      text: "My facial aesthetics treatment was handled with such precision and artistry. The results look subtle yet transformative, and I couldn’t be happier with the experience.",
+      initials: "PS",
+    },
   ];
 
   return (
-    <section className="py-32 px-6 bg-white">
-      <div className="max-w-4xl mx-auto">
+    <section className="bg-white px-6 py-24">
+      <div className="mx-auto max-w-6xl">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -77,15 +54,34 @@ const TestimonialCarousel = () => {
               transition: { duration: 0.6 },
             },
           }}
-          className="text-center mb-20"
+          className="mb-14 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between"
         >
-          <div className="w-16 h-px bg-[#efae4c] mx-auto mb-8"></div>
-          <h2 className="text-5xl md:text-6xl font-light text-[#001b3d] mb-6 tracking-tight">
-            Beauty Transformations
-          </h2>
-          <p className="text-lg text-gray-600 font-light tracking-wide">
-            Real stories from clients who discovered their radiance
-          </p>
+          <div className="max-w-2xl">
+            <p className="text-[11px] uppercase tracking-[0.35em] text-[#9a7b52]">
+              Testimonials
+            </p>
+            <h2 className="mt-5 text-4xl font-light tracking-[-0.03em] text-slate-900 md:text-5xl">
+              Real stories from clients who trusted our care.
+            </h2>
+          </div>
+          <div className="flex items-center gap-3 lg:justify-end">
+            <button
+              type="button"
+              onClick={() => carouselRef.current?.prev()}
+              className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-[#e5d8c7] text-slate-700 transition hover:border-[#b8925f] hover:text-[#9a7b52]"
+              aria-label="Previous testimonial"
+            >
+              <LeftOutlined />
+            </button>
+            <button
+              type="button"
+              onClick={() => carouselRef.current?.next()}
+              className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-[#e5d8c7] text-slate-700 transition hover:border-[#b8925f] hover:text-[#9a7b52]"
+              aria-label="Next testimonial"
+            >
+              <RightOutlined />
+            </button>
+          </div>
         </motion.div>
 
         <motion.div
@@ -106,35 +102,32 @@ const TestimonialCarousel = () => {
             autoplay
             autoplaySpeed={6000}
             dotPosition="bottom"
-            arrows={true}
-            prevArrow={<CustomPrevArrow />}
-            nextArrow={<CustomNextArrow />}
             className="testimonial-carousel"
           >
             {testimonials.map((testimonial, index) => (
               <div key={index}>
-                <div className="bg-gray-50 border border-gray-100 p-16 mx-4">
-                  <div className="flex gap-1 justify-center mb-8">
+                <div className="mx-2 overflow-hidden rounded-[32px] border border-[#e7ddcf] bg-[#fbf8f4] p-10 md:p-14">
+                  <div className="mb-8 flex gap-1">
                     {[...Array(5)].map((_, i) => (
-                      <StarFilled key={i} className="text-[#efae4c] text-lg" />
+                      <StarFilled key={i} className="text-[#d6b384] text-base" />
                     ))}
                   </div>
 
-                  <p className="text-xl text-gray-700 leading-relaxed mb-12 text-center font-light italic">
+                  <p className="mb-12 max-w-4xl text-2xl font-light leading-relaxed text-slate-700 italic">
                     "{testimonial.text}"
                   </p>
 
-                  <div className="flex items-center justify-center gap-6">
-                    <div className="w-16 h-16 bg-[#001b3d] flex items-center justify-center">
-                      <span className="text-[#efae4c] text-lg font-light tracking-wider">
+                  <div className="flex items-center gap-5">
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#10233f]">
+                      <span className="text-lg font-medium tracking-[0.15em] text-[#d6b384]">
                         {testimonial.initials}
                       </span>
                     </div>
                     <div className="text-left">
-                      <div className="text-lg font-light text-[#001b3d] tracking-wide">
+                      <div className="text-lg font-medium text-[#10233f]">
                         {testimonial.name}
                       </div>
-                      <div className="text-sm text-gray-500 font-light tracking-wider">
+                      <div className="mt-1 text-[11px] uppercase tracking-[0.3em] text-slate-500">
                         {testimonial.role}
                       </div>
                     </div>

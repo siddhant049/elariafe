@@ -731,7 +731,7 @@ const TreatmentDetailPage = ({ onBookAppointment }) => {
           transition={{ delay: 0.3, duration: 0.5 }}
         >
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-            Preparing Your Wellness Journey
+            Loading Treatment Information
           </h2>
           <p className="text-gray-300 text-lg">
             Loading personalized treatment information...
