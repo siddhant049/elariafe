@@ -53,8 +53,8 @@ const ContactSection = () => {
             <div className="rounded-[24px] border border-[#e6dbcd] bg-white p-5">
               <h3 className="mb-2 text-[11px] uppercase tracking-[0.32em] text-[#9a7b52]">Email</h3>
               <p className="text-sm leading-7">
-                <a href="mailto:care@elariaesthetique.com">
-                  care@elariaesthetique.com
+                <a href="mailto:elariaesthetique@gmail.com">
+                  elariaesthetique@gmail.com
                 </a>
               </p>
             </div>

@@ -128,15 +128,14 @@ const CategorySection = () => {
               Treatments
             </p>
             <h2 className="mt-5 text-4xl font-light leading-[0.98] tracking-[-0.04em] text-slate-900 md:text-6xl">
-              Explore treatment categories through an immersive showcase.
+              Discover wellness treatment categories tailored to your needs.
             </h2>
           </div>
 
           <div className="lg:pl-12">
             <p className="max-w-2xl text-lg leading-8 text-slate-600">
-              A more visual, editorial layout inspired by premium clinic design,
-              where categories reveal themselves in a cleaner and more aesthetic
-              way.
+              Explore multiple wellness treatment categories and choose the care
+              path that best matches your concerns, goals, and desired results.
             </p>
           </div>
         </motion.div>
@@ -190,13 +189,13 @@ const CategorySection = () => {
                           </div>
 
                           <div className="max-w-xl">
-                            <p className="text-[11px] uppercase tracking-[0.34em] text-[#d6b384]">
+                            <p className="text-[11px] font-medium uppercase tracking-[0.34em] text-[#f3dfbc] drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)]">
                               {category.subtitle}
                             </p>
                             <h3 className="mt-4 text-4xl font-light tracking-[-0.04em] text-white xl:text-5xl">
                               {category.title}
                             </h3>
-                            <p className="mt-5 max-w-lg text-base leading-8 text-white/82">
+                            <p className="mt-5 max-w-lg text-base leading-8 text-white">
                               {category.description}
                             </p>
 
@@ -204,7 +203,7 @@ const CategorySection = () => {
                               {category.highlights.map((item) => (
                                 <span
                                   key={item}
-                                  className="rounded-full border border-white/16 bg-white/10 px-4 py-2 text-[11px] uppercase tracking-[0.28em] text-white/82 backdrop-blur-md"
+                                  className="rounded-full border border-white/30 bg-white/18 px-4 py-2 text-[11px] font-medium uppercase tracking-[0.28em] text-white shadow-[0_6px_18px_rgba(0,0,0,0.18)] backdrop-blur-md"
                                 >
                                   {item}
                                 </span>
@@ -272,7 +271,7 @@ const CategorySection = () => {
                         <h3 className="mt-4 text-2xl font-light text-white">
                           {category.title}
                         </h3>
-                        <p className="mt-3 text-sm leading-6 text-white/80">
+                        <p className="mt-3 text-sm font-medium leading-6 text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)]">
                           {category.subtitle}
                         </p>
                       </div>

@@ -1,116 +1,103 @@
 import React from "react";
 import { motion } from "framer-motion";
+import ayurvedaImage from "../../assets/images/Center/Ayurveda.png";
+import doctorRoomImage from "../../assets/images/Center/DoctorRoom.png";
+import receptionImage from "../../assets/images/Center/Reception .png";
 
-const galleryImages = [
+const portraitGalleryImages = [
   {
-    src: "https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1200&q=80",
+    src: receptionImage,
     title: "Elegant reception experience",
     description: "A welcoming first impression with a calm, refined atmosphere.",
-    span: "lg:col-span-7",
+    label: "Arrival",
+    objectPosition: "center top",
   },
   {
-    src: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1200&q=80",
-    title: "Private consultation rooms",
-    description: "Spaces designed for personal conversations and treatment planning.",
-    span: "lg:col-span-5",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80",
-    title: "Modern treatment spaces",
-    description: "Clean, professional treatment rooms shaped around comfort and care.",
-    span: "lg:col-span-4",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80",
-    title: "Comfort-focused interiors",
-    description: "A premium environment that feels serene from arrival to aftercare.",
-    span: "lg:col-span-4",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1580281658629-0d5b47f2b4f2?auto=format&fit=crop&w=1200&q=80",
+    src: ayurvedaImage,
     title: "Thoughtful clinical detailing",
     description: "Luxury aesthetics balanced with trust, hygiene and modern technology.",
-    span: "lg:col-span-4",
+    label: "Wellness",
+    objectPosition: "center center",
+  },
+  {
+    src: doctorRoomImage,
+    title: "Private consultation rooms",
+    description: "Spaces designed for personal conversations and treatment planning.",
+    label: "Consultation",
+    objectPosition: "center center",
   },
 ];
 
 const CentreGallerySection = () => {
   return (
-    <section className="bg-[#f8f4ef] px-6 py-24">
-      <div className="mx-auto max-w-7xl">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.55 }}
-          className="mb-14 grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-end"
-        >
-          <div>
-            <p className="text-[11px] uppercase tracking-[0.35em] text-[#9a7b52]">
-              Our Centre
-            </p>
-            <h2 className="mt-5 text-4xl font-light tracking-[-0.03em] text-slate-900 md:text-5xl">
-              A clinic environment that feels premium, calm and personal.
-            </h2>
-          </div>
+    <section className="relative overflow-hidden bg-[#f8f4ef] px-6 py-24 lg:py-28">
+      <div className="absolute left-[-8%] top-20 h-64 w-64 rounded-full bg-[#e7d2b7]/40 blur-3xl" />
+      <div className="absolute bottom-10 right-[-6%] h-72 w-72 rounded-full bg-[#d8e0ea]/55 blur-3xl" />
 
-          <div className="lg:pl-12">
-            <p className="max-w-2xl text-lg leading-8 text-slate-600">
-              This section is ready for your real clinic photographs. For now,
-              I have used sample premium interiors so you can see how a centre
-              gallery will look on the homepage.
-            </p>
-          </div>
-        </motion.div>
+      <div className="relative mx-auto max-w-[82rem]">
+        <div className="mb-8 overflow-hidden rounded-[40px] border border-[#e7dccd] bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(250,245,239,0.97))] p-3 shadow-[0_24px_80px_rgba(15,23,42,0.08)] md:p-4 lg:p-5">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:items-start">
+            {portraitGalleryImages.map((image, index) => (
+              <motion.div
+                key={image.title}
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.55, delay: index * 0.08 }}
+                className={`group relative overflow-hidden rounded-[28px] border border-[#efe5d8] bg-white shadow-[0_20px_55px_rgba(17,24,39,0.07)] ${
+                  index === 1 ? "sm:mt-10 lg:mt-12" : ""
+                }`}
+              >
+                <div className="p-3">
+                  <div className="relative aspect-[4/5] overflow-hidden rounded-[22px] bg-[#f6efe7]">
+                    <img
+                      src={image.src}
+                      alt={image.title}
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      style={{ objectPosition: image.objectPosition }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#10233f]/35 via-transparent to-transparent" />
+                    <div className="absolute left-4 top-4">
+                      <span className="inline-flex items-center rounded-full border border-white/50 bg-white/70 px-3 py-1.5 text-[10px] uppercase tracking-[0.28em] text-slate-700 backdrop-blur-md">
+                      {image.label}
+                      </span>
+                    </div>
+                  </div>
 
-        <div className="mb-6 grid gap-6 lg:grid-cols-12">
-          {galleryImages.map((image, index) => (
-            <motion.div
-              key={image.title}
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.55, delay: index * 0.08 }}
-              className={`group relative min-h-[280px] overflow-hidden rounded-[30px] shadow-[0_20px_55px_rgba(17,24,39,0.07)] ${image.span}`}
-            >
-              <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                style={{ backgroundImage: `url(${image.src})` }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#10233f]/72 via-[#10233f]/12 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 p-6 md:p-7">
-                <p className="text-[11px] uppercase tracking-[0.3em] text-white/70">
-                  Elaria Space
-                </p>
-                <h3 className="mt-3 max-w-sm text-xl font-medium text-white md:text-2xl">
-                  {image.title}
-                </h3>
-                <p className="mt-3 max-w-md text-sm leading-6 text-white/78">
-                  {image.description}
-                </p>
-              </div>
-            </motion.div>
-          ))}
+                  <div className="px-2 pb-2 pt-5">
+                    <p className="text-[11px] uppercase tracking-[0.3em] text-[#9a7b52]">
+                      Elaria Space
+                    </p>
+                    <h3 className="mt-3 text-xl font-medium text-slate-900 md:text-[1.65rem]">
+                      {image.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-7 text-slate-600">
+                      {image.description}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
 
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.55, delay: 0.15 }}
-          className="grid gap-6 rounded-[34px] border border-[#e9dfd2] bg-white p-8 lg:grid-cols-[1fr_auto] lg:items-center"
+          className="grid gap-6 rounded-[34px] border border-[#e9dfd2] bg-white/90 p-8 shadow-[0_18px_45px_rgba(15,23,42,0.05)] backdrop-blur-sm lg:grid-cols-[1fr_auto] lg:items-center"
         >
           <div>
             <p className="text-[11px] uppercase tracking-[0.35em] text-[#9a7b52]">
-              Sample Gallery Placeholder
+              Centre Gallery
             </p>
             <h3 className="mt-4 text-2xl font-medium text-slate-900">
-              Replace these with your actual centre photos anytime.
+              Your current centre images are live in this section.
             </h3>
             <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-600">
-              Once you share your clinic images, I can place them here in the same
-              layout or redesign this into a full luxury gallery, slider, or
-              before-you-visit visual story.
+              As you add more centre photos later, this layout can easily grow
+              into a larger gallery, slider, or a more editorial visual story.
             </p>
           </div>
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:min-w-[300px]">
@@ -118,9 +105,9 @@ const CentreGallerySection = () => {
               "Reception",
               "Consultation Room",
               "Treatment Room",
-              "Waiting Area",
-              "Equipment",
-              "Team Moments",
+              "More Images Coming",
+              "Future Gallery",
+              "Expanded Spaces",
             ].map((item) => (
               <div
                 key={item}
@@ -130,7 +117,7 @@ const CentreGallerySection = () => {
               </div>
             ))}
           </div>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );

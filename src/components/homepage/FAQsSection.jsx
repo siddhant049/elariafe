@@ -78,6 +78,11 @@ const FAQsSection = () => {
       answer:
         "Some treatments show visible improvement immediately or within a few days, while others work gradually over several weeks as your skin or hair regenerates. During your consultation, we’ll explain the expected timeline and how many sessions you may need.",
     },
+    {
+      question: "Can I combine multiple treatments in one treatment plan?",
+      answer:
+        "Yes, in many cases treatments can be combined to address multiple concerns more effectively. During your consultation, our experts will recommend a safe and personalized plan based on your goals, skin or hair condition, and recovery requirements.",
+    },
   ];
 
   return (

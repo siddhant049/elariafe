@@ -14,6 +14,7 @@ import TreatmentDetailPage from "./pages/treatments/TreatmentDetailPage";
 import ServiceDetailPage from "./pages/services/ServiceDetailPage";
 import AIAssessmentPage from "./pages/AIAssessmentPage";
 import HomePage from "./pages/HomePage";
+import receptionImage from "./assets/images/Center/Reception .png";
 
 // ============================================================================
 // BOOKING MODAL COMPONENT
@@ -318,85 +319,112 @@ const BookingModal = ({ isOpen, onClose }) => {
           form.resetFields();
         }}
         footer={null}
-        width={900}
+        width={1200}
         className="booking-modal"
         centered
       >
-        <div className="py-4">
-          {/* Enhanced Progress Steps */}
-          <div className="mb-8">
-            <Steps
-              current={currentStep}
-              items={steps.map((step, index) => ({
-                ...step,
-                status:
-                  index < currentStep
-                    ? "finish"
-                    : index === currentStep
-                    ? "process"
-                    : "wait",
-                icon: index < currentStep ? <CheckCircleOutlined /> : undefined,
-              }))}
-              className="mb-4"
-            />
-
-            {/* Step Progress Bar */}
-            <div className="relative">
-              <div className="w-full h-1 bg-gray-200 rounded-full overflow-hidden">
-                <motion.div
-                  className="h-full bg-gradient-to-r from-[#efae4c] to-[#d89b3e] rounded-full"
-                  initial={{ width: 0 }}
-                  animate={{
-                    width: `${((currentStep + 1) / steps.length) * 100}%`,
-                  }}
-                  transition={{ duration: 0.5, ease: "easeOut" }}
-                />
-              </div>
-              <div className="flex justify-between mt-2">
-                {steps.map((step, index) => (
-                  <div key={index} className="flex flex-col items-center">
-                    <div
-                      className={`w-2 h-2 rounded-full mb-1 ${
-                        index <= currentStep ? "bg-[#efae4c]" : "bg-gray-300"
-                      }`}
-                    />
-                    <span
-                      className={`text-xs ${
-                        index <= currentStep
-                          ? "text-[#efae4c] font-medium"
-                          : "text-gray-400"
-                      }`}
-                    >
-                      {step.title}
-                    </span>
-                  </div>
-                ))}
+        <div className="py-2">
+          <div className="grid gap-6 lg:grid-cols-[0.42fr_0.58fr] lg:items-stretch">
+            <div className="relative hidden overflow-hidden rounded-[28px] bg-[#f7f1ea] lg:block">
+              <img
+                src={receptionImage}
+                alt="Elaria reception"
+                className="absolute inset-0 h-full w-full object-cover"
+                style={{ objectPosition: "center top" }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#081425]/84 via-[#0d1d33]/34 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 p-6">
+                <div className="rounded-[24px] border border-white/12 bg-[linear-gradient(135deg,rgba(7,16,26,0.68),rgba(7,16,26,0.38))] p-5 shadow-[0_16px_40px_rgba(0,0,0,0.22)] backdrop-blur-xl">
+                  <p className="text-[11px] font-medium uppercase tracking-[0.32em] text-[#f3dfbc] drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)]">
+                    Elaria Space
+                  </p>
+                  <h3 className="mt-3 text-2xl font-medium leading-tight text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.35)]">
+                    A warm welcome before your consultation begins.
+                  </h3>
+                  <p className="mt-3 text-sm leading-6 text-white/95 drop-shadow-[0_1px_3px_rgba(0,0,0,0.3)]">
+                    Experience a calm, premium environment designed to make every
+                    visit feel personal and comfortable.
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Step 1: Category Selection */}
-          {currentStep === 0 && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="space-y-4"
-            >
-              <h3 className="text-xl font-light text-[#001b3d] mb-6 text-center">
-                Choose Your Category
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {bookingCategories.map((category) => {
-                  const isSelected = bookingData.category === category.value;
-                  return (
+            <div>
+              {/* Enhanced Progress Steps */}
+              <div className="mb-8">
+                <Steps
+                  current={currentStep}
+                  items={steps.map((step, index) => ({
+                    ...step,
+                    status:
+                      index < currentStep
+                        ? "finish"
+                        : index === currentStep
+                        ? "process"
+                        : "wait",
+                    icon:
+                      index < currentStep ? <CheckCircleOutlined /> : undefined,
+                  }))}
+                  className="mb-4"
+                />
+
+                {/* Step Progress Bar */}
+                <div className="relative">
+                  <div className="w-full h-1 bg-gray-200 rounded-full overflow-hidden">
                     <motion.div
-                      key={category.value}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      onClick={() => handleCategorySelect(category.value)}
-                      className={`cursor-pointer border-2 rounded-xl p-4 transition-all duration-300 hover:shadow-lg relative ${
-                        isSelected
-                          ? "border-[#efae4c] bg-[#efae4c]/5 shadow-lg"
+                      className="h-full bg-gradient-to-r from-[#efae4c] to-[#d89b3e] rounded-full"
+                      initial={{ width: 0 }}
+                      animate={{
+                        width: `${((currentStep + 1) / steps.length) * 100}%`,
+                      }}
+                      transition={{ duration: 0.5, ease: "easeOut" }}
+                    />
+                  </div>
+                  <div className="flex justify-between mt-2">
+                    {steps.map((step, index) => (
+                      <div key={index} className="flex flex-col items-center">
+                        <div
+                          className={`w-2 h-2 rounded-full mb-1 ${
+                            index <= currentStep ? "bg-[#efae4c]" : "bg-gray-300"
+                          }`}
+                        />
+                        <span
+                          className={`text-xs ${
+                            index <= currentStep
+                              ? "text-[#efae4c] font-medium"
+                              : "text-gray-400"
+                          }`}
+                        >
+                          {step.title}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Step 1: Category Selection */}
+              {currentStep === 0 && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="space-y-4"
+                >
+                  <h3 className="text-xl font-light text-[#001b3d] mb-6 text-center">
+                    Choose Your Category
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {bookingCategories.map((category) => {
+                      const isSelected = bookingData.category === category.value;
+                      return (
+                        <motion.div
+                          key={category.value}
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                          onClick={() => handleCategorySelect(category.value)}
+                          className={`cursor-pointer border-2 rounded-xl p-4 transition-all duration-300 hover:shadow-lg relative ${
+                            isSelected
+                              ? "border-[#efae4c] bg-[#efae4c]/5 shadow-lg"
                           : "border-gray-200 hover:border-[#efae4c]"
                       }`}
                     >
@@ -647,6 +675,8 @@ const BookingModal = ({ isOpen, onClose }) => {
               </Form>
             </motion.div>
           )}
+            </div>
+          </div>
         </div>
       </Modal>
     </>

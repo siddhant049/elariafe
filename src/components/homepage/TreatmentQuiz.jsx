@@ -529,7 +529,7 @@ const TreatmentQuiz = ({ onBookAppointment }) => {
   const currentQuestion = quizQuestions[currentStep];
 
   return (
-    <section className="bg-[#10233f] px-6 py-24">
+    <section className="bg-[#f8f4ef] px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <motion.div
           initial="hidden"
@@ -538,13 +538,13 @@ const TreatmentQuiz = ({ onBookAppointment }) => {
           variants={fadeUp}
           className="mb-14 text-center"
         >
-          <div className="inline-block rounded-full border border-white/20 px-5 py-2 text-[11px] uppercase tracking-[0.32em] text-[#d6b384]">
+          <div className="inline-block rounded-full border border-[#e7dccd] bg-white/80 px-5 py-2 text-[11px] uppercase tracking-[0.32em] text-[#9a7b52]">
             Consultation Finder
           </div>
-          <h2 className="mt-6 text-4xl font-light tracking-[-0.03em] text-white md:text-5xl">
+          <h2 className="mt-6 text-4xl font-light tracking-[-0.03em] text-slate-900 md:text-5xl">
             Find your ideal treatment path.
           </h2>
-          <p className="mt-4 text-lg text-white/70">
+          <p className="mt-4 text-lg text-slate-600">
             A more guided way to shortlist treatments before your consultation.
           </p>
           <motion.div
@@ -570,7 +570,7 @@ const TreatmentQuiz = ({ onBookAppointment }) => {
               <motion.div
                 key={index}
                 className={`mx-2 h-2.5 w-10 rounded-full ${
-                  index <= currentStep ? "bg-[#d6b384]" : "bg-white/15"
+                  index <= currentStep ? "bg-[#d6b384]" : "bg-[#e8ddd1]"
                 }`}
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
@@ -578,7 +578,7 @@ const TreatmentQuiz = ({ onBookAppointment }) => {
               />
             ))}
           </div>
-          <div className="text-center text-sm text-white/60">
+          <div className="text-center text-sm text-slate-500">
             Question {currentStep + 1} of {quizQuestions.length}
           </div>
         </div>
@@ -588,9 +588,9 @@ const TreatmentQuiz = ({ onBookAppointment }) => {
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -50 }}
-          className="rounded-[32px] border border-white/10 bg-white/6 p-8 backdrop-blur-md md:p-12"
+          className="rounded-[32px] border border-[#e7dccd] bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(250,245,239,0.97))] p-8 shadow-[0_24px_70px_rgba(15,23,42,0.06)] md:p-12"
         >
-          <h3 className="mb-12 text-center text-2xl font-light tracking-wide text-white md:text-3xl">
+          <h3 className="mb-12 text-center text-2xl font-light tracking-wide text-slate-900 md:text-3xl">
             {currentQuestion.question}
           </h3>
 
@@ -604,16 +604,16 @@ const TreatmentQuiz = ({ onBookAppointment }) => {
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => handleAnswer(currentStep, option)}
-                className="group rounded-[24px] border border-white/10 bg-white/5 p-6 text-left transition-all duration-300 hover:border-[#d6b384]/45 hover:bg-white/10"
+                className="group rounded-[24px] border border-[#ede2d5] bg-white p-6 text-left shadow-[0_12px_30px_rgba(15,23,42,0.04)] transition-all duration-300 hover:border-[#d6b384]/70 hover:bg-[#fffaf4] hover:shadow-[0_18px_35px_rgba(15,23,42,0.08)]"
               >
-                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-sm font-medium text-[#d6b384]">
+                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-[#ead9c3] bg-[#fbf4ea] text-sm font-medium text-[#9a7b52]">
                   {index + 1}
                 </div>
-                <div className="font-light tracking-wide text-white transition-colors group-hover:text-[#d6b384]">
+                <div className="font-light tracking-wide text-slate-900 transition-colors group-hover:text-[#9a7b52]">
                   {option.text}
                 </div>
                 {option.description && (
-                  <div className="mt-3 text-sm leading-relaxed text-white/70 transition-colors group-hover:text-white/90">
+                  <div className="mt-3 text-sm leading-relaxed text-slate-600 transition-colors group-hover:text-slate-700">
                     {option.description}
                   </div>
                 )}

@@ -99,7 +99,7 @@ const Footer = () => {
               <h4 className="text-lg font-semibold text-white mb-6">Contact</h4>
               <div className="space-y-3 text-sm text-secondary-400">
                 <p>+91-92665 11393</p>
-                <p>care@elariaesthetique.com</p>
+                <p>elariaesthetique@gmail.com</p>
                 <p className="leading-relaxed">
                   1st Floor, Sector 47, Malibu Town
                   <br />

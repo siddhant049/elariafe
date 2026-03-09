@@ -1,5 +1,5 @@
-import React, { useMemo, useState } from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useMemo, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowRightOutlined,
   CalendarOutlined,
@@ -20,8 +20,19 @@ const featureTags = [
   "Luxury clinic experience",
 ];
 
+const floatingWords = ["Radiant", "Confident", "Beautiful", "Timeless"];
+
 const HeroSection = ({ onBookAppointment }) => {
   const [pointer, setPointer] = useState({ x: 0, y: 0 });
+  const [currentWord, setCurrentWord] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentWord((prev) => (prev + 1) % floatingWords.length);
+    }, 2500);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const scrollToTreatments = () => {
     const section = document.getElementById("treatments-section");
@@ -93,7 +104,22 @@ const HeroSection = ({ onBookAppointment }) => {
             </div>
 
             <h1 className="mt-8 text-5xl font-light leading-[0.9] tracking-[-0.065em] text-white md:text-7xl xl:text-[6.1rem]">
-              Feel Beautiful.
+              Feel
+              <span className="relative ml-3 inline-flex min-w-[1.9ch] items-center justify-start md:min-w-[2.8ch]">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={currentWord}
+                    initial={{ opacity: 0, y: 20, rotateX: 90 }}
+                    animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                    exit={{ opacity: 0, y: -20, rotateX: -90 }}
+                    transition={{ duration: 0.5 }}
+                    className="inline-block bg-gradient-to-r from-[#efae4c] via-[#d89b3e] to-[#efae4c] bg-clip-text text-transparent"
+                    style={{ backgroundSize: "200% auto" }}
+                  >
+                    {floatingWords[currentWord]}
+                  </motion.span>
+                </AnimatePresence>
+              </span>
               <span className="block text-[#d6b384]">Be Elaria.</span>
             </h1>
 
@@ -183,7 +209,7 @@ const HeroSection = ({ onBookAppointment }) => {
                 <div className="relative p-6 md:p-8">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-[10px] uppercase tracking-[0.34em] text-[#d6b384]">
+                      <p className="text-[10px] uppercase tracking-[0.34em] text-[rgb(246_243_239)]">
                         Signature Care Journey
                       </p>
                       <h2 className="mt-3 text-2xl font-light text-white md:text-[2rem]">
@@ -198,7 +224,7 @@ const HeroSection = ({ onBookAppointment }) => {
 
                   <div className="mt-8 grid gap-4 sm:grid-cols-2">
                     <div className="rounded-[24px] border border-white/10 bg-white/5 p-5 backdrop-blur-xl">
-                      <p className="text-[10px] uppercase tracking-[0.28em] text-white/60">
+                      <p className="text-[10px] uppercase tracking-[0.28em] text-[rgb(246_243_239)]">
                         Consultation First
                       </p>
                       <p className="mt-4 text-3xl font-semibold text-white">01</p>
@@ -209,7 +235,7 @@ const HeroSection = ({ onBookAppointment }) => {
                     </div>
 
                     <div className="rounded-[24px] border border-[rgba(214,179,132,0.2)] bg-[linear-gradient(135deg,rgba(214,179,132,0.12),rgba(255,255,255,0.05))] p-5 backdrop-blur-xl">
-                      <p className="text-[10px] uppercase tracking-[0.28em] text-[#d6b384]">
+                      <p className="text-[10px] uppercase tracking-[0.28em] text-[rgb(246_243_239)]">
                         Tailored Results
                       </p>
                       <p className="mt-4 text-3xl font-semibold text-white">02</p>
@@ -222,7 +248,7 @@ const HeroSection = ({ onBookAppointment }) => {
 
                   <div className="mt-6 rounded-[24px] border border-white/10 bg-[rgba(7,16,26,0.7)] p-5">
                     <div className="flex items-center justify-between">
-                      <p className="text-[10px] uppercase tracking-[0.3em] text-white/60">
+                      <p className="text-[10px] uppercase tracking-[0.3em] text-[rgb(246_243_239)]">
                         Care Philosophy
                       </p>
                       <p className="text-sm font-medium text-white">98% Satisfaction</p>
@@ -252,7 +278,7 @@ const HeroSection = ({ onBookAppointment }) => {
               style={dynamicStyles.accentCard}
               className="absolute -right-3 top-10 hidden rounded-[22px] border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.12),rgba(255,255,255,0.05))] px-5 py-4 backdrop-blur-xl lg:block"
             >
-              <p className="text-[10px] uppercase tracking-[0.28em] text-[#d6b384]">
+              <p className="text-[10px] uppercase tracking-[0.28em] text-[rgb(246_243_239)]">
                 Elaria Experience
               </p>
               <p className="mt-3 text-xl font-medium text-white">Calm. Refined. Personal.</p>
