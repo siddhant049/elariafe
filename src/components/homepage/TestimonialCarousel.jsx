@@ -61,7 +61,7 @@ const TestimonialCarousel = () => {
               Testimonials
             </p>
             <h2 className="mt-5 text-4xl font-light tracking-[-0.03em] text-slate-900 md:text-5xl">
-              Real stories from clients who trusted our care.
+              Client testimonials shaped by their trust and our professional care.
             </h2>
           </div>
           <div className="flex items-center gap-3 lg:justify-end">

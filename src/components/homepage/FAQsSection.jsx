@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 
 const staggerContainer = {
@@ -31,6 +31,7 @@ const scaleIn = {
 };
 
 const FAQsSection = () => {
+  const [activeFaq, setActiveFaq] = useState(-1);
   const faqs = [
     {
       question: "Are the treatments safe and FDA approved?",
@@ -78,16 +79,16 @@ const FAQsSection = () => {
       answer:
         "Some treatments show visible improvement immediately or within a few days, while others work gradually over several weeks as your skin or hair regenerates. During your consultation, we’ll explain the expected timeline and how many sessions you may need.",
     },
-    {
-      question: "Can I combine multiple treatments in one treatment plan?",
-      answer:
-        "Yes, in many cases treatments can be combined to address multiple concerns more effectively. During your consultation, our experts will recommend a safe and personalized plan based on your goals, skin or hair condition, and recovery requirements.",
-    },
+    // {
+    //   question: "Can I combine multiple treatments in one treatment plan?",
+    //   answer:
+    //     "Yes, in many cases treatments can be combined to address multiple concerns more effectively. During your consultation, our experts will recommend a safe and personalized plan based on your goals, skin or hair condition, and recovery requirements.",
+    // },
   ];
 
   return (
     <section className="border-t border-[#eee2d4] bg-[#fcfaf7] px-6 py-24">
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto max-w-[88rem]">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -111,21 +112,67 @@ const FAQsSection = () => {
 
         <motion.div
           variants={staggerContainer}
-          className="grid grid-cols-1 gap-6 md:grid-cols-2"
+          className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3"
         >
           {faqs.map((faq, index) => (
             <motion.div
               key={index}
               variants={scaleIn}
-              className="rounded-[28px] border border-[#e9dfd2] bg-white p-7 shadow-[0_16px_40px_rgba(17,24,39,0.04)]"
+              whileHover={{ y: -6 }}
+              onMouseEnter={() => setActiveFaq(index)}
+              onMouseLeave={() => setActiveFaq(-1)}
+              className="group relative h-[300px] [perspective:1400px]"
             >
-              <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#f7f1ea] text-[#9a7b52]">
-                {String(index + 1).padStart(2, "0")}
-              </div>
-              <h3 className="max-w-xl text-xl font-medium leading-8 text-[#10233f]">
-                {faq.question}
-              </h3>
-              <p className="mt-4 text-sm leading-7 text-slate-600">{faq.answer}</p>
+              <motion.div
+                animate={{ rotateY: activeFaq === index ? 180 : 0 }}
+                transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+                className="relative h-full w-full"
+                style={{ transformStyle: "preserve-3d" }}
+              >
+                <div
+                  className="absolute inset-0 overflow-hidden rounded-[28px] border border-[#e9dfd2] bg-white p-6 shadow-[0_16px_40px_rgba(17,24,39,0.04)]"
+                  style={{ backfaceVisibility: "hidden" }}
+                >
+                  <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-[#d6b384] via-[#b8925f] to-[#d6b384] opacity-75" />
+                  <div className="mb-5 flex items-center justify-between">
+                    <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#f7f1ea] text-[#9a7b52]">
+                      {String(index + 1).padStart(2, "0")}
+                    </div>
+                  
+                  </div>
+                  <div className="flex h-[calc(100%-3.5rem)] flex-col justify-between">
+                    <h3 className="max-w-xl text-xl font-medium leading-8 text-[#10233f]">
+                      {faq.question}
+                    </h3>
+                    <div className="flex items-center justify-between border-t border-[#efe4d7] pt-4">
+                      <span className="text-sm text-slate-500">Read answer</span>
+                      <span className="text-lg text-[#b8925f]">↗</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  className="absolute inset-0 overflow-hidden rounded-[28px] border border-[#27486f] bg-[linear-gradient(180deg,#173154,#10233f)] p-6 text-white shadow-[0_22px_50px_rgba(16,35,63,0.24)]"
+                  style={{
+                    backfaceVisibility: "hidden",
+                    transform: "rotateY(180deg)",
+                  }}
+                >
+                  <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-[#d6b384] via-[#f0d7ac] to-[#d6b384]" />
+                  <div className="mb-5 flex items-center justify-between">
+                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/12 bg-white/10 text-[#f3dfbc]">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-[10px] uppercase tracking-[0.28em] text-[#f3dfbc]">
+                      Answer
+                    </span>
+                  </div>
+                  <div className="flex h-[calc(100%-3.5rem)] flex-col justify-between">
+                    <p className="text-base leading-7 text-white/90">{faq.answer}</p>
+                    
+                  </div>
+                </div>
+              </motion.div>
             </motion.div>
           ))}
         </motion.div>

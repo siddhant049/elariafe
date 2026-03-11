@@ -3,6 +3,7 @@ import HeroSection from "../components/homepage/HeroSection";
 import CentreGallerySection from "../components/homepage/CentreGallerySection";
 import CategorySection from "../components/homepage/CategorySection";
 import TrustMetrics from "../components/homepage/TrustMetrics";
+import HappyClientsSection from "../components/homepage/HappyClientsSection";
 import TreatmentQuiz from "../components/homepage/TreatmentQuiz";
 import TestimonialCarousel from "../components/homepage/TestimonialCarousel";
 import GetInTouchSection from "../components/homepage/GetInTouchSection";
@@ -44,9 +45,10 @@ const HomePage = ({ onBookAppointment }) => {
       `}</style>
       <HeroSection onBookAppointment={onBookAppointment} />
       <CategorySection />
-      <CentreGallerySection />
       <TrustMetrics />
+      <CentreGallerySection />
       <TreatmentQuiz onBookAppointment={onBookAppointment} />
+      <HappyClientsSection />
       <TestimonialCarousel />
       <GetInTouchSection />
       <ContactSection />

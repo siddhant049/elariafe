@@ -409,7 +409,7 @@ const TreatmentQuiz = ({ onBookAppointment }) => {
 
   if (isCompleted) {
     return (
-      <section className="bg-[#f8f4ef] px-6 py-24">
+      <section className="bg-white px-6 py-24">
         <div className="mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -529,7 +529,7 @@ const TreatmentQuiz = ({ onBookAppointment }) => {
   const currentQuestion = quizQuestions[currentStep];
 
   return (
-    <section className="bg-[#f8f4ef] px-6 py-24">
+    <section className="bg-white  px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <motion.div
           initial="hidden"

@@ -35,6 +35,22 @@ const CentreGallerySection = () => {
       <div className="absolute bottom-10 right-[-6%] h-72 w-72 rounded-full bg-[#d8e0ea]/55 blur-3xl" />
 
       <div className="relative mx-auto max-w-[82rem]">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.55 }}
+          className="mx-auto mb-10 max-w-3xl text-center"
+        >
+          <p className="text-[11px] uppercase tracking-[0.35em] text-[#9a7b52]">
+            Inside Elaria
+          </p>
+          <h2 className="mt-5 text-3xl font-light tracking-[-0.03em] text-slate-900 md:text-4xl">
+            A glimpse into the calm, elegant spaces where your treatment journey
+            begins.
+          </h2>
+        </motion.div>
+
         <div className="mb-8 overflow-hidden rounded-[40px] border border-[#e7dccd] bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(250,245,239,0.97))] p-3 shadow-[0_24px_80px_rgba(15,23,42,0.08)] md:p-4 lg:p-5">
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:items-start">
             {portraitGalleryImages.map((image, index) => (
