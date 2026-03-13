@@ -28,15 +28,24 @@ const Footer = () => {
                 Premium aesthetic treatments for timeless beauty and confidence. Experience the art of transformation.
               </p>
               <div className="flex gap-4">
-                <div className="w-10 h-10 bg-secondary-800 rounded-lg flex items-center justify-center hover:bg-accent-gold hover:text-secondary-900 transition-colors cursor-pointer">
-                  <span className="text-sm font-semibold">IN</span>
-                </div>
-                <div className="w-10 h-10 bg-secondary-800 rounded-lg flex items-center justify-center hover:bg-accent-gold hover:text-secondary-900 transition-colors cursor-pointer">
+                <a
+                  href="https://www.facebook.com/p/Elaria-Esthetique-61577797806477/"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Visit Elaria Esthetique on Facebook"
+                  className="w-10 h-10 bg-secondary-800 rounded-lg flex items-center justify-center hover:bg-accent-gold hover:text-secondary-900 transition-colors cursor-pointer"
+                >
                   <span className="text-sm font-semibold">FB</span>
-                </div>
-                <div className="w-10 h-10 bg-secondary-800 rounded-lg flex items-center justify-center hover:bg-accent-gold hover:text-secondary-900 transition-colors cursor-pointer">
+                </a>
+                <a
+                  href="https://www.instagram.com/elariaesthetique/"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Visit Elaria Esthetique on Instagram"
+                  className="w-10 h-10 bg-secondary-800 rounded-lg flex items-center justify-center hover:bg-accent-gold hover:text-secondary-900 transition-colors cursor-pointer"
+                >
                   <span className="text-sm font-semibold">IG</span>
-                </div>
+                </a>
               </div>
             </div>
 
