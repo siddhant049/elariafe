@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import happyClientOne from "../../assets/videos/Happy clients/Happyclients1.mp4";
 import happyClientTwo from "../../assets/videos/Happy clients/Happyclients2.mp4";
+import happyClientThree from "../../assets/videos/Happy clients/Happyclients3.mp4";
 
 const videos = [
   {
@@ -13,6 +14,11 @@ const videos = [
     src: happyClientTwo,
     title: "Trusted client experiences",
     description: "A closer look at real results and genuine satisfaction.",
+  },
+  {
+    src: happyClientThree,
+    title: "Happy client highlights",
+    description: "More real smiles, candid reactions, and moments of confidence.",
   },
 ];
 
@@ -74,7 +80,7 @@ const HappyClientsSection = () => {
           </p>
         </motion.div>
 
-        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[minmax(0,470px)_minmax(0,470px)] lg:justify-center lg:gap-14">
+        <div className="mx-auto grid max-w-[82rem] gap-8 md:grid-cols-2 xl:grid-cols-3 xl:justify-center xl:gap-10">
           {videos.map((video, index) => (
             <motion.div
               key={video.title}
@@ -82,7 +88,7 @@ const HappyClientsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.55, delay: index * 0.08 }}
-              className="w-full max-w-[470px] justify-self-center overflow-hidden rounded-[30px] border border-[#e7dccd] bg-white p-3 shadow-[0_18px_44px_rgba(17,24,39,0.08)]"
+              className="w-full max-w-[410px] justify-self-center overflow-hidden rounded-[30px] border border-[#e7dccd] bg-white p-3 shadow-[0_18px_44px_rgba(17,24,39,0.08)]"
             >
               <div className="overflow-hidden rounded-[22px] bg-[#0f2037]">
                 <video

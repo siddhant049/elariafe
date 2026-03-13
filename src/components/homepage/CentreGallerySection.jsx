@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import ayurvedaImage from "../../assets/images/Center/Ayurveda.png";
 import doctorRoomImage from "../../assets/images/Center/DoctorRoom.png";
 import receptionImage from "../../assets/images/Center/Reception .png";
+import waitingAreaImage from "../../assets/images/Center/waitingArea.png";
 
 const portraitGalleryImages = [
   {
@@ -26,6 +27,13 @@ const portraitGalleryImages = [
     label: "Consultation",
     objectPosition: "center center",
   },
+  {
+    src: waitingAreaImage,
+    title: "Comfortable waiting area",
+    description: "A calm, polished space designed to make every visit feel relaxed.",
+    label: "Waiting Area",
+    objectPosition: "center center",
+  },
 ];
 
 const CentreGallerySection = () => {
@@ -34,7 +42,7 @@ const CentreGallerySection = () => {
       <div className="absolute left-[-8%] top-20 h-64 w-64 rounded-full bg-[#e7d2b7]/40 blur-3xl" />
       <div className="absolute bottom-10 right-[-6%] h-72 w-72 rounded-full bg-[#d8e0ea]/55 blur-3xl" />
 
-      <div className="relative mx-auto max-w-[82rem]">
+      <div className="relative mx-auto max-w-[118rem]">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -52,7 +60,7 @@ const CentreGallerySection = () => {
         </motion.div>
 
         <div className="mb-8 overflow-hidden rounded-[40px] border border-[#e7dccd] bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(250,245,239,0.97))] p-3 shadow-[0_24px_80px_rgba(15,23,42,0.08)] md:p-4 lg:p-5">
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:items-start">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:items-start">
             {portraitGalleryImages.map((image, index) => (
               <motion.div
                 key={image.title}
