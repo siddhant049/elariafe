@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { ArrowRightOutlined } from "@ant-design/icons";
 import hair from "../../assets/images/hair.jpg";
 import skin from "../../assets/images/skin.jpg";
-import ayurveda from "../../assets/images/Center/Ayurveda.png";
+import ayurveda from "../../assets/images/Center/AyurdevaCat.jpeg";
 // import acne from "../../assets/images/acne.jpg";
 // import under_eyes from "../../assets/images/under_eyes.png";
 // import pigmentation from "../../assets/images/pigmentation.png";
@@ -34,16 +34,7 @@ const categories = [
     highlights: ["Hair fall", "Scalp wellness", "Regrowth support"],
     subtitle: "Targeted scalp and hair restoration care",
   },
-  {
-    title: "AYURVEDA",
-    short: "Ayurveda",
-    description:
-      "Traditional wellness rituals focused on deep relaxation, body balance, and a calmer restorative care experience.",
-    image: ayurveda,
-    path: "/treatment/ayurveda",
-    highlights: ["Relaxation", "Wellness rituals", "Body balance"],
-    subtitle: "Traditional therapies for restorative wellness",
-  },
+
  
   // {
   //   title: "ACNE AND SCARS",
@@ -114,6 +105,16 @@ const categories = [
     path: "/treatment/body-contouring",
     highlights: ["Body shaping", "Fat reduction", "Contour refinement"],
     subtitle: "Shape and refine with non-invasive contouring",
+  },
+  {
+    title: "AYURVEDA",
+    short: "Ayurveda",
+    description:
+      "Traditional wellness rituals focused on deep relaxation, body balance, and a calmer restorative care experience.",
+    image: ayurveda,
+    path: "/treatment/ayurveda",
+    highlights: ["Relaxation", "Wellness rituals", "Body balance"],
+    subtitle: "Traditional therapies for restorative wellness",
   },
 ];
 
