@@ -96,13 +96,6 @@ const HeroSection = ({ onBookAppointment }) => {
             transition={{ duration: 0.6 }}
             className="max-w-3xl"
           >
-            <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/10 px-5 py-2 backdrop-blur-xl">
-              <span className="h-2 w-2 rounded-full bg-[#d6b384]" />
-              <span className="text-[11px] uppercase tracking-[0.35em] text-white/80">
-                Wellness And Aesthetic Care
-              </span>
-            </div>
-
             <h1 className="mt-8 text-5xl font-light leading-[0.9] tracking-[-0.065em] text-white md:text-7xl xl:text-[6.1rem]">
               Feel
               <span className="relative ml-3 inline-flex min-w-[1.9ch] items-center justify-start md:min-w-[2.8ch]">
@@ -124,9 +117,9 @@ const HeroSection = ({ onBookAppointment }) => {
             </h1>
 
             <p className="mt-7 max-w-2xl text-lg leading-8 text-white md:text-[1.14rem]">
-              Discover expert-led skin, hair and wellness-focused aesthetic care
-              in a calming clinic environment designed around refined results,
-              comfort and confidence.
+              Discover expert-led skin and hair care in Sector 47, Gurugram
+              within a calming clinic environment focused on refined results,
+              comfort, and confidence.
             </p>
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
@@ -216,10 +209,7 @@ const HeroSection = ({ onBookAppointment }) => {
                         Personalized Aesthetic Planning
                       </h2>
                     </div>
-                    <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2 text-[10px] uppercase tracking-[0.26em] text-white/80">
-                      <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_14px_rgba(52,211,153,0.72)]" />
-                      Live
-                    </div>
+                   
                   </div>
 
                   <div className="mt-8 grid gap-4 sm:grid-cols-2">
@@ -271,19 +261,7 @@ const HeroSection = ({ onBookAppointment }) => {
               </div>
             </div>
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.55, delay: 0.3 }}
-              style={dynamicStyles.accentCard}
-              className="absolute -right-3 top-10 hidden rounded-[22px] border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.12),rgba(255,255,255,0.05))] px-5 py-4 backdrop-blur-xl lg:block"
-            >
-              <p className="text-[10px] uppercase tracking-[0.28em] text-[rgb(246_243_239)]">
-                Elaria Experience
-              </p>
-              <p className="mt-3 text-xl font-medium text-white">Calm. Refined. Personal.</p>
-              <p className="mt-2 text-sm text-white/70">Designed to feel like a modern premium aesthetics clinic.</p>
-            </motion.div>
+  
           </motion.div>
         </div>
           </div>

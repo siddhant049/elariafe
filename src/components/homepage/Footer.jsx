@@ -143,7 +143,7 @@ const Footer = () => {
         <div className="border-t border-secondary-800 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-secondary-500 text-sm">
-              © 2025 Elaria Esthetique. All rights reserved.
+              © 2026 Elaria Esthetique. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm text-secondary-500">
               <a href="#privacy" className="hover:text-accent-gold transition-colors">

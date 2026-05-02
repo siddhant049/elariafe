@@ -19,53 +19,144 @@ const categoryLinks = [
   { key: "pigmentation", label: "Pigmentation", path: "/treatment/pigmentation" },
   { key: "medifacial", label: "MediFacials", path: "/treatment/medifacial" },
   { key: "anti-aging", label: "Anti-Aging", path: "/treatment/anti-aging" },
+  { key: "mole-surgery", label: "Mole Removal", path: "/treatment/mole-surgery"}, 
+  { key: "stretch-marks-removal", label: "Stretch Marks Removal", path: "/treatment/stretch-marks-removal"},
+  { key: "skin-infection-treatment", label: "Skin Infection Treatment", path: "/treatment/skin-infection-treatment"},
   { key: "laser", label: "Laser Treatments", path: "/treatment/laser" },
   { key: "body-contouring", label: "Body Contouring", path: "/treatment/body-contouring" },
+  { key: "ayurveda", label: "Ayurveda", path: "/treatment/ayurveda" },
 ];
 
 const mainCategoryLinks = categoryLinks.filter((category) =>
-  ["hair", "laser", "body-contouring"].includes(category.key)
+  [].includes(category.key)
 );
 
+const hairCategoryLinks = [
+  {
+    key: "hair-thinning-hair-fall",
+    label: "Hair thinning / hair fall",
+    path: "/treatment/hair-thinning-hair-fall",
+  },
+  {
+    key: "dandruff",
+    label: "Dandruff",
+    path: "/treatment/dandruff",
+  },
+];
+
+const hairNestedServiceLinks = {
+  "hair-thinning-hair-fall": [
+    { label: "PRP Hair Treatment", path: "/service/prp-hair-treatment" },
+    { label: "GFC Therapy", path: "/service/gfc-therapy" },
+    { label: "QR678 Treatment", path: "/service/qr678-treatment" },
+    { label: "Exosome Hair Treatment", path: "/service/exosome-hair-treatment" },
+  ],
+  dandruff: [{ label: "Scalp Peel Treatment", path: "/service/scalp-peel-treatment" }],
+};
+
+const laserCategoryLinks = [
+  {
+    key: "laser-hair",
+    label: "Hair",
+    path: "/treatment/laser",
+  },
+  {
+    key: "laser-skin",
+    label: "Skin",
+    path: "/treatment/laser",
+  },
+];
+
+const laserNestedServiceLinks = {
+  "laser-hair": [
+    {
+      label: "Laser Hair Reduction for Males",
+      path: "/service/laser-hair-reduction-males",
+    },
+    {
+      label: "Laser Hair Reduction for Females",
+      path: "/service/laser-hair-reduction-females",
+    },
+  ],
+  "laser-skin": [
+    { label: "Birthmark Removal", path: "/service/birthmark-removal" },
+    { label: "Tattoo Removal", path: "/service/tattoo-removal" },
+  ],
+};
+
+const bodyContouringCategoryLinks = [
+  {
+    key: "weight-loss-program",
+    label: "Weight Loss Program",
+    path: "/treatment/weight-loss-program",
+  },
+  {
+    key: "body-shaping-and-targeted-weight-loss-program",
+    label: "Body Shaping and Targeted Weight Loss Program",
+    path: "/treatment/body-shaping-and-targeted-weight-loss-program",
+  },
+];
+
+const bodyContouringNestedServiceLinks = {
+  "weight-loss-program": [
+    { label: "FDS", path: "/service/fds-treatment" },
+    { label: "NMS", path: "/service/nms-treatment" },
+    { label: "Lipo Laser", path: "/service/lipo-laser-treatment" },
+    { label: "Tummy Tuck", path: "/service/tummy-tuck-treatment" },
+  ],
+  "body-shaping-and-targeted-weight-loss-program": [
+    { label: "Muscle Sculpt", path: "/service/muscle-sculpt-treatment" },
+    { label: "Cryo Sculpt", path: "/service/cryo-sculpt-treatment" },
+  ],
+};
+
+const ayurvedaServices = [
+  { label: "Potli Massage", path: "/service/potli-massage" },
+  { label: "Shirodhara", path: "/service/shirodhara-treatment" },
+  { label: "Full Body Massage", path: "/service/full-body-massage" },
+  { label: "Udwarthanam", path: "/service/udwarthanam-treatment" },
+];
+
 const skinCategoryLinks = categoryLinks.filter((category) =>
-  ["skin", "acne-scars", "under-eye", "pigmentation", "medifacial", "anti-aging"].includes(
+  ["skin", "acne-scars", "under-eye", "pigmentation", "medifacial", "anti-aging", "mole-surgery","stretch-marks-removal","skin-infection-treatment"].includes(
     category.key
   )
 );
 
 const skinDirectServiceLinks = [
-  { label: "Acne Scar Treatment", path: "/service/acne-scar-treatment" },
-  { label: "Xanthelasma Removal", path: "/service/xanthelasma-removal" },
-  { label: "Skin Infection Treatment", path: "/service/skin-infections-treatment" },
-  { label: "Melasma Therapy", path: "/service/melasma-treatment" },
-  { label: "Mole Surgery", path: "/service/mole-surgery" },
-  { label: "Skin Tag Removal", path: "/service/skin-tag-removal" },
-  { label: "Laser Mole Treatment", path: "/service/laser-mole-treatment" },
-  { label: "Wart Cautery", path: "/service/wart-cautery" },
-  { label: "Dermapen Treatment", path: "/service/dermapen-skin-treatment" },
-  { label: "Stretch Mark Reduction", path: "/service/stretch-marks-treatment" },
+  // { label: "Acne Scar Treatment", path: "/service/acne-scar-treatment" },
+  // { label: "Xanthelasma Removal", path: "/service/xanthelasma-removal" },
+  // { label: "Skin Infection Treatment", path: "/service/skin-infections-treatment" },
+  // { label: "Melasma Therapy", path: "/service/melasma-treatment" },
+  // { label: "Mole Surgery", path: "/service/mole-surgery" },
+  // { label: "Stretch Marks Removal", path: "/service/stretch-marks-removal" },
+  // { label: "Skin Tag Removal", path: "/service/skin-tag-removal" },
+  // { label: "Laser Mole Treatment", path: "/service/laser-mole-treatment" },
+  // { label: "Wart Cautery", path: "/service/wart-cautery" },
+  // { label: "Dermapen Treatment", path: "/service/dermapen-skin-treatment" },
+  // { label: "Stretch Mark Reduction", path: "/service/stretch-marks-treatment" },
 ];
 
 const skinNestedServiceLinks = {
   "acne-scars": [
-    { label: "Acne Chemical Peels", path: "/service/acne-peels" },
-    { label: "Advanced Acne Therapy", path: "/service/advanced-acne-treatments" },
-    { label: "Carbon Laser Peels", path: "/service/carbon-peels" },
-    { label: "Professional Chemical Peels", path: "/service/chemical-peels-acne" },
-    { label: "Dermarolling Treatment", path: "/service/derma-roller-acne" },
-    { label: "Fractional CO2 Laser", path: "/service/fractional-laser-acne" },
-    { label: "RF Microneedling", path: "/service/radiofrequency-microneedling" },
-    { label: "Acne Deep Cleansing Facial", path: "/service/acne-cleanup-facial" },
-    { label: "Freckle Laser Treatment", path: "/service/laser-freckles-treatment" },
+    { label: "Acne Peels", path: "/service/acne-peels" },
+    { label: "Advanced Acne Treatments", path: "/service/advanced-acne-treatments" },
+    { label: "Carbon Peels", path: "/service/carbon-peels" },
+    { label: "Chemical Peels for Acne", path: "/service/chemical-peels-acne" },
+    { label: "Derma Roller for Acne", path: "/service/derma-roller-acne" },
+    { label: "Fractional Laser for Acne", path: "/service/fractional-laser-acne" },
+    { label: "Radiofrequency Microneedling", path: "/service/radiofrequency-microneedling" },
+    { label: "Acne Cleanup Facial", path: "/service/acne-cleanup-facial" },
+    { label: "Laser for Freckles", path: "/service/laser-freckles-treatment" },
     {
-      label: "RF Microneedling for Scars",
+      label: "Microneedling Radiofrequency for Stretch Marks",
       path: "/service/microneedling-radiofrequency-stretch-marks",
     },
   ],
   "under-eye": [
-    { label: "Dark Circle Reduction", path: "/service/dark-circles-removal" },
+    { label: "Dark Circles Removal", path: "/service/dark-circles-removal" },
     { label: "Under Eye Rejuvenation", path: "/service/under-eye-rejuvenation" },
-    { label: "Dermal Fillers for Eyes", path: "/service/under-eye-boosters" },
+    { label: "Under Eye Boosters", path: "/service/under-eye-boosters" },
   ],
   pigmentation: [
     { label: "Freckle Treatment", path: "/service/freckle-treatment" },
@@ -76,76 +167,49 @@ const skinNestedServiceLinks = {
     { label: "PRP Vampire Facial", path: "/service/prp-vampire-facial" },
     { label: "HydraFacial Basic", path: "/service/hydrafacial-basic" },
     { label: "HydraFacial Elite", path: "/service/hydrafacial-elite" },
-    { label: "Skin Brightening Boosters", path: "/service/skin-boosters-pigmentation" },
+    { label: "Skin Boosters for Pigmentation", path: "/service/skin-boosters-pigmentation" },
   ],
   medifacial: [
-    { label: "Diamond Microdermabrasion", path: "/service/diamond-polishing" },
-    { label: "Oxygen Facials", path: "/service/oxy-facials" },
-    { label: "Oxyglow Facial", path: "/service/oxyglow-treatment" },
-    { label: "InstaBright Treatment", path: "/service/instabright-rejuvenation" },
-    { label: "Powerlift Medical Facial", path: "/service/powerlift-medifacial" },
+    { label: "Diamond Polishing", path: "/service/diamond-polishing" },
+    { label: "OxyFacials", path: "/service/oxy-facials" },
+    { label: "Oxyglow Treatment", path: "/service/oxyglow-treatment" },
+    { label: "InstaBright Rejuvenation", path: "/service/instabright-rejuvenation" },
+    { label: "Powerlift Medifacial", path: "/service/powerlift-medifacial" },
     { label: "Power Glow Facial", path: "/service/power-glow-facial" },
-    { label: "IV Vitamin Infusions", path: "/service/iv-infusions-glow" },
+    { label: "IV Infusions for Glow", path: "/service/iv-infusions-glow" },
   ],
   "anti-aging": [
-    { label: "Wrinkle Reduction Therapy", path: "/service/wrinkles-treatment" },
-    { label: "Anti-Aging Chemical Peels", path: "/service/anti-aging-peels" },
-    { label: "Collagen Induction Therapy", path: "/service/collagen-boosters" },
-    { label: "Skin Tightening Procedures", path: "/service/skin-tightening-treatment" },
+    { label: "Wrinkles Treatment", path: "/service/wrinkles-treatment" },
+    { label: "Anti-aging Peels", path: "/service/anti-aging-peels" },
+    { label: "Collagen Boosters", path: "/service/collagen-boosters" },
+    { label: "Skin Tightening Treatment", path: "/service/skin-tightening-treatment" },
   ],
+  "mole-surgery": [
+    {label: "Skin Tag Removal", path: "/service/skin-tag-removal"},
+    { label: "Wart Cautery", path: "/service/wart-cautery" },
+    { label: "Xanthelasma Removal", path: "/service/xanthelasma-removal" },
+    { label: "Laser Mole Treatment", path: "/service/laser-mole-treatment" },
+  ],
+  "stretch-marks-removal": [
+    {
+      label: "Microneedling Radiofrequency for Stretch Marks",
+      path: "/service/microneedling-radiofrequency-stretch-marks",
+    },
+  ],
+  "skin-infection-treatment": [
+    { label: "Skin Infections Treatment", path: "/service/skin-infections-treatment" },
+  ],
+
 };
 
+
 const treatmentDropdownConfigs = {
-  hair: {
-    key: "hair",
-    navLabel: "Hair",
-    allLabel: "All Hair Treatments",
-    path: "/treatment/hair",
+  ayurveda: {
+    key: "ayurveda",
+    navLabel: "Ayurveda",
+    path: "/treatment/ayurveda",
     widthClassName: "w-[320px]",
-    treatments: [
-      { label: "QR678 Treatment", path: "/service/qr678-treatment" },
-      { label: "Hair Growth Boosters", path: "/service/hair-growth-boosters" },
-      { label: "GFC Therapy", path: "/service/gfc-therapy" },
-      { label: "Specialized Hair Exams", path: "/service/specialized-hair-exams" },
-      { label: "Scalp Peel Treatment", path: "/service/scalp-peel-treatment" },
-    ],
-  },
-  laser: {
-    key: "laser",
-    navLabel: "Laser",
-    allLabel: "All Laser Treatments",
-    path: "/treatment/laser",
-    widthClassName: "w-[340px]",
-    treatments: [
-      { label: "Full Body Laser Hair Removal", path: "/service/laser-hair-removal" },
-      { label: "Female Hair Reduction", path: "/service/laser-hair-reduction-females" },
-      { label: "Male Hair Reduction", path: "/service/laser-hair-reduction-males" },
-      { label: "Targeted Hair Removal", path: "/service/laser-hair-removal" },
-      { label: "Arm Hair Laser Treatment", path: "/service/laser-hair-removal" },
-      { label: "Leg Hair Laser Treatment", path: "/service/laser-hair-removal" },
-      { label: "Excessive Hair Growth Treatment", path: "/service/laser-hair-removal" },
-      { label: "Bikini Area Laser", path: "/service/laser-hair-removal" },
-      { label: "Facial Hair Laser", path: "/service/laser-hair-removal" },
-      { label: "Underarm Laser Treatment", path: "/service/laser-hair-removal" },
-      { label: "Birthmark Laser Removal", path: "/service/birthmark-removal" },
-      { label: "Professional Tattoo Removal", path: "/service/tattoo-removal" },
-      { label: "Laser Mole Removal", path: "/service/laser-mole-removal" },
-      { label: "Wart Laser Treatment", path: "/service/wart-removal-laser" },
-    ],
-  },
-  "body-contouring": {
-    key: "body-contouring",
-    navLabel: "Body Contouring",
-    allLabel: "All Body Contouring Treatments",
-    path: "/treatment/body-contouring",
-    widthClassName: "w-[320px]",
-    treatments: [
-      { label: "Medical Weight Loss Program", path: "/service/weight-loss-treatments" },
-      { label: "Cellulite Reduction Therapy", path: "/service/cellulite-treatment" },
-      { label: "Cryolipolysis (CoolSculpting)", path: "/service/cryolipolysis-treatment" },
-      { label: "Body Shaping Treatments", path: "/service/body-shaping-treatment" },
-      { label: "Targeted Fat Reduction", path: "/service/fat-reduction-treatment" },
-    ],
+    treatments: ayurvedaServices,
   },
 };
 
@@ -156,6 +220,12 @@ const navVariants = {
 
 const Navbar = ({ onBookAppointment }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeHairCategory, setActiveHairCategory] = useState(
+    "hair-thinning-hair-fall"
+  );
+  const [activeLaserCategory, setActiveLaserCategory] = useState("laser-hair");
+  const [activeBodyContouringCategory, setActiveBodyContouringCategory] =
+    useState("weight-loss-program");
   const [activeSkinCategory, setActiveSkinCategory] = useState("acne-scars");
   const navigate = useNavigate();
 
@@ -179,15 +249,6 @@ const Navbar = ({ onBookAppointment }) => {
         <div className="w-[860px] overflow-hidden rounded-[24px] border border-[#e7dccd] bg-[linear-gradient(180deg,#fffdfa,#f8f1e7)] shadow-[0_22px_50px_rgba(17,24,39,0.12)]">
           <div className="grid grid-cols-[1.08fr_0.92fr]">
             <div className="border-r border-[#eadfce] px-2 py-2">
-              <button
-                type="button"
-                onClick={() => navigate("/treatment/skin")}
-                onMouseEnter={() => setActiveSkinCategory(null)}
-                className="block w-full border-b border-[#eadfce] px-5 py-4 text-left text-sm font-semibold tracking-[0.01em] text-[#9a7b52] transition-all duration-200 hover:bg-[#f3e4cf] hover:text-black"
-              >
-                All Skin Treatments
-              </button>
-
               <div className="border-b border-[#eadfce] py-1">
                 {skinCategoryLinks
                   .filter((category) => category.key !== "skin")
@@ -254,6 +315,164 @@ const Navbar = ({ onBookAppointment }) => {
     },
   ];
 
+  const hairMenuItems = [
+    {
+      key: "menu-grid",
+      style: { padding: 0, background: "transparent", border: "none" },
+      label: (
+        <div className="w-[760px] overflow-hidden rounded-[24px] border border-[#e7dccd] bg-[linear-gradient(180deg,#fffdfa,#f8f1e7)] shadow-[0_22px_50px_rgba(17,24,39,0.12)]">
+          <div className="grid grid-cols-[0.95fr_1.05fr]">
+            <div className="border-r border-[#eadfce] px-2 py-2">
+              {hairCategoryLinks.map((category) => (
+                <button
+                  key={category.key}
+                  type="button"
+                  onClick={() => navigate(category.path)}
+                  onMouseEnter={() => setActiveHairCategory(category.key)}
+                  className={`flex w-full items-center justify-between rounded-[14px] px-5 py-4 text-left text-sm font-medium transition-all duration-200 hover:bg-[#f3e4cf] hover:text-black ${
+                    activeHairCategory === category.key
+                      ? "bg-[#f6ead8] text-black"
+                      : "text-[#9a7b52]"
+                  }`}
+                >
+                  {category.label}
+                  <span className="text-xs">{">"}</span>
+                </button>
+              ))}
+            </div>
+
+            <div className="min-h-[220px] px-2 py-2">
+              <div className="max-h-[204px] overflow-y-auto">
+                {hairNestedServiceLinks[activeHairCategory]?.map((service, index) => (
+                  <button
+                    key={service.label}
+                    type="button"
+                    onClick={() => navigate(service.path)}
+                    className={`block w-full border-b border-[#f0e5d9] px-5 py-4 text-left text-sm font-medium text-[#9a7b52] transition-all duration-200 hover:bg-[#f3e4cf] hover:text-black ${
+                      index === hairNestedServiceLinks[activeHairCategory].length - 1
+                        ? "last:border-b-0"
+                        : ""
+                    }`}
+                  >
+                    {service.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+  ];
+
+  const laserMenuItems = [
+    {
+      key: "menu-grid",
+      style: { padding: 0, background: "transparent", border: "none" },
+      label: (
+        <div className="w-[720px] overflow-hidden rounded-[24px] border border-[#e7dccd] bg-[linear-gradient(180deg,#fffdfa,#f8f1e7)] shadow-[0_22px_50px_rgba(17,24,39,0.12)]">
+          <div className="grid grid-cols-[0.9fr_1.1fr]">
+            <div className="border-r border-[#eadfce] px-2 py-2">
+              {laserCategoryLinks.map((category) => (
+                <button
+                  key={category.key}
+                  type="button"
+                  onClick={() => navigate(category.path)}
+                  onMouseEnter={() => setActiveLaserCategory(category.key)}
+                  className={`flex w-full items-center justify-between rounded-[14px] px-5 py-4 text-left text-sm font-medium transition-all duration-200 hover:bg-[#f3e4cf] hover:text-black ${
+                    activeLaserCategory === category.key
+                      ? "bg-[#f6ead8] text-black"
+                      : "text-[#9a7b52]"
+                  }`}
+                >
+                  {category.label}
+                  <span className="text-xs">{">"}</span>
+                </button>
+              ))}
+            </div>
+
+            <div className="min-h-[220px] px-2 py-2">
+              <div className="max-h-[204px] overflow-y-auto">
+                {laserNestedServiceLinks[activeLaserCategory]?.map(
+                  (service, index) => (
+                    <button
+                      key={service.label}
+                      type="button"
+                      onClick={() => navigate(service.path)}
+                      className={`block w-full border-b border-[#f0e5d9] px-5 py-4 text-left text-sm font-medium text-[#9a7b52] transition-all duration-200 hover:bg-[#f3e4cf] hover:text-black ${
+                        index ===
+                        laserNestedServiceLinks[activeLaserCategory].length - 1
+                          ? "last:border-b-0"
+                          : ""
+                      }`}
+                    >
+                      {service.label}
+                    </button>
+                  )
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+  ];
+
+  const bodyContouringMenuItems = [
+    {
+      key: "menu-grid",
+      style: { padding: 0, background: "transparent", border: "none" },
+      label: (
+        <div className="w-[800px] overflow-hidden rounded-[24px] border border-[#e7dccd] bg-[linear-gradient(180deg,#fffdfa,#f8f1e7)] shadow-[0_22px_50px_rgba(17,24,39,0.12)]">
+          <div className="grid grid-cols-[1fr_1fr]">
+            <div className="border-r border-[#eadfce] px-2 py-2">
+              {bodyContouringCategoryLinks.map((category) => (
+                <button
+                  key={category.key}
+                  type="button"
+                  onClick={() => navigate(category.path)}
+                  onMouseEnter={() => setActiveBodyContouringCategory(category.key)}
+                  className={`flex w-full items-center justify-between rounded-[14px] px-5 py-4 text-left text-sm font-medium transition-all duration-200 hover:bg-[#f3e4cf] hover:text-black ${
+                    activeBodyContouringCategory === category.key
+                      ? "bg-[#f6ead8] text-black"
+                      : "text-[#9a7b52]"
+                  }`}
+                >
+                  {category.label}
+                  <span className="text-xs">{">"}</span>
+                </button>
+              ))}
+            </div>
+
+            <div className="min-h-[260px] px-2 py-2">
+              <div className="max-h-[244px] overflow-y-auto">
+                {bodyContouringNestedServiceLinks[
+                  activeBodyContouringCategory
+                ]?.map((service, index) => (
+                  <button
+                    key={service.label}
+                    type="button"
+                    onClick={() => navigate(service.path)}
+                    className={`block w-full border-b border-[#f0e5d9] px-5 py-4 text-left text-sm font-medium text-[#9a7b52] transition-all duration-200 hover:bg-[#f3e4cf] hover:text-black ${
+                      index ===
+                      bodyContouringNestedServiceLinks[activeBodyContouringCategory]
+                        .length -
+                        1
+                        ? "last:border-b-0"
+                        : ""
+                    }`}
+                  >
+                    {service.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+  ];
+
   const getTreatmentMenuItems = (config) => [
     {
       key: `${config.key}-menu`,
@@ -263,23 +482,16 @@ const Navbar = ({ onBookAppointment }) => {
           className={`${config.widthClassName} overflow-hidden rounded-[24px] border border-[#e7dccd] bg-[linear-gradient(180deg,#fffdfa,#f8f1e7)] shadow-[0_22px_50px_rgba(17,24,39,0.12)]`}
         >
           <div className="max-h-[360px] overflow-y-auto py-2">
-            <button
-              type="button"
-              onClick={() => navigate(config.path)}
-              className="block w-full border-b border-[#eadfce] px-5 py-4 text-left text-sm font-semibold tracking-[0.01em] text-[#9a7b52] transition-all duration-200 hover:bg-[#f3e4cf] hover:text-black"
-            >
-              {config.allLabel}
-            </button>
-              {config.treatments.map((treatment) => (
-                <button
-                  key={treatment.label}
-                  type="button"
-                  onClick={() => navigate(treatment.path)}
-                  className="block w-full border-b border-[#f0e5d9] px-5 py-4 text-left text-sm font-medium text-[#9a7b52] transition-all duration-200 last:border-b-0 hover:bg-[#f3e4cf] hover:text-black"
-                >
-                  {treatment.label}
-                </button>
-              ))}
+            {config.treatments.map((treatment) => (
+              <button
+                key={treatment.label}
+                type="button"
+                onClick={() => navigate(treatment.path)}
+                className="block w-full border-b border-[#f0e5d9] px-5 py-4 text-left text-sm font-medium text-[#9a7b52] transition-all duration-200 last:border-b-0 hover:bg-[#f3e4cf] hover:text-black"
+              >
+                {treatment.label}
+              </button>
+            ))}
           </div>
         </div>
       ),
@@ -339,30 +551,6 @@ const Navbar = ({ onBookAppointment }) => {
 
             <Dropdown
               menu={{
-                items: getTreatmentMenuItems(treatmentDropdownConfigs.hair),
-                style: {
-                  padding: 0,
-                  background: "transparent",
-                  border: "none",
-                  boxShadow: "none",
-                },
-              }}
-              trigger={["hover"]}
-              placement="bottomCenter"
-              overlayClassName="!bg-transparent !shadow-none"
-            >
-              <button
-                type="button"
-                onClick={() => navigate("/treatment/hair")}
-                className="flex items-center gap-2 text-sm font-medium text-slate-700 transition-colors hover:text-[#9a7b52]"
-              >
-                Hair
-                <DownOutlined className="text-xs" />
-              </button>
-            </Dropdown>
-
-            <Dropdown
-              menu={{
                 items: skinMenuItems,
                 style: {
                   padding: 0,
@@ -387,7 +575,31 @@ const Navbar = ({ onBookAppointment }) => {
 
             <Dropdown
               menu={{
-                items: getTreatmentMenuItems(treatmentDropdownConfigs.laser),
+                items: hairMenuItems,
+                style: {
+                  padding: 0,
+                  background: "transparent",
+                  border: "none",
+                  boxShadow: "none",
+                },
+              }}
+              trigger={["hover"]}
+              placement="bottomCenter"
+              overlayClassName="!bg-transparent !shadow-none"
+            >
+              <button
+                type="button"
+                onClick={() => navigate("/treatment/hair")}
+                className="flex items-center gap-2 text-sm font-medium text-slate-700 transition-colors hover:text-[#9a7b52]"
+              >
+                Hair
+                <DownOutlined className="text-xs" />
+              </button>
+            </Dropdown>
+
+            <Dropdown
+              menu={{
+                items: laserMenuItems,
                 style: {
                   padding: 0,
                   background: "transparent",
@@ -411,7 +623,7 @@ const Navbar = ({ onBookAppointment }) => {
 
             <Dropdown
               menu={{
-                items: getTreatmentMenuItems(treatmentDropdownConfigs["body-contouring"]),
+                items: bodyContouringMenuItems,
                 style: {
                   padding: 0,
                   background: "transparent",
@@ -429,6 +641,30 @@ const Navbar = ({ onBookAppointment }) => {
                 className="flex items-center gap-2 text-sm font-medium text-slate-700 transition-colors hover:text-[#9a7b52]"
               >
                 Body Contouring
+                <DownOutlined className="text-xs" />
+              </button>
+            </Dropdown>
+
+            <Dropdown
+              menu={{
+                items: getTreatmentMenuItems(treatmentDropdownConfigs.ayurveda),
+                style: {
+                  padding: 0,
+                  background: "transparent",
+                  border: "none",
+                  boxShadow: "none",
+                },
+              }}
+              trigger={["hover"]}
+              placement="bottomCenter"
+              overlayClassName="!bg-transparent !shadow-none"
+            >
+              <button
+                type="button"
+                onClick={() => navigate("/treatment/ayurveda")}
+                className="flex items-center gap-2 text-sm font-medium text-slate-700 transition-colors hover:text-[#9a7b52]"
+              >
+                Ayurveda
                 <DownOutlined className="text-xs" />
               </button>
             </Dropdown>
@@ -508,29 +744,144 @@ const Navbar = ({ onBookAppointment }) => {
 
             <div>
               <p className="mb-3 text-base font-medium text-slate-800">Categories</p>
-              <div className="grid gap-2">
-                {mainCategoryLinks.map((category) => (
-                  <Link
-                    key={category.key}
-                    to={category.path}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="rounded-2xl bg-[#fcfaf7] px-4 py-3 text-sm font-medium text-slate-700 transition-colors hover:bg-[#f8f5f0] hover:text-[#9a7b52]"
-                  >
-                    {category.label}
-                  </Link>
-                ))}
+
+              <div className="mb-4 rounded-3xl border border-[#eadfce] bg-[#fcfaf7] p-4">
+                <div className="mb-3 flex items-center justify-between">
+                  <p className="text-sm font-medium text-slate-800">Hair</p>
+                </div>
+
+                <div className="grid gap-4">
+                  {hairCategoryLinks.map((category) => (
+                    <div key={category.key} className="rounded-2xl border border-[#efe3d3] bg-white/70 p-3">
+                      <Link
+                        to={category.path}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="block text-sm font-medium text-slate-800 transition-colors hover:text-[#9a7b52]"
+                      >
+                        {category.label}
+                      </Link>
+
+                      <div className="mt-3 grid gap-2">
+                        {hairNestedServiceLinks[category.key].map((service) => (
+                          <Link
+                            key={service.label}
+                            to={service.path}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="rounded-2xl px-3 py-2 text-sm text-slate-600 transition-colors hover:bg-[#fcfaf7] hover:text-[#9a7b52]"
+                          >
+                            {service.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              <div className="mt-4 rounded-3xl border border-[#eadfce] bg-[#fcfaf7] p-4">
+              <div className="mb-4 rounded-3xl border border-[#eadfce] bg-[#fcfaf7] p-4">
+                <div className="mb-3 flex items-center justify-between">
+                  <p className="text-sm font-medium text-slate-800">Laser</p>
+                </div>
+
+                <div className="grid gap-4">
+                  {laserCategoryLinks.map((category) => (
+                    <div
+                      key={category.key}
+                      className="rounded-2xl border border-[#efe3d3] bg-white/70 p-3"
+                    >
+                      <Link
+                        to={category.path}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="block text-sm font-medium text-slate-800 transition-colors hover:text-[#9a7b52]"
+                      >
+                        {category.label}
+                      </Link>
+
+                      <div className="mt-3 grid gap-2">
+                        {laserNestedServiceLinks[category.key].map((service) => (
+                          <Link
+                            key={service.label}
+                            to={service.path}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="rounded-2xl px-3 py-2 text-sm text-slate-600 transition-colors hover:bg-[#fcfaf7] hover:text-[#9a7b52]"
+                          >
+                            {service.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mb-4 rounded-3xl border border-[#eadfce] bg-[#fcfaf7] p-4">
+                <div className="mb-3 flex items-center justify-between">
+                  <p className="text-sm font-medium text-slate-800">
+                    Body Contouring
+                  </p>
+                </div>
+
+                <div className="grid gap-4">
+                  {bodyContouringCategoryLinks.map((category) => (
+                    <div
+                      key={category.key}
+                      className="rounded-2xl border border-[#efe3d3] bg-white/70 p-3"
+                    >
+                      <Link
+                        to={category.path}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="block text-sm font-medium text-slate-800 transition-colors hover:text-[#9a7b52]"
+                      >
+                        {category.label}
+                      </Link>
+
+                      <div className="mt-3 grid gap-2">
+                        {bodyContouringNestedServiceLinks[category.key].map(
+                          (service) => (
+                            <Link
+                              key={service.label}
+                              to={service.path}
+                              onClick={() => setIsMobileMenuOpen(false)}
+                              className="rounded-2xl px-3 py-2 text-sm text-slate-600 transition-colors hover:bg-[#fcfaf7] hover:text-[#9a7b52]"
+                            >
+                              {service.label}
+                            </Link>
+                          )
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mb-4 rounded-3xl border border-[#eadfce] bg-[#fcfaf7] p-4">
+                <div className="mb-3 flex items-center justify-between">
+                  <Link
+                    to="/treatment/ayurveda"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-sm font-medium text-slate-800 transition-colors hover:text-[#9a7b52]"
+                  >
+                    Ayurveda
+                  </Link>
+                </div>
+
+                <div className="grid gap-2">
+                  {ayurvedaServices.map((service) => (
+                    <Link
+                      key={service.label}
+                      to={service.path}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="rounded-2xl px-3 py-2 text-sm text-slate-600 transition-colors hover:bg-white hover:text-[#9a7b52]"
+                    >
+                      {service.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mb-4 rounded-3xl border border-[#eadfce] bg-[#fcfaf7] p-4">
                 <div className="mb-3 flex items-center justify-between">
                   <p className="text-sm font-medium text-slate-800">Skin</p>
-                  <Link
-                    to="/treatment/skin"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-[11px] uppercase tracking-[0.24em] text-[#9a7b52]"
-                  >
-                    View All
-                  </Link>
                 </div>
 
                 <div className="grid gap-2">
@@ -560,6 +911,19 @@ const Navbar = ({ onBookAppointment }) => {
                     </Link>
                   ))}
                 </div>
+              </div>
+
+              <div className="grid gap-2">
+                {mainCategoryLinks.map((category) => (
+                  <Link
+                    key={category.key}
+                    to={category.path}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="rounded-2xl bg-[#fcfaf7] px-4 py-3 text-sm font-medium text-slate-700 transition-colors hover:bg-[#f8f5f0] hover:text-[#9a7b52]"
+                  >
+                    {category.label}
+                  </Link>
+                ))}
               </div>
             </div>
 

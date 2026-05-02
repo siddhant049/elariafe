@@ -45,10 +45,10 @@ const HomePage = ({ onBookAppointment }) => {
       `}</style>
       <HeroSection onBookAppointment={onBookAppointment} />
       <CategorySection />
-      <TrustMetrics />
-      <CentreGallerySection />
-      <TreatmentQuiz onBookAppointment={onBookAppointment} />
       <HappyClientsSection />
+      <CentreGallerySection />
+      {/* <TreatmentQuiz onBookAppointment={onBookAppointment} /> */}
+      <TrustMetrics />
       <TestimonialCarousel />
       <GetInTouchSection />
       <ContactSection />

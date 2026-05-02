@@ -4,25 +4,16 @@ import { Link } from "react-router-dom";
 import { ArrowRightOutlined } from "@ant-design/icons";
 import hair from "../../assets/images/hair.jpg";
 import skin from "../../assets/images/skin.jpg";
-import acne from "../../assets/images/acne.jpg";
-import under_eyes from "../../assets/images/under_eyes.png";
-import pigmentation from "../../assets/images/pigmentation.png";
-import medifacial from "../../assets/images/medifacial.png";
-import anti_aging from "../../assets/images/anti_aging.png";
+import ayurveda from "../../assets/images/Center/Ayurveda.png";
+// import acne from "../../assets/images/acne.jpg";
+// import under_eyes from "../../assets/images/under_eyes.png";
+// import pigmentation from "../../assets/images/pigmentation.png";
+// import medifacial from "../../assets/images/medifacial.png";
+// import anti_aging from "../../assets/images/anti_aging.png";
 import laser from "../../assets/images/laser.png";
 import slimming from "../../assets/images/slimming.png";
 
 const categories = [
-  {
-    title: "HAIR",
-    short: "Hair",
-    description:
-      "Advanced hair restoration treatments for healthy, voluminous hair growth and scalp wellness.",
-    image: hair,
-    path: "/treatment/hair",
-    highlights: ["Hair fall", "Scalp wellness", "Regrowth support"],
-    subtitle: "Targeted scalp and hair restoration care",
-  },
   {
     title: "SKIN",
     short: "Skin",
@@ -34,55 +25,76 @@ const categories = [
     subtitle: "Advanced solutions for healthier-looking skin",
   },
   {
-    title: "ACNE AND SCARS",
-    short: "Acne & Scars",
+    title: "HAIR",
+    short: "Hair",
     description:
-      "Targeted treatments for active acne, acne scars, and blemishes for clear, smooth skin.",
-    image: acne,
-    path: "/treatment/acne-scars",
-    highlights: ["Acne control", "Scar revision", "Texture repair"],
-    subtitle: "Smooth, clearer skin with expert-led correction",
+      "Advanced hair restoration treatments for healthy, voluminous hair growth and scalp wellness.",
+    image: hair,
+    path: "/treatment/hair",
+    highlights: ["Hair fall", "Scalp wellness", "Regrowth support"],
+    subtitle: "Targeted scalp and hair restoration care",
   },
   {
-    title: "UNDER EYES SERVICES",
-    short: "Under Eyes",
+    title: "AYURVEDA",
+    short: "Ayurveda",
     description:
-      "Specialized treatments for dark circles, hollowness, and rejuvenation of delicate under-eye area.",
-    image: under_eyes,
-    path: "/treatment/under-eye",
-    highlights: ["Dark circles", "Hollowness", "Eye rejuvenation"],
-    subtitle: "Refresh and brighten the under-eye area",
+      "Traditional wellness rituals focused on deep relaxation, body balance, and a calmer restorative care experience.",
+    image: ayurveda,
+    path: "/treatment/ayurveda",
+    highlights: ["Relaxation", "Wellness rituals", "Body balance"],
+    subtitle: "Traditional therapies for restorative wellness",
   },
-  {
-    title: "PIGMENTATION",
-    short: "Pigmentation",
-    description:
-      "Effective solutions for uneven skin tone, melasma, freckles, and pigmentation concerns.",
-    image: pigmentation,
-    path: "/treatment/pigmentation",
-    highlights: ["Melasma", "Freckles", "Even tone"],
-    subtitle: "Clearer, brighter and more even skin tone",
-  },
-  {
-    title: "MEDIFACIAL",
-    short: "Medifacial",
-    description:
-      "Medical-grade facials combining advanced technology with expert care for radiant skin.",
-    image: medifacial,
-    path: "/treatment/medifacial",
-    highlights: ["Hydration", "Instant glow", "Event-ready skin"],
-    subtitle: "Luxury facials with visible glow and hydration",
-  },
-  {
-    title: "ANTI AGING",
-    short: "Anti Aging",
-    description:
-      "Cutting-edge anti-aging treatments for wrinkles, fine lines, and skin rejuvenation.",
-    image: anti_aging,
-    path: "/treatment/anti-aging",
-    highlights: ["Fine lines", "Firmness", "Collagen boost"],
-    subtitle: "Refined anti-aging care for graceful rejuvenation",
-  },
+ 
+  // {
+  //   title: "ACNE AND SCARS",
+  //   short: "Acne & Scars",
+  //   description:
+  //     "Targeted treatments for active acne, acne scars, and blemishes for clear, smooth skin.",
+  //   image: acne,
+  //   path: "/treatment/acne-scars",
+  //   highlights: ["Acne control", "Scar revision", "Texture repair"],
+  //   subtitle: "Smooth, clearer skin with expert-led correction",
+  // },
+  // {
+  //   title: "UNDER EYES SERVICES",
+  //   short: "Under Eyes",
+  //   description:
+  //     "Specialized treatments for dark circles, hollowness, and rejuvenation of delicate under-eye area.",
+  //   image: under_eyes,
+  //   path: "/treatment/under-eye",
+  //   highlights: ["Dark circles", "Hollowness", "Eye rejuvenation"],
+  //   subtitle: "Refresh and brighten the under-eye area",
+  // },
+  // {
+  //   title: "PIGMENTATION",
+  //   short: "Pigmentation",
+  //   description:
+  //     "Effective solutions for uneven skin tone, melasma, freckles, and pigmentation concerns.",
+  //   image: pigmentation,
+  //   path: "/treatment/pigmentation",
+  //   highlights: ["Melasma", "Freckles", "Even tone"],
+  //   subtitle: "Clearer, brighter and more even skin tone",
+  // },
+  // {
+  //   title: "MEDIFACIAL",
+  //   short: "Medifacial",
+  //   description:
+  //     "Medical-grade facials combining advanced technology with expert care for radiant skin.",
+  //   image: medifacial,
+  //   path: "/treatment/medifacial",
+  //   highlights: ["Hydration", "Instant glow", "Event-ready skin"],
+  //   subtitle: "Luxury facials with visible glow and hydration",
+  // },
+  // {
+  //   title: "ANTI AGING",
+  //   short: "Anti Aging",
+  //   description:
+  //     "Cutting-edge anti-aging treatments for wrinkles, fine lines, and skin rejuvenation.",
+  //   image: anti_aging,
+  //   path: "/treatment/anti-aging",
+  //   highlights: ["Fine lines", "Firmness", "Collagen boost"],
+  //   subtitle: "Refined anti-aging care for graceful rejuvenation",
+  // },
   {
     title: "LASER",
     short: "Laser",
@@ -95,7 +107,7 @@ const categories = [
   },
   {
     title: "BODY CONTOURING",
-    short: "Body",
+    short: "Body Contouring",
     description:
       "Non-invasive body shaping and fat reduction treatments for your ideal silhouette.",
     image: slimming,
@@ -114,35 +126,34 @@ const CategorySection = () => {
   );
 
   return (
-    <section id="treatments-section" className="bg-[#fcfaf7] px-4 py-24 lg:px-6 lg:py-32">
+    <section id="treatments-section" className="bg-[#fcfaf7] px-4 py-16 lg:px-6 lg:py-20">
       <div className="mx-auto max-w-[1800px]">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-16 grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-end"
+          className="mb-10 grid gap-6 lg:grid-cols-[0.82fr_1.18fr] lg:items-end"
         >
           <div>
             <p className="text-[11px] uppercase tracking-[0.36em] text-[#9a7b52]">
               Treatments
             </p>
-            <h2 className="mt-5 text-4xl font-light leading-[0.98] tracking-[-0.04em] text-slate-900 md:text-6xl">
-              Discover wellness treatment categories tailored to your needs.
+            <h2 className="mt-4 text-3xl font-light leading-[0.98] tracking-[-0.04em] text-slate-900 md:text-5xl">
+            Indulge in Treatments crafted around your unique needs.
             </h2>
           </div>
 
-          <div className="lg:pl-12">
-            <p className="max-w-2xl text-lg leading-8 text-slate-600">
-              Explore multiple wellness treatment categories and choose the care
-              path that best matches your concerns, goals, and desired results.
+          <div className="lg:pl-8">
+            <p className="max-w-2xl text-base leading-7 text-slate-600">
+            Explore diverse wellness treatment options at Elaria Esthetiques and choose the care path that best aligns with your concerns, goals, and desired results.
             </p>
           </div>
         </motion.div>
 
         <div className="hidden lg:block">
           <div className="overflow-hidden rounded-[42px] border border-[#ddd1c2] bg-[#0f2037] shadow-[0_30px_90px_rgba(17,24,39,0.12)]">
-            <div className="flex min-h-[760px] xl:min-h-[820px]">
+            <div className="flex min-h-[590px] xl:min-h-[640px]">
               {categories.map((category, index) => {
                 const isActive = activeIndex === index;
 
@@ -180,9 +191,9 @@ const CategorySection = () => {
                           initial={{ opacity: 0, y: 18 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.35 }}
-                          className="relative flex h-full flex-col justify-between p-8 xl:p-10"
+                          className="relative flex h-full flex-col justify-between p-6 xl:p-7"
                         >
-                          <div className="rounded-full border border-white/18 bg-white/10 px-4 py-2 backdrop-blur-md w-fit">
+                          <div className="w-fit rounded-full border border-white/18 bg-white/10 px-4 py-2 backdrop-blur-md">
                             <p className="text-[11px] uppercase tracking-[0.34em] text-white/80">
                               {category.short}
                             </p>
@@ -192,18 +203,18 @@ const CategorySection = () => {
                             <p className="text-[11px] font-medium uppercase tracking-[0.34em] text-[#f3dfbc] drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)]">
                               {category.subtitle}
                             </p>
-                            <h3 className="mt-4 text-4xl font-light tracking-[-0.04em] text-white xl:text-5xl">
+                            <h3 className="mt-3 text-3xl font-light tracking-[-0.04em] text-white xl:text-4xl">
                               {category.title}
                             </h3>
-                            <p className="mt-5 max-w-lg text-base leading-8 text-white">
+                            <p className="mt-4 max-w-lg text-sm leading-7 text-white">
                               {category.description}
                             </p>
 
-                            <div className="mt-7 flex flex-wrap gap-3">
+                            <div className="mt-5 flex flex-wrap gap-2.5">
                               {category.highlights.map((item) => (
                                 <span
                                   key={item}
-                                  className="rounded-full border border-white/30 bg-white/18 px-4 py-2 text-[11px] font-medium uppercase tracking-[0.28em] text-white shadow-[0_6px_18px_rgba(0,0,0,0.18)] backdrop-blur-md"
+                                  className="rounded-full border border-white/30 bg-white/18 px-3.5 py-2 text-[10px] font-medium uppercase tracking-[0.24em] text-white shadow-[0_6px_18px_rgba(0,0,0,0.18)] backdrop-blur-md"
                                 >
                                   {item}
                                 </span>
@@ -212,7 +223,7 @@ const CategorySection = () => {
 
                             <Link
                               to={category.path}
-                              className="mt-8 inline-flex items-center gap-3 rounded-full border border-white/18 bg-white/10 px-5 py-3 text-[11px] font-medium uppercase tracking-[0.28em] text-white backdrop-blur-md transition hover:bg-white/15"
+                              className="mt-6 inline-flex items-center gap-3 rounded-full border border-white/18 bg-white/10 px-5 py-3 text-[10px] font-medium uppercase tracking-[0.24em] text-white backdrop-blur-md transition hover:bg-white/15"
                             >
                               Explore Treatments
                               <ArrowRightOutlined />
@@ -221,9 +232,9 @@ const CategorySection = () => {
                         </motion.div>
                       ) : (
                         <div className="relative h-full">
-                          <div className="absolute inset-x-0 top-[20%] bottom-[20%] flex items-center justify-center">
+                          <div className="absolute inset-x-0 top-[16%] bottom-[16%] flex items-center justify-center">
                             <span
-                              className="text-lg font-bold uppercase tracking-[0.3em] text-white"
+                              className="text-base font-bold uppercase tracking-[0.26em] text-white"
                               style={{
                                 writingMode: "vertical-rl",
                                 transform: "rotate(180deg)",

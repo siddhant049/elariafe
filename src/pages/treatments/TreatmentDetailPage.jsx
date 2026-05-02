@@ -69,9 +69,19 @@ const staggerContainer = {
 const getServiceIdFromTreatment = (treatmentName) => {
   const treatmentToServiceMap = {
     // Hair treatments
+    PRP: "prp-hair-treatment",
+    GFC: "gfc-therapy",
+    GSC: "gfc-therapy",
+    QR678: "qr678-treatment",
+    Exosome: "exosome-hair-treatment",
+    Exosomes: "exosome-hair-treatment",
     "QR678 Treatment": "qr678-treatment",
-    "Hair Growth Boosters": "hair-growth-boosters",
+    "PRP Hair Treatment": "prp-hair-treatment",
     "GFC Therapy": "gfc-therapy",
+    "GSC Therapy": "gfc-therapy",
+    "Exosome Therapy": "exosome-hair-treatment",
+    "Exosome Hair Treatment": "exosome-hair-treatment",
+    "Hair Growth Boosters": "hair-growth-boosters",
     "Specialized Hair Exams": "specialized-hair-exams",
     "Scalp Peel Treatment": "scalp-peel-treatment",
 
@@ -86,23 +96,40 @@ const getServiceIdFromTreatment = (treatmentName) => {
     "Wart Cautery": "wart-cautery",
     "Dermapen Treatment": "dermapen-skin-treatment",
     "Stretch Mark Reduction": "stretch-marks-treatment",
+    "RF Microneedling for Stretch Marks":
+      "microneedling-radiofrequency-stretch-marks",
+    Allergies: "skin-infections-treatment",
+    "Skin Infections Treatment": "skin-infections-treatment",
 
     // Acne and Scars treatments
     "Acne Chemical Peels": "acne-peels",
+    "Acne Peels": "acne-peels",
     "Advanced Acne Therapy": "advanced-acne-treatments",
+    "Advanced Acne Treatments": "advanced-acne-treatments",
     "Carbon Laser Peels": "carbon-peels",
+    "Carbon Peels": "carbon-peels",
     "Professional Chemical Peels": "chemical-peels-acne",
+    "Chemical Peels for Acne": "chemical-peels-acne",
     "Dermarolling Treatment": "derma-roller-acne",
+    "Derma Roller for Acne": "derma-roller-acne",
     "Fractional CO2 Laser": "fractional-laser-acne",
+    "Fractional Laser for Acne": "fractional-laser-acne",
     "RF Microneedling": "radiofrequency-microneedling",
+    "Radiofrequency Microneedling": "radiofrequency-microneedling",
     "Acne Deep Cleansing Facial": "acne-cleanup-facial",
+    "Acne Cleanup Facial": "acne-cleanup-facial",
     "Freckle Laser Treatment": "laser-freckles-treatment",
+    "Laser for Freckles": "laser-freckles-treatment",
     "RF Microneedling for Scars": "microneedling-radiofrequency-stretch-marks",
+    "Microneedling Radiofrequency for Stretch Marks":
+      "microneedling-radiofrequency-stretch-marks",
 
     // Under Eyes treatments
     "Dark Circle Reduction": "dark-circles-removal",
+    "Dark Circles Removal": "dark-circles-removal",
     "Under Eye Rejuvenation": "under-eye-rejuvenation",
     "Dermal Fillers for Eyes": "under-eye-boosters",
+    "Under Eye Boosters": "under-eye-boosters",
 
     // Pigmentation treatments
     "Freckle Treatment": "freckle-treatment",
@@ -114,21 +141,32 @@ const getServiceIdFromTreatment = (treatmentName) => {
     "HydraFacial Basic": "hydrafacial-basic",
     "HydraFacial Elite": "hydrafacial-elite",
     "Skin Brightening Boosters": "skin-boosters-pigmentation",
+    "Skin Boosters for Pigmentation": "skin-boosters-pigmentation",
 
     // Medifacial treatments
     "Diamond Microdermabrasion": "diamond-polishing",
+    "Diamond Polishing": "diamond-polishing",
     "Oxygen Facials": "oxy-facials",
+    OxyFacials: "oxy-facials",
     "Oxyglow Facial": "oxyglow-treatment",
+    "Oxyglow Treatment": "oxyglow-treatment",
     "InstaBright Treatment": "instabright-rejuvenation",
+    "InstaBright Rejuvenation": "instabright-rejuvenation",
     "Powerlift Medical Facial": "powerlift-medifacial",
+    "Powerlift Medifacial": "powerlift-medifacial",
     "Power Glow Facial": "power-glow-facial",
     "IV Vitamin Infusions": "iv-infusions-glow",
+    "IV Infusions for Glow": "iv-infusions-glow",
 
     // Anti Aging treatments
     "Wrinkle Reduction Therapy": "wrinkles-treatment",
+    "Wrinkles Treatment": "wrinkles-treatment",
     "Anti-Aging Chemical Peels": "anti-aging-peels",
+    "Anti-aging Peels": "anti-aging-peels",
     "Collagen Induction Therapy": "collagen-boosters",
+    "Collagen Boosters": "collagen-boosters",
     "Skin Tightening Procedures": "skin-tightening-treatment",
+    "Skin Tightening Treatment": "skin-tightening-treatment",
 
     // Laser treatments
     "Full Body Laser Hair Removal": "laser-hair-removal",
@@ -142,11 +180,28 @@ const getServiceIdFromTreatment = (treatmentName) => {
     "Facial Hair Laser": "laser-hair-removal",
     "Underarm Laser Treatment": "laser-hair-removal",
     "Birthmark Laser Removal": "birthmark-removal",
+    "Birthmark Removal": "birthmark-removal",
     "Professional Tattoo Removal": "tattoo-removal",
+    "Tattoo Removal": "tattoo-removal",
     "Laser Mole Removal": "laser-mole-removal",
     "Wart Laser Treatment": "wart-removal-laser",
 
+    // Ayurveda treatments
+    "Potli Massage": "potli-massage",
+    "Potili Massage": "potli-massage",
+    Shirodhara: "shirodhara-treatment",
+    Sherodhara: "shirodhara-treatment",
+    "Full Body Massage": "full-body-massage",
+    Udwarthanam: "udwarthanam-treatment",
+    Urdhvardhanam: "udwarthanam-treatment",
+
     // Body Contouring treatments
+    FDS: "fds-treatment",
+    NMS: "nms-treatment",
+    "Lipo Laser": "lipo-laser-treatment",
+    "Tummy Tuck": "tummy-tuck-treatment",
+    "Muscle Sculpt": "muscle-sculpt-treatment",
+    "Cryo Sculpt": "cryo-sculpt-treatment",
     "Medical Weight Loss Program": "weight-loss-treatments",
     "Cellulite Reduction Therapy": "cellulite-treatment",
     "Cryolipolysis (CoolSculpting)": "cryolipolysis-treatment",
@@ -168,45 +223,93 @@ const TREATMENT_DATA = {
   hair: {
     title: "Hair Treatments",
     description:
-      "Comprehensive hair care solutions including QR678, Hair Growth Boosters, GFC, Scalp Peel, and specialized exams for optimal hair health.",
+      "Targeted hair care pathways designed around hair thinning, hair fall, and scalp-led dandruff concerns so you can move into the most relevant treatment journey faster.",
     icon: "hair",
     duration: "30-60 mins",
     benefits: [
-      "Stimulates hair growth",
-      "Strengthens follicles",
-      "Prevents hair loss",
-      "Improves scalp health",
-      "Restores hair vitality",
+      "Organizes care by concern",
+      "Supports healthier scalp conditions",
+      "Addresses visible hair fall early",
+      "Improves treatment selection clarity",
+      "Builds a stronger regrowth plan",
     ],
     subServices: [
       {
-        name: "QR678 Treatment",
+        name: "Hair Thinning / Hair Fall",
         description:
-          "Advanced peptide therapy that stimulates hair follicles and promotes natural hair growth cycles.",
+          "Regrowth-focused solutions for hair fall, thinning, reduced density, and weakened follicles.",
+        path: "/treatment/hair-thinning-hair-fall",
       },
       {
-        name: "Hair Growth Boosters",
+        name: "Dandruff",
         description:
-          "Nutrient-rich formulations designed to accelerate hair growth and improve hair density.",
-      },
-      {
-        name: "GFC Therapy",
-        description:
-          "Growth Factor Concentrate treatment that rejuvenates hair follicles and strengthens hair roots.",
-      },
-      {
-        name: "Specialized Hair Exams",
-        description:
-          "Comprehensive scalp analysis and hair health assessment to identify underlying causes.",
-      },
-      {
-        name: "Scalp Peel Treatment",
-        description:
-          "Medical-grade exfoliation treatment that removes buildup and promotes healthy scalp environment.",
+          "Scalp-focused correction for buildup, flaking, irritation, and dandruff-linked imbalance.",
+        path: "/treatment/dandruff",
       },
     ],
     rating: 4.8,
     reviews: 245,
+  },
+  "hair-thinning-hair-fall": {
+    title: "Hair Thinning / Hair Fall",
+    description:
+      "Advanced hair restoration options focused on reducing shedding, improving follicle support, and building healthier, fuller-looking hair over time.",
+    icon: "hair",
+    duration: "45-75 mins",
+    benefits: [
+      "Targets visible hair thinning",
+      "Supports stronger follicles",
+      "Helps reduce ongoing shedding",
+      "Improves density and root strength",
+      "Builds a customized regrowth plan",
+    ],
+    subServices: [
+      {
+        name: "PRP Hair Treatment",
+        description:
+          "Platelet-rich plasma therapy designed to stimulate follicles and support stronger regrowth.",
+      },
+      {
+        name: "GFC Therapy",
+        description:
+          "Growth-factor concentrate therapy aimed at improving follicle activity and root resilience.",
+      },
+      {
+        name: "QR678 Treatment",
+        description:
+          "Peptide-based hair restoration protocol for improving density and reducing progressive thinning.",
+      },
+      {
+        name: "Exosome Hair Treatment",
+        description:
+          "Next-generation regenerative support to encourage scalp recovery and stronger hair growth cycles.",
+      },
+    ],
+    rating: 4.8,
+    reviews: 214,
+  },
+  dandruff: {
+    title: "Dandruff",
+    description:
+      "Scalp purification and balance-focused care for dandruff, buildup, flaking, and irritation that can affect comfort and overall hair health.",
+    icon: "hair",
+    duration: "30-50 mins",
+    benefits: [
+      "Reduces visible flaking",
+      "Targets scalp buildup",
+      "Refreshes the scalp environment",
+      "Supports healthier follicle function",
+      "Improves comfort and cleanliness",
+    ],
+    subServices: [
+      {
+        name: "Scalp Peel Treatment",
+        description:
+          "Professional scalp exfoliation that clears buildup and helps rebalance dandruff-prone scalp conditions.",
+      },
+    ],
+    rating: 4.7,
+    reviews: 132,
   },
   skin: {
     title: "Skin Treatments",
@@ -531,6 +634,90 @@ const TREATMENT_DATA = {
     rating: 4.7,
     reviews: 189,
   },
+  "mole-surgery": {
+    title: "Mole Removal",
+    description:
+      "Expert-led solutions for mole removal and related skin growth concerns, designed to deliver precise correction with a strong cosmetic focus.",
+    icon: "skin",
+    duration: "30-75 mins",
+    benefits: [
+      "Targets visible skin growth concerns",
+      "Supports a cleaner cosmetic finish",
+      "Offers precise, focused correction",
+      "Minimizes disruption to surrounding skin",
+      "Provides expert evaluation before treatment",
+    ],
+    subServices: [
+      {
+        name: "Skin Tag Removal",
+        description:
+          "Quick and effective clinic-based removal of skin tags with minimal downtime and a clean finish.",
+      },
+      {
+        name: "Wart Cautery",
+        description:
+          "Controlled cautery treatment for targeted wart removal and smoother healing support.",
+      },
+      {
+        name: "Xanthelasma Removal",
+        description:
+          "Refined treatment approach for cholesterol deposits around the eyes with cosmetic precision.",
+      },
+      {
+        name: "Laser Mole Treatment",
+        description:
+          "Laser-based treatment for selected mole concerns with accurate targeting and minimal surface trauma.",
+      },
+    ],
+    rating: 4.8,
+    reviews: 174,
+  },
+  "stretch-marks-removal": {
+    title: "Stretch Marks Removal",
+    description:
+      "Technology-led stretch mark treatments focused on improving skin texture, tone, and overall smoothness through collagen-supportive correction.",
+    icon: "skin",
+    duration: "45-75 mins",
+    benefits: [
+      "Improves the appearance of stretch marks",
+      "Supports smoother skin texture",
+      "Boosts collagen remodeling",
+      "Helps refine tone and surface irregularity",
+      "Builds confidence in visible skin areas",
+    ],
+    subServices: [
+      {
+        name: "RF Microneedling for Stretch Marks",
+        description:
+          "Radiofrequency microneedling designed to remodel collagen and visibly improve the depth, texture, and appearance of stretch marks.",
+      },
+    ],
+    rating: 4.7,
+    reviews: 142,
+  },
+  "skin-infection-treatment": {
+    title: "Skin Infection Treatment",
+    description:
+      "Expert skin assessment and treatment guidance for infection-related skin concerns, irritation, and allergy-linked flare-ups that need timely care.",
+    icon: "skin",
+    duration: "30-60 mins",
+    benefits: [
+      "Addresses active skin irritation early",
+      "Supports clearer diagnosis-led treatment",
+      "Helps calm redness and discomfort",
+      "Improves skin safety and recovery planning",
+      "Provides expert care for sensitive flare-ups",
+    ],
+    subServices: [
+      {
+        name: "Allergies",
+        description:
+          "Focused consultation and treatment guidance for allergy-related skin reactions, sensitivity, irritation, and visible flare-ups.",
+      },
+    ],
+    rating: 4.6,
+    reviews: 118,
+  },
   laser: {
     title: "Laser Treatments",
     description:
@@ -619,48 +806,139 @@ const TREATMENT_DATA = {
     rating: 4.8,
     reviews: 334,
   },
-  "body-contouring": {
-    title: "Body Contouring",
+  ayurveda: {
+    title: "Ayurveda",
     description:
-      "Advanced body shaping treatments including weight loss programs, cellulite reduction, and cryolipolysis.",
-    icon: "slimming",
-    duration: "45-120 mins",
+      "Traditional Ayurveda-inspired wellness rituals designed to support deep relaxation, body balance, and a calmer, more restorative care experience.",
+    icon: "skin",
+    duration: "45-90 mins",
     benefits: [
-      "Reduces body fat",
-      "Shapes body contours",
-      "Improves skin texture",
-      "Reduces cellulite",
-      "Enhances body confidence",
+      "Supports mind-body relaxation",
+      "Encourages a calmer routine",
+      "Helps ease body fatigue",
+      "Promotes traditional wellness care",
+      "Builds a restorative treatment experience",
     ],
     subServices: [
       {
-        name: "Medical Weight Loss Program",
+        name: "Potli Massage",
         description:
-          "Comprehensive weight management program combining medical treatments, nutrition, and lifestyle guidance.",
+          "A warm herbal pouch massage designed to soothe the body, ease stiffness, and create a deeply comforting wellness experience.",
       },
       {
-        name: "Cellulite Reduction Therapy",
+        name: "Shirodhara",
         description:
-          "Advanced treatments combining massage, radiofrequency, and topical therapies to reduce cellulite appearance.",
+          "A traditional forehead oil-flow ritual intended to calm the senses and support deep relaxation.",
       },
       {
-        name: "Cryolipolysis (CoolSculpting)",
+        name: "Full Body Massage",
         description:
-          "Non-surgical fat freezing technology that reduces stubborn fat deposits without surgery or downtime.",
+          "A restorative full-body massage experience focused on relaxation, circulation support, and overall body ease.",
       },
       {
-        name: "Body Shaping Treatments",
+        name: "Udwarthanam",
         description:
-          "Non-invasive body contouring using ultrasound, radiofrequency, and laser technologies.",
+          "A herbal powder massage ritual traditionally used to refresh the body and support a lighter, energized feel.",
+      },
+    ],
+    rating: 4.8,
+    reviews: 158,
+  },
+  "body-contouring": {
+    title: "Body Contouring",
+    description:
+      "Personalized body contouring pathways that separate structured weight-loss support from shaping-focused sculpting so you can explore the right treatment journey faster.",
+    icon: "slimming",
+    duration: "45-120 mins",
+    benefits: [
+      "Organizes body goals more clearly",
+      "Supports weight-management planning",
+      "Targets shaping and sculpting needs",
+      "Improves treatment selection clarity",
+      "Builds confidence-focused body plans",
+    ],
+    subServices: [
+      {
+        name: "Weight Loss Program",
+        description:
+          "Structured body contouring support for clients focused on reduction-led treatments and guided weight-management plans.",
+        path: "/treatment/weight-loss-program",
       },
       {
-        name: "Targeted Fat Reduction",
+        name: "Body Shaping and Targeted Weight Loss Program",
         description:
-          "Focused treatments for specific areas like abdomen, thighs, arms, and love handles.",
+          "Contour-focused treatments designed for sculpting, definition, and targeted reshaping in selected body areas.",
+        path: "/treatment/body-shaping-and-targeted-weight-loss-program",
       },
     ],
     rating: 4.6,
     reviews: 167,
+  },
+  "weight-loss-program": {
+    title: "Weight Loss Program",
+    description:
+      "A curated set of reduction-focused treatments designed to support inch loss, contour improvement, and more structured body-management plans.",
+    icon: "slimming",
+    duration: "45-90 mins",
+    benefits: [
+      "Supports reduction-focused planning",
+      "Targets stubborn body areas",
+      "Helps improve contour balance",
+      "Combines multiple treatment options",
+      "Builds a guided slimming pathway",
+    ],
+    subServices: [
+      {
+        name: "FDS",
+        description:
+          "A focused slimming treatment designed to support fat reduction and visible contour refinement.",
+      },
+      {
+        name: "NMS",
+        description:
+          "A body-management treatment approach intended to support targeted reduction and contour planning.",
+      },
+      {
+        name: "Lipo Laser",
+        description:
+          "Laser-led inch-loss support for clients looking for non-surgical contour refinement in localized areas.",
+      },
+      {
+        name: "Tummy Tuck",
+        description:
+          "Abdomen-focused contour correction designed for clients seeking a more refined midsection appearance.",
+      },
+    ],
+    rating: 4.7,
+    reviews: 176,
+  },
+  "body-shaping-and-targeted-weight-loss-program": {
+    title: "Body Shaping and Targeted Weight Loss Program",
+    description:
+      "Definition-led body sculpting options created for clients who want more shape, selective contouring, and visible refinement in targeted areas.",
+    icon: "slimming",
+    duration: "45-90 mins",
+    benefits: [
+      "Improves shape definition",
+      "Targets selected contour zones",
+      "Supports a more sculpted look",
+      "Helps refine body proportions",
+      "Builds confidence-focused results",
+    ],
+    subServices: [
+      {
+        name: "Muscle Sculpt",
+        description:
+          "Definition-focused body sculpting support for clients seeking a firmer, more athletic contour look.",
+      },
+      {
+        name: "Cryo Sculpt",
+        description:
+          "Cooling-based contour support designed to refine targeted pockets and improve body shape.",
+      },
+    ],
+    rating: 4.7,
+    reviews: 154,
   },
 };
 
@@ -1003,10 +1281,9 @@ const TreatmentDetailPage = ({ onBookAppointment }) => {
 
                         <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
                           {treatment.subServices.map((service, index) => {
-                            // Get the correct service ID from treatment name
-                            const serviceSlug = getServiceIdFromTreatment(
-                              service.name
-                            );
+                            const destinationPath =
+                              service.path ||
+                              `/service/${getServiceIdFromTreatment(service.name)}`;
 
                             return (
                               <motion.div
@@ -1021,7 +1298,7 @@ const TreatmentDetailPage = ({ onBookAppointment }) => {
                                 className="group"
                               >
                                 <Link
-                                  to={`/service/${serviceSlug}`}
+                                  to={destinationPath}
                                   className="block h-full"
                                 >
                                   <Card className="h-full border-2 border-gray-100 hover:border-[#efae4c] transition-all duration-300 bg-gradient-to-br from-white to-gray-50/30 overflow-hidden relative">

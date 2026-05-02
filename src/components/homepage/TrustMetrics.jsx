@@ -1,46 +1,128 @@
 import React from "react";
 import { motion } from "framer-motion";
+import navroopPhoto from "../../assets/management/navroop.jpeg";
+import akanshaPhoto from "../../assets/management/akansha.jpeg";
 
-const metrics = [
-  { value: "15+", label: "Years of Expertise" },
-  { value: "15K+", label: "Consultations Conducted" },
-  { value: "98%", label: "Client Satisfaction" },
-  { value: "Advanced", label: "Technology-led Care" },
+const experts = [
+  {
+    key: "cm",
+    initials: "KB",
+    name: "Kawaljit Bawa",
+    designation: "Center Manager",
+    experience: "15 Years of experience",
+    note: "Center Manager supports clients with personalized cosmetology guidance focused on skin health, confidence, and everyday care.",
+    accent: "Senior Cosmetologist",
+  },
+  {
+    key: "doctor",
+    initials: "DR",
+    photo: navroopPhoto,
+    name: "Dr Navroop Kaur ",
+    designation: "Aesthetic Doctor",
+    experience: "MBBS",
+    note: "Doctor leads the treatment planning with a refined, patient-first approach to aesthetic care.",
+    accent: "Clinical Assessment And Treatment",
+  },
+  {
+    key: "cosmetologist",
+    initials: "CS",
+    photo: akanshaPhoto,
+    name: "Akansha Srivastava Khanna",
+    designation: "Cosmetologist",
+    experience: "Cosmetologist",
+   
+    note: "Akansha focuses on creating a smooth, welcoming, and personalized experience for every client at Elaria.",
+
+    accent: "Cosmetologist",
+  },
 ];
 
 const TrustMetrics = () => {
   return (
-    <section className="bg-[#10233f] px-6 py-14 text-white">
-      <div className="mx-auto max-w-7xl">
-        <div className="mb-10 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+    <section className="relative overflow-hidden bg-[#10233f] px-6 py-16 text-white lg:py-20">
+      <div className="absolute left-[8%] top-16 h-52 w-52 rounded-full bg-[rgba(214,179,132,0.14)] blur-3xl" />
+      <div className="absolute bottom-10 right-[6%] h-64 w-64 rounded-full bg-[rgba(255,255,255,0.05)] blur-3xl" />
+      <div className="absolute inset-0 opacity-[0.06]" style={{
+        backgroundImage:
+          "linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px)",
+        backgroundSize: "110px 110px",
+      }} />
+
+      <div className="relative mx-auto max-w-[1800px]">
+        <div className="mb-10 grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
           <div>
-            <p className="text-[11px] uppercase tracking-[0.35em] text-[#d6b384]">
-              Why Elaria
+            <p className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/6 px-5 py-2 text-[10px] uppercase tracking-[0.3em] text-[#d6b384] backdrop-blur-xl">
+              <span className="h-2 w-2 rounded-full bg-[#d6b384]" />
+              Meet Our Experts
             </p>
-            <h2 className="mt-4 text-3xl font-light tracking-[-0.03em] text-white md:text-4xl">
-              Clinical precision with a premium experience.
+            <h2 className="mt-4 text-3xl font-light tracking-[-0.04em] text-white md:text-4xl">
+            The experts behind every calm , premium and result driven experience at Elaria
             </h2>
           </div>
-          <p className="max-w-2xl text-sm leading-7 text-white/70">
-            A calmer, more elevated treatment experience built around safety,
-            personalization and results that feel polished, not overdone.
+          <p className="max-w-2xl text-sm leading-7 text-white/76 lg:justify-self-end">
+          Meet the expert team behind your care—skilled professionals dedicated to delivering personalized, premium, and trustworthy aesthetic results.
           </p>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          {metrics.map((metric, index) => (
+        <div className="grid gap-5 lg:grid-cols-3">
+          {experts.map((expert, index) => (
             <motion.div
-              key={metric.label}
+              key={expert.key}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.45, delay: index * 0.08 }}
-              className="rounded-[28px] border border-white/10 bg-white/5 px-6 py-8 backdrop-blur-sm"
+              whileHover={{ y: -4 }}
+              className="group relative overflow-hidden rounded-[34px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.12),rgba(255,255,255,0.05))] p-5 shadow-[0_24px_70px_rgba(0,0,0,0.18)] backdrop-blur-xl transition duration-300 hover:border-[#d6b384]/35 hover:shadow-[0_30px_80px_rgba(0,0,0,0.24)] md:p-6"
             >
-              <p className="text-3xl font-medium text-[#d6b384]">{metric.value}</p>
-              <p className="mt-3 text-[11px] uppercase tracking-[0.28em] text-white/70">
-                {metric.label}
-              </p>
+              <div className="absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,rgba(214,179,132,0.15),rgba(214,179,132,0.9),rgba(214,179,132,0.15))]" />
+              <div className="absolute right-0 top-0 h-28 w-28 bg-[radial-gradient(circle_at_top_right,rgba(214,179,132,0.22),transparent_65%)] opacity-80" />
+              <div className="absolute left-6 top-20 h-28 w-28 rounded-full bg-[rgba(214,179,132,0.10)] blur-2xl" />
+
+              <div className="relative">
+                <div className="flex flex-col items-center gap-4 text-center">
+                  <div className="relative flex h-40 w-40 items-center justify-center rounded-[36px] border border-white/12 bg-[linear-gradient(160deg,rgba(214,179,132,0.28),rgba(255,255,255,0.1))] shadow-[inset_0_1px_0_rgba(255,255,255,0.15)]">
+                    {expert.photo ? (
+                      <img
+                        src={expert.photo}
+                        alt={expert.name}
+                        className="h-[132px] w-[132px] rounded-[30px] border border-white/10 object-cover object-top"
+                      />
+                    ) : (
+                      <div className="flex h-[132px] w-[132px] items-center justify-center rounded-[30px] border border-white/10 bg-[rgba(8,18,30,0.62)] text-[1.55rem] font-medium tracking-[0.16em] text-[#d6b384]">
+                        {expert.initials}
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="rounded-full border border-white/10 bg-white/5 px-3.5 py-2 text-[9px] uppercase tracking-[0.24em] text-white/72">
+                    {expert.designation}
+                  </div>
+                </div>
+
+                <div className="mt-5">
+                  <p className="text-[9px] uppercase tracking-[0.26em] text-[#d6b384]">
+                    {expert.accent}
+                  </p>
+                  <h3 className="mt-2.5 text-[1.35rem] font-medium tracking-[-0.03em] text-white">
+                    {expert.name}
+                  </h3>
+                  <p className="mt-2.5 text-sm font-medium text-white/88">
+                    {expert.experience}
+                  </p>
+                </div>
+
+                <div className="mt-5 rounded-[24px] border border-white/10 bg-[linear-gradient(180deg,rgba(7,16,26,0.58),rgba(7,16,26,0.34))] px-4 py-4">
+                  <p className="text-sm leading-6 text-white/78">{expert.note}</p>
+                </div>
+
+                <div className="mt-5 flex items-center justify-between">
+                  <div className="h-[1px] flex-1 bg-[linear-gradient(90deg,rgba(214,179,132,0.7),rgba(255,255,255,0.05))]" />
+                  <span className="ml-4 text-[9px] uppercase tracking-[0.24em] text-white/45">
+                    Elaria Team
+                  </span>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>

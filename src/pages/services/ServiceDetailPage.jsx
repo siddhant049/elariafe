@@ -1,18 +1,23 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Button, Card, Row, Col, Tag, Rate, Avatar } from "antd";
 import {
   ArrowLeftOutlined,
-  ClockCircleOutlined,
   CheckCircleOutlined,
-  StarFilled,
   PhoneOutlined,
   UserOutlined,
-  ExperimentOutlined,
   SafetyOutlined,
   TrophyOutlined,
 } from "@ant-design/icons";
+import hairImage from "../../assets/images/hair.jpg";
+import skinImage from "../../assets/images/skin.jpg";
+import acneImage from "../../assets/images/acne.jpg";
+import underEyesImage from "../../assets/images/under_eyes.png";
+import pigmentationImage from "../../assets/images/pigmentation.png";
+import medifacialImage from "../../assets/images/medifacial.png";
+import antiAgingImage from "../../assets/images/anti_aging.png";
+import laserImage from "../../assets/images/laser.png";
+import bodyContouringImage from "../../assets/images/slimming.png";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -34,13 +39,127 @@ const staggerContainer = {
   },
 };
 
+const BEFORE_CARE_KEYWORDS = [
+  "before",
+  "prior",
+  "come with",
+  "bring",
+  "inform",
+  "discontinue",
+  "patch test",
+  "not recommended",
+  "no active",
+  "stable medical condition",
+  "avoid alcohol",
+  "avoid smoking",
+];
+
+const AFTER_CARE_KEYWORDS = [
+  "post-treatment",
+  "post treatment",
+  "after treatment",
+  "aftercare",
+  "after",
+  "avoid washing",
+  "stay out",
+  "no harsh",
+  "follow-up",
+  "follow up",
+  "24 hours post",
+  "48 hours",
+  "1 week",
+];
+
+const CATEGORY_VISUALS = {
+  "Hair Treatments": {
+    image: hairImage,
+    badge: "Hair Restoration Care",
+    highlights: ["Scalp wellness", "Root support", "Regrowth planning"],
+  },
+  "Hair Thinning / Hair Fall": {
+    image: hairImage,
+    badge: "Targeted Hair Regrowth Care",
+    highlights: ["Fall control", "Follicle support", "Density planning"],
+  },
+  Dandruff: {
+    image: hairImage,
+    badge: "Scalp Balance Care",
+    highlights: ["Scalp reset", "Flake control", "Barrier comfort"],
+  },
+  "Skin Treatments": {
+    image: skinImage,
+    badge: "Skin Rejuvenation Care",
+    highlights: ["Texture renewal", "Glow planning", "Barrier support"],
+  },
+  "Pigmentation Solutions": {
+    image: pigmentationImage,
+    badge: "Pigmentation Correction",
+    highlights: ["Even tone", "Clarity focus", "Melasma support"],
+  },
+  Pigmentation: {
+    image: pigmentationImage,
+    badge: "Pigmentation Correction",
+    highlights: ["Even tone", "Brightness", "Tone refinement"],
+  },
+  "Acne and Scars": {
+    image: acneImage,
+    badge: "Acne And Scar Revision",
+    highlights: ["Scar care", "Texture repair", "Blemish control"],
+  },
+  "Under Eyes Services": {
+    image: underEyesImage,
+    badge: "Under-Eye Rejuvenation",
+    highlights: ["Dark circles", "Hollowness", "Eye refresh"],
+  },
+  Medifacial: {
+    image: medifacialImage,
+    badge: "Medical Facial Care",
+    highlights: ["Glow renewal", "Hydration", "Event-ready finish"],
+  },
+  "Anti Aging": {
+    image: antiAgingImage,
+    badge: "Age-Refinement Care",
+    highlights: ["Firmness", "Fine lines", "Collagen support"],
+  },
+  Laser: {
+    image: laserImage,
+    badge: "Precision Laser Care",
+    highlights: ["Technology-led", "Targeted care", "Refined results"],
+  },
+  Ayurveda: {
+    image: skinImage,
+    badge: "Ayurvedic Wellness Care",
+    highlights: ["Deep relaxation", "Traditional ritual", "Restorative balance"],
+  },
+  "Body Contouring": {
+    image: bodyContouringImage,
+    badge: "Body Contouring Care",
+    highlights: ["Shape refinement", "Contour support", "Non-invasive care"],
+  },
+  "Weight Loss Program": {
+    image: bodyContouringImage,
+    badge: "Weight Management Contouring",
+    highlights: ["Slimming focus", "Inch loss", "Reduction planning"],
+  },
+  "Body Shaping and Targeted Weight Loss Program": {
+    image: bodyContouringImage,
+    badge: "Targeted Sculpting Care",
+    highlights: ["Shape definition", "Target zones", "Contour refinement"],
+  },
+  default: {
+    image: skinImage,
+    badge: "Signature Aesthetic Care",
+    highlights: ["Personalized plan", "Expert guidance", "Refined results"],
+  },
+};
+
 // Service data with detailed information
 const SERVICE_DATA = {
   // Hair Treatments
   "qr678-treatment": {
     name: "QR678 Treatment",
-    category: "Hair Treatments",
-    categoryPath: "/treatment/hair",
+    category: "Hair Thinning / Hair Fall",
+    categoryPath: "/treatment/hair-thinning-hair-fall",
     description:
       "QR678 is a revolutionary peptide-based hair restoration treatment that uses advanced biotechnology to combat hair loss at the cellular level. This innovative therapy targets the root causes of hair thinning and baldness by stimulating dormant hair follicles and promoting healthy hair growth cycles.",
     duration: "45-60 mins",
@@ -90,10 +209,97 @@ const SERVICE_DATA = {
     whatItDoes:
       "QR678 works by delivering bio-active peptides directly to the hair follicle cells, stimulating cellular metabolism and protein synthesis. This reactivates the natural growth cycle, increases blood circulation to the scalp, and strengthens the hair shaft from within. Unlike traditional treatments, QR678 addresses the root cause rather than just symptoms.",
   },
+  "prp-hair-treatment": {
+    name: "PRP Hair Treatment",
+    category: "Hair Thinning / Hair Fall",
+    categoryPath: "/treatment/hair-thinning-hair-fall",
+    description:
+      "PRP hair treatment uses platelet-rich plasma from your own blood to support follicle activity, reduce shedding, and encourage healthier regrowth in thinning areas.",
+    duration: "45-60 mins",
+    sessions: "4-6 sessions recommended",
+    rating: 4.8,
+    reviews: 149,
+    purpose:
+      "Ideal for early to moderate hair fall, reduced density, and weakened follicles that need regenerative support without a surgical route.",
+    procedure:
+      "A small blood sample is processed to isolate platelet-rich plasma, which is then introduced into targeted scalp zones using precise delivery techniques.",
+    benefits: [
+      "Helps reduce active hair shedding",
+      "Supports healthier follicle function",
+      "Improves scalp nourishment",
+      "Encourages stronger root anchoring",
+      "Can enhance overall hair density",
+      "Uses your body's own growth factors",
+    ],
+    process: [
+      "Scalp and hair loss assessment",
+      "Blood draw and PRP preparation",
+      "Target-area scalp cleansing",
+      "PRP application to thinning zones",
+      "Post-treatment calming care",
+      "Aftercare guidance and follow-up planning",
+    ],
+    precautions: [
+      "Avoid blood-thinning medication only with medical approval",
+      "Inform the clinic about scalp infections or active inflammation",
+      "Do not wash hair for 24 hours after treatment",
+      "Avoid alcohol and smoking 24 hours before and after the session",
+      "Delay harsh chemical hair services for a few days",
+    ],
+    results:
+      "Reduced shedding is typically noticed first, followed by gradual improvement in hair quality and visible density over the next few months.",
+    maintenance:
+      "Periodic maintenance sessions and scalp-supportive home care help sustain gains after the initial PRP plan.",
+    whatItDoes:
+      "PRP delivers concentrated growth factors back into the scalp to support circulation, follicle signaling, and a healthier environment for regrowth.",
+  },
+  "exosome-hair-treatment": {
+    name: "Exosome Hair Treatment",
+    category: "Hair Thinning / Hair Fall",
+    categoryPath: "/treatment/hair-thinning-hair-fall",
+    description:
+      "Exosome hair treatment offers advanced regenerative scalp support to improve follicle signaling, recovery, and the overall conditions needed for stronger regrowth.",
+    duration: "50-75 mins",
+    sessions: "4-6 sessions recommended",
+    rating: 4.9,
+    reviews: 121,
+    purpose:
+      "Recommended for clients seeking next-generation support for persistent thinning, reduced density, or weakened scalp recovery.",
+    procedure:
+      "After scalp assessment, targeted exosome-based regenerative actives are delivered into treatment areas to support cellular communication and scalp repair.",
+    benefits: [
+      "Supports follicle regeneration",
+      "Improves scalp recovery response",
+      "May enhance overall hair quality",
+      "Helps create a healthier regrowth environment",
+      "Useful in modern combination regrowth plans",
+      "Targets thinning with regenerative technology",
+    ],
+    process: [
+      "Clinical assessment and treatment mapping",
+      "Preparation of the scalp and target zones",
+      "Precision exosome delivery",
+      "Supportive calming protocol",
+      "Aftercare briefing and progress plan",
+    ],
+    precautions: [
+      "Avoid treatment during active scalp irritation or infection",
+      "Pause harsh exfoliating scalp products before the session",
+      "Do not wash hair for 24 hours after treatment",
+      "Avoid intense sweating and direct heat briefly after care",
+      "Follow the advised session schedule for best results",
+    ],
+    results:
+      "Improvement develops gradually as scalp recovery and follicle signaling strengthen, with visible hair quality and density changes building over time.",
+    maintenance:
+      "Maintenance is individualized and may include combination care, supportive scalp products, and periodic review sessions.",
+    whatItDoes:
+      "Exosome therapy supports cell-to-cell signaling around the follicle, helping improve repair activity and scalp conditions that influence healthier growth cycles.",
+  },
   "hair-growth-boosters": {
     name: "Hair Growth Boosters",
-    category: "Hair Treatments",
-    categoryPath: "/treatment/hair",
+    category: "Hair Thinning / Hair Fall",
+    categoryPath: "/treatment/hair-thinning-hair-fall",
     description:
       "Advanced hair growth acceleration treatment combining potent nutrient formulations, growth factors, and cutting-edge delivery systems to stimulate dormant follicles and promote rapid, healthy hair regeneration.",
     duration: "30-45 mins",
@@ -145,8 +351,8 @@ const SERVICE_DATA = {
   },
   "gfc-therapy": {
     name: "GFC Therapy",
-    category: "Hair Treatments",
-    categoryPath: "/treatment/hair",
+    category: "Hair Thinning / Hair Fall",
+    categoryPath: "/treatment/hair-thinning-hair-fall",
     description:
       "GFC (Growth Factor Concentrate) Therapy represents the pinnacle of regenerative hair restoration, utilizing advanced stem cell-derived growth factors to rejuvenate aging hair follicles and stimulate natural hair regeneration at the cellular level.",
     duration: "50-70 mins",
@@ -202,8 +408,8 @@ const SERVICE_DATA = {
   },
   "specialized-hair-exams": {
     name: "Specialized Hair Exams",
-    category: "Hair Treatments",
-    categoryPath: "/treatment/hair",
+    category: "Hair Thinning / Hair Fall",
+    categoryPath: "/treatment/hair-thinning-hair-fall",
     description:
       "Comprehensive scalp analysis and hair health assessment to identify underlying causes of hair loss and scalp conditions.",
     duration: "45-60 mins",
@@ -245,8 +451,8 @@ const SERVICE_DATA = {
   },
   "scalp-peel-treatment": {
     name: "Scalp Peel Treatment",
-    category: "Hair Treatments",
-    categoryPath: "/treatment/hair",
+    category: "Dandruff",
+    categoryPath: "/treatment/dandruff",
     description:
       "Medical-grade exfoliation treatment that removes buildup and promotes healthy scalp environment for optimal hair growth.",
     duration: "40-50 mins",
@@ -1387,8 +1593,8 @@ const SERVICE_DATA = {
 
   "microneedling-radiofrequency-stretch-marks": {
     name: "Microneedling Radiofrequency for Stretch Marks",
-    category: "Acne and Scars",
-    categoryPath: "/treatment/acne-scars",
+    category: "Stretch Marks Removal",
+    categoryPath: "/treatment/stretch-marks-removal",
     description:
       "Advanced combination treatment using radiofrequency energy with microneedling to treat stretch marks and improve skin texture and elasticity.",
     duration: "60-75 mins",
@@ -2504,6 +2710,416 @@ const SERVICE_DATA = {
   },
 
   // Body Contouring Treatments
+  "potli-massage": {
+    name: "Potli Massage",
+    category: "Ayurveda",
+    categoryPath: "/treatment/ayurveda",
+    description:
+      "Potli Massage is a traditional warm herbal pouch massage designed to ease body stiffness, relax tired muscles, and create a deeply grounding wellness experience.",
+    duration: "60-75 mins",
+    sessions: "As needed or in wellness packages",
+    rating: 4.8,
+    reviews: 96,
+    benefits: [
+      "Helps ease body heaviness",
+      "Supports deep muscle relaxation",
+      "Creates a soothing wellness experience",
+      "Encourages better body comfort",
+      "Traditional herbal warmth support",
+      "Ideal for stress-relief routines",
+    ],
+    process: [
+      "Wellness consultation and body assessment",
+      "Selection of massage oils and herbal potli",
+      "Warm pouch massage across target areas",
+      "Relaxation-focused finishing sequence",
+      "Post-session rest and hydration guidance",
+    ],
+    precautions: [
+      "Share any active inflammation or skin sensitivity before treatment",
+      "Avoid the session during acute fever or infection",
+      "Hydration after the massage is recommended",
+      "Pressure and warmth should be adjusted to comfort",
+    ],
+    purpose:
+      "Designed for clients seeking traditional warmth-led body relaxation and relief from everyday physical fatigue.",
+    procedure:
+      "Warm herbal pouches are prepared and used in a rhythmic massage sequence across selected body areas with supportive oils.",
+    whatItDoes:
+      "It combines heat, herbs, and massage strokes to create a more relaxed, eased, and comfort-focused body experience.",
+    results:
+      "Most clients feel lighter, calmer, and more relaxed immediately after the session, with comfort benefits often building with regular care.",
+    maintenance: "Can be repeated as part of a regular wellness and relaxation routine.",
+  },
+  "shirodhara-treatment": {
+    name: "Shirodhara",
+    category: "Ayurveda",
+    categoryPath: "/treatment/ayurveda",
+    description:
+      "Shirodhara is a traditional Ayurvedic relaxation ritual involving a steady stream of warm oil over the forehead to promote calmness and mental stillness.",
+    duration: "45-60 mins",
+    sessions: "Typically advised in a wellness series",
+    rating: 4.9,
+    reviews: 104,
+    benefits: [
+      "Promotes deep relaxation",
+      "Helps quiet mental fatigue",
+      "Supports a calm sensory experience",
+      "Encourages restorative stillness",
+      "Traditional stress-relief ritual",
+      "Pairs well with broader wellness care",
+    ],
+    process: [
+      "Consultation and comfort review",
+      "Preparation for the forehead oil ritual",
+      "Steady warm oil flow during the session",
+      "Rest phase after the treatment",
+      "Post-care guidance for calm recovery",
+    ],
+    precautions: [
+      "Inform the clinic about scalp sensitivity or allergies",
+      "Avoid immediate exposure to cold air after treatment",
+      "Resting briefly after the session is recommended",
+      "Oil-based care may require post-session hair cleansing",
+    ],
+    purpose:
+      "Best suited for clients looking for a deeply calming ritual that supports relaxation and mental rest.",
+    procedure:
+      "A continuous stream of warm therapeutic oil is directed over the forehead in a controlled, comfort-focused sequence.",
+    whatItDoes:
+      "Shirodhara creates a calm, restorative sensory environment that helps the body shift into a slower, more relaxed state.",
+    results:
+      "Clients usually feel calmer, more rested, and mentally lighter after the session, especially when included in a repeated wellness plan.",
+    maintenance: "Often repeated across wellness programs for a more cumulative calming effect.",
+  },
+  "full-body-massage": {
+    name: "Full Body Massage",
+    category: "Ayurveda",
+    categoryPath: "/treatment/ayurveda",
+    description:
+      "Full Body Massage is a restorative Ayurvedic wellness treatment focused on easing physical tension, supporting circulation, and improving overall relaxation.",
+    duration: "60-90 mins",
+    sessions: "As needed or in recurring care plans",
+    rating: 4.8,
+    reviews: 112,
+    benefits: [
+      "Eases overall body tension",
+      "Promotes a more relaxed body state",
+      "Supports circulation and comfort",
+      "Helps reduce day-to-day fatigue",
+      "Creates a restorative wellness pause",
+      "Improves the feeling of physical ease",
+    ],
+    process: [
+      "Comfort consultation and focus-area review",
+      "Selection of suitable massage oils",
+      "Full-body massage treatment",
+      "Relaxation and finishing sequence",
+      "Hydration and post-care advice",
+    ],
+    precautions: [
+      "Pressure should be adjusted based on comfort",
+      "Inform the team about any acute pain or injury",
+      "Avoid treatment with open skin irritation",
+      "Adequate rest and hydration are advised afterward",
+    ],
+    purpose:
+      "Created for clients who want a complete relaxation-led body treatment that eases muscular fatigue and supports general wellness.",
+    procedure:
+      "Therapeutic oils and massage techniques are used across the full body in a structured restorative session.",
+    whatItDoes:
+      "It helps release body tension, improve comfort, and create a calmer, more balanced physical state.",
+    results:
+      "Most clients feel relaxed, refreshed, and physically lighter after the session, with benefits improving through regular care.",
+    maintenance: "Can be scheduled regularly to support an ongoing wellness routine.",
+  },
+  "udwarthanam-treatment": {
+    name: "Udwarthanam",
+    category: "Ayurveda",
+    categoryPath: "/treatment/ayurveda",
+    description:
+      "Udwarthanam is a traditional herbal powder massage that energizes the body, refreshes the skin surface, and supports a lighter overall feel.",
+    duration: "45-60 mins",
+    sessions: "Often advised in a wellness series",
+    rating: 4.7,
+    reviews: 88,
+    benefits: [
+      "Creates an energizing body ritual",
+      "Refreshes the skin surface",
+      "Supports a lighter body feel",
+      "Encourages traditional wellness balance",
+      "Adds variety to Ayurvedic care routines",
+      "Works well in structured wellness programs",
+    ],
+    process: [
+      "Consultation and body-comfort review",
+      "Preparation of herbal powder blend",
+      "Targeted powder massage sequence",
+      "Warm cleansing and post-session rest",
+      "Wellness follow-up guidance",
+    ],
+    precautions: [
+      "Avoid treatment on broken or highly sensitive skin",
+      "Share any herb-related allergy concerns beforehand",
+      "Temporary dryness may require post-care moisturization",
+      "Best performed under guided professional care",
+    ],
+    purpose:
+      "Suitable for clients looking for a more invigorating Ayurvedic body ritual with a traditional herbal approach.",
+    procedure:
+      "A specially prepared herbal powder blend is used in a massage technique designed to stimulate and refresh the body.",
+    whatItDoes:
+      "It combines friction and herbal application to create a more energized, refreshed, and wellness-focused body experience.",
+    results:
+      "Clients often feel more refreshed and activated after the session, with better results when included in a planned wellness series.",
+    maintenance: "Usually repeated in a guided Ayurveda wellness schedule for sustained benefit.",
+  },
+  "fds-treatment": {
+    name: "FDS",
+    category: "Weight Loss Program",
+    categoryPath: "/treatment/weight-loss-program",
+    description:
+      "FDS is a slimming-focused body contouring treatment designed to support localized reduction, improve contour transitions, and build a more structured inch-loss plan.",
+    duration: "45-60 mins",
+    sessions: "6-8 sessions recommended",
+    rating: 4.7,
+    reviews: 118,
+    benefits: [
+      "Supports localized inch-loss goals",
+      "Improves visible contour smoothness",
+      "Helps refine selected body zones",
+      "Works well inside structured slimming plans",
+      "Non-surgical body refinement support",
+      "Can complement broader weight-management care",
+    ],
+    process: [
+      "Body-area consultation and measurements",
+      "Suitability review for slimming goals",
+      "Targeted treatment application",
+      "Progress tracking across sessions",
+      "Aftercare and lifestyle guidance",
+    ],
+    precautions: [
+      "Treatment planning should be individualized",
+      "Consistency across sessions improves outcomes",
+      "Lifestyle support helps maintain results",
+      "Not a substitute for major medical weight-loss needs",
+    ],
+    purpose:
+      "Designed for clients seeking a more focused slimming treatment to support contour improvement and inch-loss planning.",
+    procedure:
+      "The treatment is applied to selected body areas using a structured protocol intended to improve contour response over a planned session cycle.",
+    whatItDoes:
+      "FDS supports localized body refinement by focusing on selected areas where visible reduction and smoother contour transitions are desired.",
+    results:
+      "Visible change usually develops progressively over multiple sessions, with more noticeable contour refinement as the plan continues.",
+    maintenance: "Periodic review sessions and healthy lifestyle support help maintain results.",
+  },
+  "nms-treatment": {
+    name: "NMS",
+    category: "Weight Loss Program",
+    categoryPath: "/treatment/weight-loss-program",
+    description:
+      "NMS is a guided body-management treatment approach aimed at supporting reduction-focused body contouring and more defined slimming plans.",
+    duration: "45-60 mins",
+    sessions: "6-10 sessions recommended",
+    rating: 4.7,
+    reviews: 111,
+    benefits: [
+      "Supports guided body-management goals",
+      "Helps target selected concern areas",
+      "Builds structure into slimming plans",
+      "Can improve visible contour balance",
+      "Pairs well with broader reduction programs",
+      "Non-surgical contour support",
+    ],
+    process: [
+      "Goal assessment and body review",
+      "Treatment-area planning",
+      "Session-based contour protocol",
+      "Progress monitoring",
+      "Maintenance and aftercare guidance",
+    ],
+    precautions: [
+      "Best results depend on session consistency",
+      "Healthy routine support is recommended",
+      "Results vary based on body goals and starting point",
+      "Professional evaluation is important before treatment",
+    ],
+    purpose:
+      "Built for clients who want a more guided reduction-focused contour plan with attention to selected body areas.",
+    procedure:
+      "NMS follows a planned treatment cycle targeting body areas that need more structured slimming and contour support.",
+    whatItDoes:
+      "It supports visible body refinement by focusing on selected reduction goals and improving the overall contour strategy.",
+    results:
+      "Contour improvements typically appear progressively over the course of treatment, with better definition after consistent sessions.",
+    maintenance: "Review-led maintenance and supportive lifestyle habits help prolong visible results.",
+  },
+  "lipo-laser-treatment": {
+    name: "Lipo Laser",
+    category: "Weight Loss Program",
+    categoryPath: "/treatment/weight-loss-program",
+    description:
+      "Lipo Laser is a non-surgical body contouring treatment that uses laser-based support for inch loss and visible refinement in localized stubborn areas.",
+    duration: "45-75 mins",
+    sessions: "6-8 sessions recommended",
+    rating: 4.8,
+    reviews: 146,
+    benefits: [
+      "Supports non-surgical inch loss",
+      "Targets selected stubborn zones",
+      "Helps refine contour lines",
+      "No major downtime",
+      "Works well in slimming-focused treatment plans",
+      "Can improve confidence in fitted clothing",
+    ],
+    process: [
+      "Area assessment and goal review",
+      "Laser treatment planning",
+      "Targeted lipo-laser session",
+      "Measurement and progress review",
+      "Aftercare guidance",
+    ],
+    precautions: [
+      "Best suited for localized contour goals",
+      "Results improve with repeated sessions",
+      "Hydration and movement may support outcomes",
+      "Not intended as a substitute for surgical intervention where indicated",
+    ],
+    purpose:
+      "Ideal for clients looking for a non-surgical route to inch-loss support and visible contour refinement in specific areas.",
+    procedure:
+      "Laser-based contouring is applied to the selected area using a structured protocol aimed at reduction support and smoother body lines.",
+    whatItDoes:
+      "Lipo Laser supports localized contour improvement by focusing on targeted body areas that need non-surgical reduction-led refinement.",
+    results:
+      "Visible inch-loss and contour changes often develop over a planned session course, with cumulative improvement over time.",
+    maintenance: "Maintenance sessions and stable body habits help preserve the contouring benefit.",
+  },
+  "tummy-tuck-treatment": {
+    name: "Tummy Tuck",
+    category: "Weight Loss Program",
+    categoryPath: "/treatment/weight-loss-program",
+    description:
+      "Tummy Tuck is an abdomen-focused contour correction option designed for clients seeking a more defined, refined, and flatter midsection appearance.",
+    duration: "60-120 mins",
+    sessions: "Treatment plan varies by need",
+    rating: 4.7,
+    reviews: 103,
+    benefits: [
+      "Focuses on midsection refinement",
+      "Supports a more defined abdominal profile",
+      "Targets visible contour irregularity",
+      "Can improve confidence in the waistline area",
+      "Built around abdomen-specific goals",
+      "Creates a clearer contour plan",
+    ],
+    process: [
+      "Abdominal assessment and planning",
+      "Suitability discussion based on goals",
+      "Personalized treatment-path selection",
+      "Procedure or session-based intervention",
+      "Recovery and follow-up guidance",
+    ],
+    precautions: [
+      "Requires individualized suitability evaluation",
+      "Recovery guidance depends on the chosen approach",
+      "Results vary based on skin, contour, and baseline condition",
+      "Follow-up care is essential",
+    ],
+    purpose:
+      "Created for clients focused on abdomen-specific contour correction and a more refined tummy profile.",
+    procedure:
+      "The treatment approach is planned around abdominal contour goals and may involve a more structured correction pathway than routine non-surgical shaping.",
+    whatItDoes:
+      "It concentrates on improving abdominal contour definition and reducing the appearance of fullness or irregularity in the midsection.",
+    results:
+      "Visible refinement depends on the starting condition and treatment path, with contour improvement becoming clearer as recovery or sessions progress.",
+    maintenance: "Maintenance depends on the plan chosen and long-term body-weight stability.",
+  },
+  "muscle-sculpt-treatment": {
+    name: "Muscle Sculpt",
+    category: "Body Shaping and Targeted Weight Loss Program",
+    categoryPath: "/treatment/body-shaping-and-targeted-weight-loss-program",
+    description:
+      "Muscle Sculpt is a definition-focused body shaping treatment designed to support a firmer, more athletic-looking contour in selected areas.",
+    duration: "45-60 mins",
+    sessions: "6-8 sessions recommended",
+    rating: 4.8,
+    reviews: 132,
+    benefits: [
+      "Supports visible body definition",
+      "Helps create a firmer contour look",
+      "Targets shape-focused aesthetic goals",
+      "Works well for selective sculpting zones",
+      "Enhances tone-focused body planning",
+      "Non-surgical shaping support",
+    ],
+    process: [
+      "Definition-goal consultation",
+      "Target-zone assessment",
+      "Muscle sculpt session planning",
+      "Treatment delivery",
+      "Progress review and maintenance guidance",
+    ],
+    precautions: [
+      "Best results come with session consistency",
+      "Healthy fitness habits can complement results",
+      "Treatment is goal-specific, not generalized weight loss",
+      "Professional suitability review is advised",
+    ],
+    purpose:
+      "Designed for clients who want more visible definition and contour shaping in selected body areas.",
+    procedure:
+      "The treatment follows a structured sculpting protocol aimed at improving the look of firmness and contour in targeted zones.",
+    whatItDoes:
+      "Muscle Sculpt supports a more defined body appearance by focusing on shape-led refinement and firmer contour presentation.",
+    results:
+      "Shape definition builds progressively through a planned course of sessions, with a firmer look becoming more noticeable over time.",
+    maintenance: "Periodic follow-up sessions and consistent fitness habits help maintain the sculpted appearance.",
+  },
+  "cryo-sculpt-treatment": {
+    name: "Cryo Sculpt",
+    category: "Body Shaping and Targeted Weight Loss Program",
+    categoryPath: "/treatment/body-shaping-and-targeted-weight-loss-program",
+    description:
+      "Cryo Sculpt is a cooling-based contour treatment created to refine selected stubborn pockets and support a cleaner, more sculpted body shape.",
+    duration: "45-75 mins",
+    sessions: "3-6 sessions recommended",
+    rating: 4.8,
+    reviews: 127,
+    benefits: [
+      "Targets localized stubborn areas",
+      "Supports a more sculpted silhouette",
+      "Improves visible contour transitions",
+      "Non-surgical shaping support",
+      "Helps refine selected body pockets",
+      "Can fit into targeted sculpting plans",
+    ],
+    process: [
+      "Area mapping and contour review",
+      "Cooling-treatment planning",
+      "Cryo sculpt application",
+      "Post-session assessment",
+      "Follow-up and maintenance planning",
+    ],
+    precautions: [
+      "Best suited for localized contouring goals",
+      "Results develop over time rather than immediately",
+      "Healthy maintenance supports longevity of results",
+      "Professional review is needed before starting care",
+    ],
+    purpose:
+      "Intended for clients who want cooling-based support for refining selected pockets and improving body shape definition.",
+    procedure:
+      "Cryo Sculpt uses a structured cooling-led contour protocol on targeted areas selected during treatment planning.",
+    whatItDoes:
+      "It supports visible sculpting by focusing on small, resistant contour zones that need more selective refinement.",
+    results:
+      "Visible sculpting develops gradually over the treatment course, with contour lines appearing more refined over time.",
+    maintenance: "Maintenance sessions may be advised depending on the area treated and long-term body goals.",
+  },
   "weight-loss-treatments": {
     name: "Weight Loss Treatments",
     category: "Body Contouring",
@@ -2725,13 +3341,20 @@ const ServiceDetailPage = ({ onBookAppointment }) => {
 
   if (!service) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">
+      <div className="flex min-h-screen items-center justify-center bg-[#fcfaf7] px-6">
+        <div className="rounded-[32px] border border-[#e5d8c7] bg-white px-10 py-12 text-center shadow-[0_24px_70px_rgba(15,23,42,0.08)]">
+          <h2 className="mb-4 text-2xl font-semibold text-slate-900">
             Service Not Found
           </h2>
-          <Link to="/">
-            <Button type="primary">Go Home</Button>
+          <p className="mx-auto max-w-md text-sm leading-7 text-slate-600">
+            The service you are looking for could not be found. Please return to
+            the treatment pages and choose another service.
+          </p>
+          <Link
+            to="/"
+            className="mt-8 inline-flex items-center justify-center rounded-full bg-[#10233f] px-6 py-3 text-sm font-medium tracking-[0.18em] text-white transition hover:bg-[#0c1b2f]"
+          >
+            GO HOME
           </Link>
         </div>
       </div>
@@ -2744,203 +3367,431 @@ const ServiceDetailPage = ({ onBookAppointment }) => {
     }
   };
 
+  const categoryVisual = CATEGORY_VISUALS[service.category] || CATEGORY_VISUALS.default;
+  const snapshotSummary =
+    service.purpose || service.whatItDoes || service.procedure || service.description;
+  const overviewCards = [
+    service.purpose && {
+      title: "Purpose & Indications",
+      eyebrow: "Why this treatment",
+      content: service.purpose,
+    },
+    service.whatItDoes && {
+      title: "How It Works",
+      eyebrow: "Science-led care",
+      content: service.whatItDoes,
+    },
+    service.procedure && {
+      title: "Procedure Overview",
+      eyebrow: "What to expect",
+      content: service.procedure,
+    },
+  ].filter(Boolean);
+
+  const whyChooseCards = [
+    {
+      eyebrow: "Targeted care",
+      title: "Designed around your concern",
+      content: service.purpose || service.description,
+    },
+    {
+      eyebrow: "Thoughtful method",
+      title: "Science-led treatment planning",
+      content: service.whatItDoes || service.procedure || service.description,
+    },
+    {
+      eyebrow: "Visible payoff",
+      title: "Built for refined outcomes",
+      content: service.results || service.maintenance || service.description,
+    },
+  ].filter((item) => Boolean(item.content));
+
+  const classifiedCare = (service.precautions || []).reduce(
+    (accumulator, precaution) => {
+      const normalizedPrecaution = precaution.toLowerCase();
+      const matchesAfter = AFTER_CARE_KEYWORDS.some((keyword) =>
+        normalizedPrecaution.includes(keyword)
+      );
+      const matchesBefore = BEFORE_CARE_KEYWORDS.some((keyword) =>
+        normalizedPrecaution.includes(keyword)
+      );
+
+      if (matchesAfter && !matchesBefore) {
+        accumulator.after.push(precaution);
+      } else if (matchesBefore) {
+        accumulator.before.push(precaution);
+      } else {
+        accumulator.before.push(precaution);
+      }
+
+      return accumulator;
+    },
+    { before: [], after: [] }
+  );
+
+  if (classifiedCare.after.length === 0 && classifiedCare.before.length > 1) {
+    const splitIndex = Math.ceil(classifiedCare.before.length / 2);
+    classifiedCare.after = classifiedCare.before.slice(splitIndex);
+    classifiedCare.before = classifiedCare.before.slice(0, splitIndex);
+  }
+
   return (
-    <div className="min-h-screen bg-gray-50 mt-10">
-      {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-[#001b3d] to-[#002b5d]">
-        <div className="container mx-auto px-6">
+    <div className="mt-10 min-h-screen bg-[#fcfaf7]">
+      <section className="relative overflow-hidden bg-[#07101a]">
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-30"
+          style={{ backgroundImage: `url(${categoryVisual.image})` }}
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(6,14,24,0.96),rgba(8,18,30,0.92),rgba(8,18,30,0.82))]" />
+        <div className="absolute left-[8%] top-[16%] h-60 w-60 rounded-full bg-[rgba(214,179,132,0.16)] blur-3xl" />
+        <div className="absolute bottom-[8%] right-[7%] h-72 w-72 rounded-full bg-[rgba(16,35,63,0.45)] blur-3xl" />
+
+        <div className="relative mx-auto max-w-[1800px] px-6 pb-20 pt-28 lg:px-8 lg:pb-24 lg:pt-36">
           <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeUp}
-            className="text-center text-white"
+            initial={{ opacity: 0, y: 26 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65 }}
+            className="grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_420px] lg:items-end xl:gap-14"
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-4">
-              {service.name}
-            </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-6">
-              {service.description}
-            </p>
+            <div className="max-w-4xl">
+              <Link
+                to={service.categoryPath}
+                className="inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/10 px-5 py-2 text-[11px] uppercase tracking-[0.32em] text-white/90 backdrop-blur-xl transition hover:border-[#d6b384]/45 hover:text-white"
+              >
+                <ArrowLeftOutlined />
+                Back To {service.category}
+              </Link>
+
+              <div className="mt-8 inline-flex items-center gap-3 rounded-full border border-white/12 bg-white/8 px-5 py-2 backdrop-blur-xl">
+                <span className="h-2 w-2 rounded-full bg-[#d6b384]" />
+                <span className="text-[11px] uppercase tracking-[0.34em] text-[rgb(246_243_239)]">
+                  {categoryVisual.badge}
+                </span>
+              </div>
+
+              <h1 className="mt-8 text-5xl font-light leading-[0.92] tracking-[-0.06em] text-white md:text-7xl xl:text-[6rem]">
+                {service.name}
+              </h1>
+
+              <p className="mt-7 max-w-3xl text-lg leading-8 text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.28)] md:text-[1.12rem]">
+                {service.description}
+              </p>
+
+              <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+                <button
+                  type="button"
+                  onClick={handleBookAppointment}
+                  className="inline-flex items-center justify-center rounded-full bg-[#d6b384] px-8 py-4 text-sm font-medium tracking-[0.18em] text-[#0b1727] transition hover:bg-[#c9a26f]"
+                >
+                  BOOK CONSULTATION
+                </button>
+                <Link
+                  to={service.categoryPath}
+                  className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-8 py-4 text-sm font-medium tracking-[0.18em] text-white transition hover:border-[#d6b384] hover:text-[#d6b384]"
+                >
+                  EXPLORE CATEGORY
+                </Link>
+              </div>
+
+              <div className="mt-10 flex flex-wrap gap-3">
+                {categoryVisual.highlights.map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-white/15 bg-white/10 px-4 py-3 text-[11px] uppercase tracking-[0.26em] text-white/90 backdrop-blur-lg"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 28 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.08 }}
+              className="relative"
+            >
+              <div className="overflow-hidden rounded-[34px] border border-white/10 bg-[linear-gradient(145deg,rgba(255,255,255,0.12),rgba(255,255,255,0.05))] p-4 shadow-[0_30px_90px_rgba(0,0,0,0.35)] backdrop-blur-2xl">
+                <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-[rgba(9,19,33,0.9)]">
+                  <div className="absolute inset-0">
+                    <img
+                      src={categoryVisual.image}
+                      alt={service.name}
+                      className="h-full w-full object-cover opacity-30"
+                    />
+                    <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(8,17,30,0.4),rgba(8,17,30,0.86))]" />
+                  </div>
+
+                  <div className="relative p-6 md:p-8">
+                    <p className="text-[10px] uppercase tracking-[0.34em] text-[rgb(246_243_239)]">
+                      Signature Service Snapshot
+                    </p>
+                    <h2 className="mt-4 text-2xl font-light text-white md:text-[2rem]">
+                      Personalized planning, refined execution, visible confidence.
+                    </h2>
+
+                    <div className="mt-8 rounded-[24px] border border-white/10 bg-white/6 px-5 py-5">
+                      <p className="text-[10px] uppercase tracking-[0.3em] text-white/75">
+                        Treatment Category
+                      </p>
+                      <p className="mt-2 text-lg font-medium text-white">
+                        {service.category}
+                      </p>
+                      <p className="mt-3 text-sm leading-7 text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.28)]">
+                        {snapshotSummary}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Service Details */}
-      <section className="py-16">
-        <div className="container mx-auto px-6">
-          <Row gutter={[48, 48]}>
-            {/* Main Content */}
-            <Col xs={24} lg={16}>
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={staggerContainer}
-              >
-                {/* Purpose */}
-                {service.purpose && (
-                  <Card
-                    className="mb-8 shadow-lg"
-                    title={
-                      <div className="flex items-center gap-2">
-                        <span className="text-2xl">🎯</span>
-                        <span>Purpose & Indications</span>
-                      </div>
-                    }
-                  >
-                    <motion.div variants={fadeUp}>
-                      <p className="text-gray-700 leading-relaxed">
-                        {service.purpose}
+      <section className="px-6 py-20 lg:px-8 lg:py-24">
+        <div className="mx-auto max-w-[1800px]">
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,1.3fr)_380px] xl:gap-10">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.08 }}
+              variants={staggerContainer}
+              className="space-y-8"
+            >
+              {overviewCards.length > 0 && (
+                <div className="grid gap-6 xl:grid-cols-3">
+                  {overviewCards.map((item) => (
+                    <motion.div
+                      key={item.title}
+                      variants={fadeUp}
+                      className="rounded-[34px] border border-[#e7dccd] bg-white p-7 shadow-[0_20px_55px_rgba(17,24,39,0.06)]"
+                    >
+                      <p className="text-[11px] uppercase tracking-[0.34em] text-[#9a7b52]">
+                        {item.eyebrow}
+                      </p>
+                      <h2 className="mt-4 text-2xl font-medium tracking-[-0.03em] text-slate-900">
+                        {item.title}
+                      </h2>
+                      <p className="mt-4 text-sm leading-8 text-slate-700">
+                        {item.content}
                       </p>
                     </motion.div>
-                  </Card>
-                )}
+                  ))}
+                </div>
+              )}
 
-                {/* What It Does */}
-                {service.whatItDoes && (
-                  <Card
-                    className="mb-8 shadow-lg"
-                    title={
-                      <div className="flex items-center gap-2">
-                        <span className="text-2xl">🧬</span>
-                        <span>How It Works</span>
-                      </div>
-                    }
-                  >
-                    <motion.div variants={fadeUp}>
-                      <p className="text-gray-700 leading-relaxed">
-                        {service.whatItDoes}
+              {service.benefits?.length > 0 && (
+                <motion.div
+                  variants={fadeUp}
+                  className="rounded-[38px] border border-[#e7dccd] bg-[linear-gradient(180deg,rgba(255,255,255,0.95),rgba(250,245,239,0.98))] p-8 shadow-[0_24px_80px_rgba(15,23,42,0.08)]"
+                >
+                  <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+                    <div>
+                      <p className="text-[11px] uppercase tracking-[0.35em] text-[#9a7b52]">
+                        Benefits
                       </p>
-                    </motion.div>
-                  </Card>
-                )}
-
-                {/* Procedure Details */}
-                {service.procedure && (
-                  <Card
-                    className="mb-8 shadow-lg"
-                    title={
-                      <div className="flex items-center gap-2">
-                        <span className="text-2xl">⚕️</span>
-                        <span>Procedure Overview</span>
-                      </div>
-                    }
-                  >
-                    <motion.div variants={fadeUp}>
-                      <p className="text-gray-700 leading-relaxed">
-                        {service.procedure}
-                      </p>
-                    </motion.div>
-                  </Card>
-                )}
-
-                {/* Key Benefits */}
-                <Card
-                  className="mb-8 shadow-lg"
-                  title={
-                    <div className="flex items-center gap-2">
-                      <TrophyOutlined className="text-[#efae4c]" />
-                      <span>Key Benefits</span>
+                      <h2 className="mt-4 text-3xl font-light tracking-[-0.04em] text-slate-900 md:text-4xl">
+                        Key benefits designed around visible, refined results.
+                      </h2>
                     </div>
-                  }
-                >
-                  <motion.div variants={fadeUp}>
-                    <div className="grid md:grid-cols-2 gap-4">
-                      {service.benefits.map((benefit, index) => (
-                        <div key={index} className="flex items-start gap-3">
-                          <CheckCircleOutlined className="text-green-500 mt-1 flex-shrink-0" />
-                          <span className="text-gray-700">{benefit}</span>
-                        </div>
-                      ))}
+                    <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#10233f] text-[#d6b384]">
+                      <TrophyOutlined className="text-xl" />
                     </div>
-                  </motion.div>
-                </Card>
+                  </div>
 
-                {/* Treatment Process */}
-                <Card
-                  className="mb-8 shadow-lg"
-                  title={
-                    <div className="flex items-center gap-2">
-                      <ExperimentOutlined className="text-[#efae4c]" />
-                      <span>Treatment Process</span>
-                    </div>
-                  }
-                >
-                  <motion.div variants={fadeUp}>
-                    <div className="space-y-4">
-                      {service.process.map((step, index) => (
-                        <div key={index} className="flex items-start gap-4">
-                          <div className="w-8 h-8 bg-[#efae4c] text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
-                            {index + 1}
-                          </div>
-                          <p className="text-gray-700 mt-1">{step}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </motion.div>
-                </Card>
-
-                {/* Results & Maintenance */}
-                <Row gutter={[24, 24]}>
-                  <Col xs={24} md={12}>
-                    <Card className="shadow-lg h-full">
-                      <div className="text-center">
-                        <TrophyOutlined className="text-3xl text-[#efae4c] mb-4" />
-                        <h3 className="text-lg font-semibold text-gray-800 mb-3">
-                          Expected Results
-                        </h3>
-                        <p className="text-gray-600">{service.results}</p>
-                      </div>
-                    </Card>
-                  </Col>
-                  <Col xs={24} md={12}>
-                    <Card className="shadow-lg h-full">
-                      <div className="text-center">
-                        <UserOutlined className="text-3xl text-[#efae4c] mb-4" />
-                        <h3 className="text-lg font-semibold text-gray-800 mb-3">
-                          Maintenance
-                        </h3>
-                        <p className="text-gray-600">{service.maintenance}</p>
-                      </div>
-                    </Card>
-                  </Col>
-                </Row>
-              </motion.div>
-            </Col>
-
-            {/* Sidebar */}
-            <Col xs={24} lg={8}>
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeUp}
-              >
-                {/* Precautions */}
-                <Card
-                  className="shadow-lg"
-                  title={
-                    <div className="flex items-center gap-2">
-                      <SafetyOutlined className="text-[#efae4c]" />
-                      <span>Important Precautions</span>
-                    </div>
-                  }
-                >
-                  <ul className="space-y-2">
-                    {service.precautions.map((precaution, index) => (
-                      <li
-                        key={index}
-                        className="flex items-start gap-2 text-sm text-gray-600"
+                  <div className="grid gap-4 md:grid-cols-2">
+                    {service.benefits.map((benefit) => (
+                      <div
+                        key={benefit}
+                        className="flex items-start gap-3 rounded-[22px] border border-[#ede2d5] bg-white/90 px-4 py-4"
                       >
-                        <span className="text-[#efae4c] mt-1">•</span>
-                        {precaution}
+                        <CheckCircleOutlined className="mt-1 text-[#d6b384]" />
+                        <span className="text-sm leading-7 text-slate-800">{benefit}</span>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+
+              {whyChooseCards.length > 0 && (
+                <motion.div
+                  variants={fadeUp}
+                  className="rounded-[38px] border border-[#e7dccd] bg-white p-8 shadow-[0_24px_80px_rgba(15,23,42,0.08)]"
+                >
+                  <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+                    <div>
+                      <p className="text-[11px] uppercase tracking-[0.35em] text-[#9a7b52]">
+                        Why Choose This Treatment
+                      </p>
+                      <h2 className="mt-4 text-3xl font-light tracking-[-0.04em] text-slate-900 md:text-4xl">
+                        A more thoughtful approach to visible, lasting improvement.
+                      </h2>
+                    </div>
+                    <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#10233f] text-[#d6b384]">
+                      <TrophyOutlined className="text-xl" />
+                    </div>
+                  </div>
+
+                  <div className="grid gap-5 md:grid-cols-3">
+                    {whyChooseCards.map((item) => (
+                      <div
+                        key={item.title}
+                        className="rounded-[26px] border border-[#eadfd1] bg-[#fcfaf7] px-5 py-5"
+                      >
+                        <p className="text-[10px] uppercase tracking-[0.3em] text-[#9a7b52]">
+                          {item.eyebrow}
+                        </p>
+                        <h3 className="mt-3 text-xl font-medium tracking-[-0.03em] text-slate-900">
+                          {item.title}
+                        </h3>
+                        <p className="mt-3 text-sm leading-7 text-slate-700">
+                          {item.content}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+
+              {(classifiedCare.before.length > 0 || classifiedCare.after.length > 0) && (
+                <motion.div
+                  variants={fadeUp}
+                  className="rounded-[38px] border border-[#d7dfe8] bg-[#10233f] p-8 shadow-[0_28px_80px_rgba(15,23,42,0.12)]"
+                >
+                  <div className="mb-8">
+                    <p className="text-[11px] uppercase tracking-[0.35em] text-[#d6b384]">
+                      Before / After Care
+                    </p>
+                    <h2 className="mt-4 text-3xl font-light tracking-[-0.04em] text-white md:text-4xl">
+                      Guidance for a smoother treatment experience.
+                    </h2>
+                  </div>
+
+                  <div className="grid gap-6 md:grid-cols-2">
+                    <div className="rounded-[28px] border border-white/10 bg-white/6 px-5 py-5">
+                      <p className="text-[10px] uppercase tracking-[0.3em] text-[#d6b384]">
+                        Before Your Appointment
+                      </p>
+                      <ul className="mt-5 space-y-4">
+                        {classifiedCare.before.map((item) => (
+                          <li key={item} className="flex items-start gap-3">
+                            <span className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-[#d6b384]" />
+                            <span className="text-sm leading-7 text-white">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="rounded-[28px] border border-white/10 bg-white/6 px-5 py-5">
+                      <p className="text-[10px] uppercase tracking-[0.3em] text-[#d6b384]">
+                        After Your Appointment
+                      </p>
+                      <ul className="mt-5 space-y-4">
+                        {classifiedCare.after.map((item) => (
+                          <li key={item} className="flex items-start gap-3">
+                            <span className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-[#d6b384]" />
+                            <span className="text-sm leading-7 text-white">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+
+              <div className="grid gap-6 md:grid-cols-2">
+                {service.results && (
+                  <motion.div
+                    variants={fadeUp}
+                    className="rounded-[34px] border border-[#e7dccd] bg-white p-8 text-center shadow-[0_20px_55px_rgba(17,24,39,0.06)]"
+                  >
+                    <TrophyOutlined className="text-3xl text-[#d6b384]" />
+                    <h3 className="mt-5 text-2xl font-medium tracking-[-0.03em] text-slate-900">
+                      Expected Results
+                    </h3>
+                    <p className="mt-4 text-sm leading-8 text-slate-700">
+                      {service.results}
+                    </p>
+                  </motion.div>
+                )}
+
+                {service.maintenance && (
+                  <motion.div
+                    variants={fadeUp}
+                    className="rounded-[34px] border border-[#e7dccd] bg-white p-8 text-center shadow-[0_20px_55px_rgba(17,24,39,0.06)]"
+                  >
+                    <UserOutlined className="text-3xl text-[#d6b384]" />
+                    <h3 className="mt-5 text-2xl font-medium tracking-[-0.03em] text-slate-900">
+                      Maintenance
+                    </h3>
+                    <p className="mt-4 text-sm leading-8 text-slate-700">
+                      {service.maintenance}
+                    </p>
+                  </motion.div>
+                )}
+              </div>
+            </motion.div>
+
+            <motion.aside
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.55 }}
+              className="space-y-6 lg:sticky lg:top-28 lg:self-start"
+            >
+              {service.precautions?.length > 0 && (
+                <div className="rounded-[34px] border border-[#d7dfe8] bg-[#10233f] p-7 shadow-[0_24px_70px_rgba(15,23,42,0.12)]">
+                  <div className="flex items-center gap-3">
+                    <SafetyOutlined className="text-[#d6b384]" />
+                    <p className="text-[11px] uppercase tracking-[0.35em] text-[#d6b384]">
+                      Important Precautions
+                    </p>
+                  </div>
+
+                  <ul className="mt-6 space-y-4">
+                    {service.precautions.map((precaution) => (
+                      <li key={precaution} className="flex items-start gap-3">
+                        <span className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-[#d6b384]" />
+                        <span className="text-sm leading-7 text-white">{precaution}</span>
                       </li>
                     ))}
                   </ul>
-                </Card>
-              </motion.div>
-            </Col>
-          </Row>
+                </div>
+              )}
+
+              <div className="rounded-[34px] border border-[#e7dccd] bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(248,244,239,0.98))] p-7 shadow-[0_20px_55px_rgba(17,24,39,0.06)]">
+                <p className="text-[11px] uppercase tracking-[0.35em] text-[#9a7b52]">
+                  Need Guidance?
+                </p>
+                <h3 className="mt-4 text-2xl font-medium tracking-[-0.03em] text-slate-900">
+                  Let our team help you choose the right care plan.
+                </h3>
+                <p className="mt-4 text-sm leading-7 text-slate-700">
+                  If you are unsure whether this service matches your concern, book
+                  a consultation and we will guide you to the most suitable option.
+                </p>
+
+                <div className="mt-6 flex flex-col gap-3">
+                  <button
+                    type="button"
+                    onClick={handleBookAppointment}
+                    className="inline-flex items-center justify-center rounded-full bg-[#10233f] px-6 py-4 text-sm font-medium tracking-[0.18em] text-white transition hover:bg-[#0c1b2f]"
+                  >
+                    BOOK CONSULTATION
+                  </button>
+                  <a
+                    href="tel:+919266511393"
+                    className="inline-flex items-center justify-center gap-3 rounded-full border border-[#d9cbb9] px-6 py-4 text-sm font-medium tracking-[0.18em] text-slate-800 transition hover:border-[#10233f] hover:text-[#10233f]"
+                  >
+                    <PhoneOutlined />
+                    CALL ELARIA
+                  </a>
+                </div>
+              </div>
+            </motion.aside>
+          </div>
         </div>
       </section>
     </div>

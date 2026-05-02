@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import { Button, Input, Modal, Form, Steps, message } from "antd";
 import {
   CheckCircleOutlined,
@@ -700,18 +700,34 @@ const ScrollToTop = () => {
 // MAIN APP COMPONENT
 // ============================================================================
 const App = () => {
-  const [bookingModalOpen, setBookingModalOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const scrollToGetInTouch = () => {
+    window.setTimeout(() => {
+      const section = document.getElementById("get-in-touch");
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 180);
+  };
 
   const handleBookAppointment = () => {
-    setBookingModalOpen(true);
+    if (location.pathname !== "/") {
+      navigate("/");
+      scrollToGetInTouch();
+      return;
+    }
+
+    scrollToGetInTouch();
   };
 
   return (
     <>
-      <BookingModal
+      {/* <BookingModal
         isOpen={bookingModalOpen}
         onClose={() => setBookingModalOpen(false)}
-      />
+      /> */}
 
       <ScrollToTop />
 

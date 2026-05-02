@@ -38,9 +38,9 @@ const portraitGalleryImages = [
 
 const CentreGallerySection = () => {
   return (
-    <section className="relative overflow-hidden bg-[#f8f4ef] px-6 py-24 lg:py-28">
-      <div className="absolute left-[-8%] top-20 h-64 w-64 rounded-full bg-[#e7d2b7]/40 blur-3xl" />
-      <div className="absolute bottom-10 right-[-6%] h-72 w-72 rounded-full bg-[#d8e0ea]/55 blur-3xl" />
+    <section className="relative overflow-hidden bg-[#f8f4ef] px-6 py-16 lg:py-18">
+      <div className="absolute left-[-8%] top-16 h-56 w-56 rounded-full bg-[#e7d2b7]/35 blur-3xl" />
+      <div className="absolute bottom-8 right-[-6%] h-64 w-64 rounded-full bg-[#d8e0ea]/45 blur-3xl" />
 
       <div className="relative mx-auto max-w-[118rem]">
         <motion.div
@@ -48,19 +48,19 @@ const CentreGallerySection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.55 }}
-          className="mx-auto mb-10 max-w-3xl text-center"
+          className="mx-auto mb-8 max-w-3xl text-center"
         >
           <p className="text-[11px] uppercase tracking-[0.35em] text-[#9a7b52]">
             Inside Elaria
           </p>
-          <h2 className="mt-5 text-3xl font-light tracking-[-0.03em] text-slate-900 md:text-4xl">
+          <h2 className="mt-4 text-[1.9rem] font-light tracking-[-0.03em] text-slate-900 md:text-[2.4rem]">
             A glimpse into the calm, elegant spaces where your treatment journey
             begins.
           </h2>
         </motion.div>
 
-        <div className="mb-8 overflow-hidden rounded-[40px] border border-[#e7dccd] bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(250,245,239,0.97))] p-3 shadow-[0_24px_80px_rgba(15,23,42,0.08)] md:p-4 lg:p-5">
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:items-start">
+        <div className="mb-6 overflow-hidden rounded-[36px] border border-[#e7dccd] bg-[linear-gradient(180deg,rgba(255,255,255,0.95),rgba(250,245,239,0.98))] p-2.5 shadow-[0_22px_65px_rgba(15,23,42,0.07)] md:p-3 lg:p-4">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:items-start">
             {portraitGalleryImages.map((image, index) => (
               <motion.div
                 key={image.title}
@@ -68,34 +68,34 @@ const CentreGallerySection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.55, delay: index * 0.08 }}
-                className={`group relative overflow-hidden rounded-[28px] border border-[#efe5d8] bg-white shadow-[0_20px_55px_rgba(17,24,39,0.07)] ${
-                  index === 1 ? "sm:mt-10 lg:mt-12" : ""
+                className={`group relative overflow-hidden rounded-[26px] border border-[#efe5d8] bg-[linear-gradient(180deg,#ffffff,#fcf8f2)] shadow-[0_18px_42px_rgba(17,24,39,0.06)] ${
+                  index === 1 ? "sm:mt-6 lg:mt-8" : ""
                 }`}
               >
-                <div className="p-3">
-                  <div className="relative aspect-[4/5] overflow-hidden rounded-[22px] bg-[#f6efe7]">
+                <div className="p-2.5">
+                  <div className="relative aspect-[4/5] overflow-hidden rounded-[20px] bg-[#f6efe7]">
                     <img
                       src={image.src}
                       alt={image.title}
                       className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                       style={{ objectPosition: image.objectPosition }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#10233f]/35 via-transparent to-transparent" />
-                    <div className="absolute left-4 top-4">
-                      <span className="inline-flex items-center rounded-full border border-white/50 bg-white/70 px-3 py-1.5 text-[10px] uppercase tracking-[0.28em] text-slate-700 backdrop-blur-md">
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#10233f]/28 via-transparent to-transparent" />
+                    <div className="absolute left-3.5 top-3.5">
+                      <span className="inline-flex items-center rounded-full border border-white/45 bg-white/72 px-3 py-1.5 text-[9px] uppercase tracking-[0.24em] text-slate-700 backdrop-blur-md">
                       {image.label}
                       </span>
                     </div>
                   </div>
 
-                  <div className="px-2 pb-2 pt-5">
-                    <p className="text-[11px] uppercase tracking-[0.3em] text-[#9a7b52]">
+                  <div className="px-2 pb-1 pt-4">
+                    <p className="text-[10px] uppercase tracking-[0.26em] text-[#9a7b52]">
                       Elaria Space
                     </p>
-                    <h3 className="mt-3 text-xl font-medium text-slate-900 md:text-[1.65rem]">
+                    <h3 className="mt-2.5 text-[1.12rem] font-medium text-slate-900 md:text-[1.28rem]">
                       {image.title}
                     </h3>
-                    <p className="mt-3 text-sm leading-7 text-slate-600">
+                    <p className="mt-2.5 text-[13px] leading-6 text-slate-600">
                       {image.description}
                     </p>
                   </div>
