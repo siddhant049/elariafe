@@ -95,6 +95,11 @@ const bodyContouringCategoryLinks = [
     label: "Body Shaping and Targeted Weight Loss Program",
     path: "/treatment/body-shaping-and-targeted-weight-loss-program",
   },
+  {
+    key: "face-upliftment",
+    label: "Face Upliftment",
+    path: "/treatment/face-upliftment",
+  },
 ];
 
 const bodyContouringNestedServiceLinks = {
@@ -108,6 +113,7 @@ const bodyContouringNestedServiceLinks = {
     { label: "Muscle Sculpt", path: "/service/muscle-sculpt-treatment" },
     { label: "Cryo Sculpt", path: "/service/cryo-sculpt-treatment" },
   ],
+  "face-upliftment": [{ label: "HIFU", path: "/service/hifu-treatment" }],
 };
 
 const ayurvedaServices = [

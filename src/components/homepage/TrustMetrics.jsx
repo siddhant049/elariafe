@@ -2,13 +2,16 @@ import React from "react";
 import { motion } from "framer-motion";
 import navroopPhoto from "../../assets/management/navroop.jpeg";
 import akanshaPhoto from "../../assets/management/akansha.jpeg";
+import kawalPhoto from "../../assets/management/kawal.jpeg";
+import ourTeamPhoto from "../../assets/management/ourTeam.jpeg";
 
 const experts = [
   {
     key: "cm",
     initials: "KB",
     name: "Kawaljit Bawa",
-    designation: "Center Manager",
+    photo: kawalPhoto,
+    designation: "Center Head",
     experience: "15 Years of experience",
     note: "Center Manager supports clients with personalized cosmetology guidance focused on skin health, confidence, and everyday care.",
     accent: "Senior Cosmetologist",
@@ -28,10 +31,10 @@ const experts = [
     initials: "CS",
     photo: akanshaPhoto,
     name: "Akansha Srivastava Khanna",
-    designation: "Cosmetologist",
-    experience: "Cosmetologist",
+    designation: "Manager",
+    experience: "Client experience specialist",
    
-    note: "Akansha focuses on creating a smooth, welcoming, and personalized experience for every client at Elaria.",
+    note: "Akansha crafts a refined, effortless, and personalized experience for every client at Elaria, making each visit feel truly special.",
 
     accent: "Cosmetologist",
   },
@@ -49,18 +52,18 @@ const TrustMetrics = () => {
       }} />
 
       <div className="relative mx-auto max-w-[1800px]">
-        <div className="mb-10 grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
-          <div>
+        <div className="mx-auto mb-10 max-w-4xl text-center">
+          <div className="flex justify-center">
             <p className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/6 px-5 py-2 text-[10px] uppercase tracking-[0.3em] text-[#d6b384] backdrop-blur-xl">
               <span className="h-2 w-2 rounded-full bg-[#d6b384]" />
               Meet Our Experts
             </p>
-            <h2 className="mt-4 text-3xl font-light tracking-[-0.04em] text-white md:text-4xl">
-            The experts behind every calm , premium and result driven experience at Elaria
-            </h2>
           </div>
-          <p className="max-w-2xl text-sm leading-7 text-white/76 lg:justify-self-end">
-          Meet the expert team behind your care—skilled professionals dedicated to delivering personalized, premium, and trustworthy aesthetic results.
+          <h2 className="mt-4 text-3xl font-light tracking-[-0.04em] text-white md:text-4xl">
+            The experts behind every calm, premium and result driven experience at Elaria
+          </h2>
+          <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-white/76">
+            Meet the expert team behind your care - skilled professionals dedicated to delivering personalized, premium, and trustworthy aesthetic results.
           </p>
         </div>
 
@@ -126,6 +129,35 @@ const TrustMetrics = () => {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.12 }}
+          className="mt-12"
+        >
+          <div className="mx-auto mb-8 max-w-4xl text-center">
+            <div className="flex justify-center">
+              <p className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/6 px-5 py-2 text-[10px] uppercase tracking-[0.3em] text-[#d6b384] backdrop-blur-xl">
+                <span className="h-2 w-2 rounded-full bg-[#d6b384]" />
+                Meet Our Team
+              </p>
+            </div>
+           
+           
+          </div>
+
+          <div className="mx-auto max-w-[980px] overflow-hidden rounded-[38px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.12),rgba(255,255,255,0.05))] p-4 shadow-[0_24px_70px_rgba(0,0,0,0.18)] backdrop-blur-xl md:p-5">
+            <div className="overflow-hidden rounded-[30px]">
+              <img
+                src={ourTeamPhoto}
+                alt="Elaria team"
+                className="h-[320px] w-full object-cover object-center md:h-[420px]"
+              />
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -251,11 +251,9 @@ const HappyClientsSection = () => {
           <div className="mb-8 text-center">
             <div className="inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/10 px-5 py-2 text-[11px] uppercase tracking-[0.32em] text-[#d6b384]">
               <span className="h-1.5 w-1.5 rounded-full bg-[#d6b384]" />
-              Before & Afters
+              Before & Afters transformations
             </div>
-            <h3 className="mt-5 text-3xl font-light tracking-[-0.03em] text-white md:text-4xl">
-              Before and after transformations.
-            </h3>
+            
             <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-white/75">
               A curated look at real treatment progress and visible refinement
               captured through original client before and after results.

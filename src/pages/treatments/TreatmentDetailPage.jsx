@@ -196,6 +196,8 @@ const getServiceIdFromTreatment = (treatmentName) => {
     Urdhvardhanam: "udwarthanam-treatment",
 
     // Body Contouring treatments
+    HIFU: "hifu-treatment",
+    "HIFU Treatment": "hifu-treatment",
     FDS: "fds-treatment",
     NMS: "nms-treatment",
     "Lipo Laser": "lipo-laser-treatment",
@@ -870,6 +872,12 @@ const TREATMENT_DATA = {
           "Contour-focused treatments designed for sculpting, definition, and targeted reshaping in selected body areas.",
         path: "/treatment/body-shaping-and-targeted-weight-loss-program",
       },
+      {
+        name: "Face Upliftment",
+        description:
+          "Lifting-focused facial contour care designed for clients seeking firmer, more defined, and refined facial support.",
+        path: "/treatment/face-upliftment",
+      },
     ],
     rating: 4.6,
     reviews: 167,
@@ -939,6 +947,29 @@ const TREATMENT_DATA = {
     ],
     rating: 4.7,
     reviews: 154,
+  },
+  "face-upliftment": {
+    title: "Face Upliftment",
+    description:
+      "Focused facial lifting and contour-support options created for clients who want a firmer, more sculpted, and more defined facial appearance.",
+    icon: "slimming",
+    duration: "45-75 mins",
+    benefits: [
+      "Supports a lifted facial look",
+      "Improves contour definition",
+      "Targets facial firmness concerns",
+      "Encourages a more refined profile",
+      "Builds confidence-focused facial care",
+    ],
+    subServices: [
+      {
+        name: "HIFU",
+        description:
+          "High-intensity focused ultrasound treatment designed to support facial lifting, firmness, and contour refinement.",
+      },
+    ],
+    rating: 4.8,
+    reviews: 142,
   },
 };
 

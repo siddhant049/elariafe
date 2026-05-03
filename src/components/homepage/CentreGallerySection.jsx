@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import ayurvedaImage from "../../assets/images/Center/Ayurveda.png";
 import doctorRoomImage from "../../assets/images/Center/DoctorRoom.png";
+import drRoomImage from "../../assets/images/Center/drRoomImage.jpeg";
 import receptionImage from "../../assets/images/Center/Reception .png";
 import waitingAreaImage from "../../assets/images/Center/waitingArea.png";
 
@@ -13,15 +14,15 @@ const portraitGalleryImages = [
     label: "Arrival",
     objectPosition: "center top",
   },
+  // {
+  //   src: ayurvedaImage,
+  //   title: "Thoughtful clinical detailing",
+  //   description: "Luxury aesthetics balanced with trust, hygiene and modern technology.",
+  //   label: "Wellness",
+  //   objectPosition: "center center",
+  // },
   {
-    src: ayurvedaImage,
-    title: "Thoughtful clinical detailing",
-    description: "Luxury aesthetics balanced with trust, hygiene and modern technology.",
-    label: "Wellness",
-    objectPosition: "center center",
-  },
-  {
-    src: doctorRoomImage,
+    src: drRoomImage,
     title: "Private consultation rooms",
     description: "Spaces designed for personal conversations and treatment planning.",
     label: "Consultation",
@@ -59,8 +60,8 @@ const CentreGallerySection = () => {
           </h2>
         </motion.div>
 
-        <div className="mb-6 overflow-hidden rounded-[36px] border border-[#e7dccd] bg-[linear-gradient(180deg,rgba(255,255,255,0.95),rgba(250,245,239,0.98))] p-2.5 shadow-[0_22px_65px_rgba(15,23,42,0.07)] md:p-3 lg:p-4">
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:items-start">
+        <div className="mx-auto mb-6 max-w-[88rem] overflow-hidden rounded-[36px] border border-[#e7dccd] bg-[linear-gradient(180deg,rgba(255,255,255,0.95),rgba(250,245,239,0.98))] p-2.5 shadow-[0_22px_65px_rgba(15,23,42,0.07)] md:p-3 lg:p-4">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:items-start">
             {portraitGalleryImages.map((image, index) => (
               <motion.div
                 key={image.title}

@@ -146,6 +146,11 @@ const CATEGORY_VISUALS = {
     badge: "Targeted Sculpting Care",
     highlights: ["Shape definition", "Target zones", "Contour refinement"],
   },
+  "Face Upliftment": {
+    image: bodyContouringImage,
+    badge: "Lift And Firmness Care",
+    highlights: ["Facial lift", "Contour support", "Firmness refinement"],
+  },
   default: {
     image: skinImage,
     badge: "Signature Aesthetic Care",
@@ -3119,6 +3124,47 @@ const SERVICE_DATA = {
     results:
       "Visible sculpting develops gradually over the treatment course, with contour lines appearing more refined over time.",
     maintenance: "Maintenance sessions may be advised depending on the area treated and long-term body goals.",
+  },
+  "hifu-treatment": {
+    name: "HIFU",
+    category: "Face Upliftment",
+    categoryPath: "/treatment/face-upliftment",
+    description:
+      "HIFU is a lifting-focused facial treatment that uses high-intensity focused ultrasound to support firmness, contour definition, and a more sculpted facial appearance.",
+    duration: "45-75 mins",
+    sessions: "1-3 sessions based on treatment goals",
+    rating: 4.8,
+    reviews: 126,
+    benefits: [
+      "Supports a lifted appearance",
+      "Helps improve facial firmness",
+      "Enhances contour definition",
+      "Non-surgical facial support",
+      "Targets lower-face and jawline refinement",
+      "Works well for structured upliftment plans",
+    ],
+    process: [
+      "Facial assessment and contour review",
+      "Target-area mapping",
+      "HIFU energy delivery planning",
+      "Focused treatment session",
+      "Post-treatment care guidance",
+    ],
+    precautions: [
+      "Temporary sensitivity may occur after treatment",
+      "Results build over time rather than instantly",
+      "Suitability should be reviewed before treatment",
+      "Follow aftercare instructions for best recovery support",
+    ],
+    purpose:
+      "Designed for clients who want non-surgical facial upliftment and more defined contour support.",
+    procedure:
+      "Focused ultrasound energy is delivered to selected facial areas in a controlled treatment sequence tailored to lifting and firmness goals.",
+    whatItDoes:
+      "HIFU targets deeper support layers to encourage tightening, lifting, and improved contour definition over time.",
+    results:
+      "Facial refinement develops progressively, with lifting and firmness becoming more noticeable in the weeks following treatment.",
+    maintenance: "Maintenance timing depends on facial goals, skin condition, and long-term treatment planning.",
   },
   "weight-loss-treatments": {
     name: "Weight Loss Treatments",
