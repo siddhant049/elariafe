@@ -22,7 +22,7 @@ const experts = [
     photo: navroopPhoto,
     name: "Dr Navroop Kaur ",
     designation: "Aesthetic Doctor",
-    experience: "MBBS",
+    experience: "BAMS & Post Graduate Diploma in Dermatology",
     note: "Doctor leads the treatment planning with a refined, patient-first approach to aesthetic care.",
     accent: "Clinical Assessment And Treatment",
   },
