@@ -12,7 +12,7 @@ const experts = [
     name: "Kawaljit Bawa",
     photo: kawalPhoto,
     designation: "Center Head",
-    experience: "15 Years of experience",
+    experience: "20 Years of experience",
     note: "Center Manager supports clients with personalized cosmetology guidance focused on skin health, confidence, and everyday care.",
     accent: "Senior Cosmetologist",
   },
