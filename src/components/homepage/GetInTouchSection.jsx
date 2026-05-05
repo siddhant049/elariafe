@@ -1,21 +1,28 @@
 import React, { useState } from "react";
 import { Form, Input, Select, Button, message } from "antd";
+import { sendConsultationRequest } from "../../utils/emailjs";
 
 const GetInTouchSection = () => {
   const [form] = Form.useForm();
   const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = () => {
+  const handleSubmit = async (values) => {
     setSubmitting(true);
 
-    // Here you would normally send data to your backend / CRM
-    setTimeout(() => {
+    try {
+      await sendConsultationRequest(values);
       message.success(
         "Thank you! Our team will call you back shortly to discuss your concerns."
       );
       form.resetFields();
+    } catch (error) {
+      message.error(
+        error?.message ||
+          "We could not send your request right now. Please try again in a moment."
+      );
+    } finally {
       setSubmitting(false);
-    }, 800);
+    }
   };
 
   return (
@@ -92,6 +99,14 @@ const GetInTouchSection = () => {
             </Form.Item>
 
             <Form.Item
+              name="email"
+              label="Email ID"
+              rules={[{ required: true, message: "Please enter your emailId" }]}
+            >
+              <Input placeholder="test@gmail.com" size="large" />
+            </Form.Item>
+
+            <Form.Item
               name="category"
               label="Service category you're interested in"
               rules={[
@@ -111,6 +126,7 @@ const GetInTouchSection = () => {
                   { value: "anti-aging", label: "Anti-aging" },
                   { value: "laser", label: "Laser" },
                   { value: "body-contouring", label: "Body Contouring" },
+                  { value: "ayurveda", label: "Ayurveda" },
                   { value: "other", label: "Not sure / Other" },
                 ]}
               />
