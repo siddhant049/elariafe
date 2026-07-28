@@ -14,6 +14,9 @@ import TreatmentDetailPage from "./pages/treatments/TreatmentDetailPage";
 import ServiceDetailPage from "./pages/services/ServiceDetailPage";
 import AIAssessmentPage from "./pages/AIAssessmentPage";
 import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
+import DashboardPage from "./pages/DashboardPage";
+import ProtectedRoute from "./components/ProtectedRoute";
 import receptionImage from "./assets/images/Center/Reception .png";
 
 // ============================================================================
@@ -722,6 +725,9 @@ const App = () => {
     scrollToGetInTouch();
   };
 
+  const isAuthRoute =
+    location.pathname === "/login" || location.pathname.startsWith("/dashboard");
+
   return (
     <>
       {/* <BookingModal
@@ -731,7 +737,9 @@ const App = () => {
 
       <ScrollToTop />
 
-      <Navbar onBookAppointment={handleBookAppointment} />
+      {!isAuthRoute && (
+        <Navbar onBookAppointment={handleBookAppointment} />
+      )}
 
       <Routes>
         <Route
@@ -756,6 +764,10 @@ const App = () => {
             <AIAssessmentPage onBookAppointment={handleBookAppointment} />
           }
         />
+        <Route path="/login" element={<LoginPage />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="/dashboard" element={<DashboardPage />} />
+        </Route>
       </Routes>
     </>
   );

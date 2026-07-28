@@ -10,6 +10,7 @@ import GetInTouchSection from "../components/homepage/GetInTouchSection";
 import ContactSection from "../components/homepage/ContactSection";
 import FAQsSection from "../components/homepage/FAQsSection";
 import Footer from "../components/homepage/Footer";
+import NotificationPopup from "../components/homepage/NotificationPopup";
 
 const HomePage = ({ onBookAppointment }) => {
   return (
@@ -43,6 +44,7 @@ const HomePage = ({ onBookAppointment }) => {
           padding: 0;
         }
       `}</style>
+      <NotificationPopup onBookAppointment={onBookAppointment} />
       <HeroSection onBookAppointment={onBookAppointment} />
       <CategorySection />
       <HappyClientsSection />
